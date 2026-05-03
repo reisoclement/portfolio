@@ -19,3 +19,7 @@ npm-debug.log*
 Thumbs.db
 .vscode/
 .idea/
+
+# internal markdown — kept local, not published
+*.md
+docs/
