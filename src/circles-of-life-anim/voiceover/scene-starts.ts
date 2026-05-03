@@ -1,37 +1,28 @@
-import { SCENE_DURATIONS } from "../theme";
+import { getSceneDurations } from "../theme";
+import type { Locale } from "../i18n";
 
-// Absolute starting frame of each narration clip in the composition.
-// Keyed by clip id (which matches the i18n narration `id`).
-export const SCENE_START_FRAMES: Record<string, number> = {
-  "scene-1-intro": 0,
-  "scene-2-self": SCENE_DURATIONS.intro,
-  "scene-3-partner": SCENE_DURATIONS.intro + SCENE_DURATIONS.self,
-  "scene-4-children":
-    SCENE_DURATIONS.intro + SCENE_DURATIONS.self + SCENE_DURATIONS.partner,
-  "scene-5-fast-rings":
-    SCENE_DURATIONS.intro +
-    SCENE_DURATIONS.self +
-    SCENE_DURATIONS.partner +
-    SCENE_DURATIONS.children,
-  "scene-6-world-zoom":
-    SCENE_DURATIONS.intro +
-    SCENE_DURATIONS.self +
-    SCENE_DURATIONS.partner +
-    SCENE_DURATIONS.children +
-    SCENE_DURATIONS.fastRings,
-  "scene-7-reversal":
-    SCENE_DURATIONS.intro +
-    SCENE_DURATIONS.self +
-    SCENE_DURATIONS.partner +
-    SCENE_DURATIONS.children +
-    SCENE_DURATIONS.fastRings +
-    SCENE_DURATIONS.worldZoom,
-  "scene-8-closing":
-    SCENE_DURATIONS.intro +
-    SCENE_DURATIONS.self +
-    SCENE_DURATIONS.partner +
-    SCENE_DURATIONS.children +
-    SCENE_DURATIONS.fastRings +
-    SCENE_DURATIONS.worldZoom +
-    SCENE_DURATIONS.reversal,
-};
+// Absolute starting frame of each narration clip in the composition,
+// computed from the per-locale SCENE_DURATIONS. Each locale has its own
+// timeline because narration length varies significantly.
+export function getSceneStartFrames(locale: Locale): Record<string, number> {
+  const d = getSceneDurations(locale);
+  return {
+    "scene-1-intro": 0,
+    "scene-2-self": d.intro,
+    "scene-3-partner": d.intro + d.self,
+    "scene-4-children": d.intro + d.self + d.partner,
+    "scene-5-fast-rings": d.intro + d.self + d.partner + d.children,
+    "scene-6-world-zoom":
+      d.intro + d.self + d.partner + d.children + d.fastRings,
+    "scene-7-reversal":
+      d.intro + d.self + d.partner + d.children + d.fastRings + d.worldZoom,
+    "scene-8-closing":
+      d.intro +
+      d.self +
+      d.partner +
+      d.children +
+      d.fastRings +
+      d.worldZoom +
+      d.reversal,
+  };
+}

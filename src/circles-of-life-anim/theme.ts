@@ -1,3 +1,5 @@
+import type { Locale } from "./i18n";
+
 export const COLORS = {
   bg: "#05060a",
   bgGlow: "#0c1226",
@@ -19,18 +21,78 @@ export const COLORS = {
 export const FONT_FAMILY =
   '-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif';
 
-export const SCENE_DURATIONS = {
-  intro: 180,
-  self: 660,
-  partner: 540,
-  children: 400,
-  fastRings: 120,
-  worldZoom: 160,
-  reversal: 600,
-  closing: 120,
-} as const;
+export type SceneDurations = {
+  intro: number;
+  self: number;
+  partner: number;
+  children: number;
+  fastRings: number;
+  worldZoom: number;
+  reversal: number;
+  closing: number;
+};
 
-export const TOTAL_DURATION = Object.values(SCENE_DURATIONS).reduce(
-  (a, b) => a + b,
-  0,
-);
+// Scene durations are per-locale because narration length varies a lot
+// across languages (Polish/French run ~30% longer than English at the same
+// word count). Each value is `ceil(audio_duration_frames) + 30 frames` margin,
+// rounded up to the nearest 10. Recompute when narration changes.
+const DURATIONS: Record<Locale, SceneDurations> = {
+  en: {
+    intro: 180,
+    self: 650,
+    partner: 530,
+    children: 410,
+    fastRings: 120,
+    worldZoom: 120,
+    reversal: 580,
+    closing: 100,
+  },
+  fr: {
+    intro: 190,
+    self: 860,
+    partner: 520,
+    children: 480,
+    fastRings: 140,
+    worldZoom: 160,
+    reversal: 710,
+    closing: 120,
+  },
+  es: {
+    intro: 190,
+    self: 880,
+    partner: 630,
+    children: 430,
+    fastRings: 100,
+    worldZoom: 140,
+    reversal: 640,
+    closing: 130,
+  },
+  pl: {
+    intro: 170,
+    self: 890,
+    partner: 610,
+    children: 600,
+    fastRings: 110,
+    worldZoom: 140,
+    reversal: 690,
+    closing: 120,
+  },
+};
+
+export function getSceneDurations(locale: Locale): SceneDurations {
+  return DURATIONS[locale];
+}
+
+export function getTotalDuration(locale: Locale): number {
+  const d = DURATIONS[locale];
+  return (
+    d.intro +
+    d.self +
+    d.partner +
+    d.children +
+    d.fastRings +
+    d.worldZoom +
+    d.reversal +
+    d.closing
+  );
+}

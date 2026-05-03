@@ -16,229 +16,229 @@
     }
   },
   "scene-2-self": {
-    "sceneStart": 180,
+    "sceneStart": 190,
     "audioStartOffset": 0,
     "durationSeconds": 28.281,
     "durationFrames": 849,
     "anchors": {
       "title": {
-        "frame": 358,
+        "frame": 368,
         "audioSeconds": 5.921
       },
       "attr-01": {
-        "frame": 415,
+        "frame": 425,
         "audioSeconds": 7.825
       },
       "attr-02": {
-        "frame": 447,
+        "frame": 457,
         "audioSeconds": 8.916
       },
       "attr-03": {
-        "frame": 521,
+        "frame": 531,
         "audioSeconds": 11.366
       },
       "attr-04": {
-        "frame": 584,
+        "frame": 594,
         "audioSeconds": 13.456
       },
       "attr-05": {
-        "frame": 633,
+        "frame": 643,
         "audioSeconds": 15.093
       },
       "attr-06": {
-        "frame": 677,
+        "frame": 687,
         "audioSeconds": 16.567
       },
       "attr-07": {
-        "frame": 745,
+        "frame": 755,
         "audioSeconds": 18.843
       },
       "attr-08": {
-        "frame": 799,
+        "frame": 809,
         "audioSeconds": 20.619
       },
       "attr-09": {
-        "frame": 850,
+        "frame": 860,
         "audioSeconds": 22.349
       },
       "attr-10": {
-        "frame": 905,
+        "frame": 915,
         "audioSeconds": 24.172
       }
     }
   },
   "scene-3-partner": {
-    "sceneStart": 840,
+    "sceneStart": 1070,
     "audioStartOffset": 0,
     "durationSeconds": 19.783,
     "durationFrames": 594,
     "anchors": {
       "title": {
-        "frame": 863,
+        "frame": 1093,
         "audioSeconds": 0.778
       },
       "attr-01": {
-        "frame": 1025,
+        "frame": 1255,
         "audioSeconds": 6.165
       },
       "attr-02": {
-        "frame": 1061,
+        "frame": 1291,
         "audioSeconds": 7.372
       },
       "attr-03": {
-        "frame": 1103,
+        "frame": 1333,
         "audioSeconds": 8.754
       },
       "attr-04": {
-        "frame": 1154,
+        "frame": 1384,
         "audioSeconds": 10.472
       },
       "attr-05": {
-        "frame": 1200,
+        "frame": 1430,
         "audioSeconds": 12.016
       },
       "attr-06": {
-        "frame": 1264,
+        "frame": 1494,
         "audioSeconds": 14.129
       },
       "attr-07": {
-        "frame": 1296,
+        "frame": 1526,
         "audioSeconds": 15.197
       },
       "attr-08": {
-        "frame": 1407,
+        "frame": 1637,
         "audioSeconds": 18.913
       }
     }
   },
   "scene-4-children": {
-    "sceneStart": 1380,
+    "sceneStart": 1700,
     "audioStartOffset": 0,
     "durationSeconds": 13.096,
     "durationFrames": 393,
     "anchors": {
       "title": {
-        "frame": 1453,
+        "frame": 1773,
         "audioSeconds": 2.438
       },
       "attr-01": {
-        "frame": 1554,
+        "frame": 1874,
         "audioSeconds": 5.805
       },
       "attr-02": {
-        "frame": 1579,
+        "frame": 1899,
         "audioSeconds": 6.629
       },
       "attr-03": {
-        "frame": 1605,
+        "frame": 1925,
         "audioSeconds": 7.512
       },
       "attr-04": {
-        "frame": 1636,
+        "frame": 1956,
         "audioSeconds": 8.545
       },
       "attr-05": {
-        "frame": 1670,
+        "frame": 1990,
         "audioSeconds": 9.659
       },
       "attr-06": {
-        "frame": 1749,
+        "frame": 2069,
         "audioSeconds": 12.307
       }
     }
   },
   "scene-5-fast-rings": {
-    "sceneStart": 1780,
+    "sceneStart": 2130,
     "audioStartOffset": 0,
     "durationSeconds": 2.183,
     "durationFrames": 66,
     "anchors": {
       "family": {
-        "frame": 1797,
+        "frame": 2147,
         "audioSeconds": 0.569
       },
       "friends": {
-        "frame": 1810,
+        "frame": 2160,
         "audioSeconds": 1.01
       },
       "community": {
-        "frame": 1822,
+        "frame": 2172,
         "audioSeconds": 1.393
       }
     }
   },
   "scene-6-world-zoom": {
-    "sceneStart": 1900,
+    "sceneStart": 2230,
     "audioStartOffset": 0,
     "durationSeconds": 3.344,
     "durationFrames": 101,
     "anchors": {
       "country": {
-        "frame": 1940,
+        "frame": 2270,
         "audioSeconds": 1.347
       },
       "world": {
-        "frame": 1975,
+        "frame": 2305,
         "audioSeconds": 2.485
       }
     }
   },
   "scene-7-reversal": {
-    "sceneStart": 2060,
+    "sceneStart": 2370,
     "audioStartOffset": 0,
     "durationSeconds": 20.155,
     "durationFrames": 605,
     "anchors": {
       "most-people": {
-        "frame": 2098,
+        "frame": 2408,
         "audioSeconds": 1.277
       },
       "fix-world": {
-        "frame": 2174,
+        "frame": 2484,
         "audioSeconds": 3.808
       },
       "climate-wars": {
-        "frame": 2209,
+        "frame": 2519,
         "audioSeconds": 4.981
       },
       "politics": {
-        "frame": 2252,
+        "frame": 2562,
         "audioSeconds": 6.385
       },
       "never-heard": {
-        "frame": 2325,
+        "frame": 2635,
         "audioSeconds": 8.835
       },
       "social-media": {
-        "frame": 2365,
+        "frame": 2675,
         "audioSeconds": 10.159
       },
       "told-them": {
-        "frame": 2410,
+        "frame": 2720,
         "audioSeconds": 11.657
       },
       "while-center": {
-        "frame": 2460,
+        "frame": 2770,
         "audioSeconds": 13.317
       },
       "not-balanced": {
-        "frame": 2546,
+        "frame": 2856,
         "audioSeconds": 16.196
       }
     }
   },
   "scene-8-closing": {
-    "sceneStart": 2660,
+    "sceneStart": 3010,
     "audioStartOffset": 0,
     "durationSeconds": 3.019,
     "durationFrames": 91,
     "anchors": {
       "master": {
-        "frame": 2679,
+        "frame": 3029,
         "audioSeconds": 0.639
       },
       "expand": {
-        "frame": 2728,
+        "frame": 3078,
         "audioSeconds": 2.252
       }
     }

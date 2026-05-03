@@ -3,8 +3,8 @@ import { Player, type PlayerRef, type CallbackListener } from "@remotion/player"
 import {
   CirclesOfLife,
   getSceneRanges,
+  getTotalDuration,
   TOTAL_SCENES,
-  TOTAL_DURATION,
   VIDEO,
   type Locale,
 } from "@circles-of-life/embed";
@@ -168,7 +168,7 @@ export default function InteractiveViewer({ locale }: Props) {
             ref={playerRef}
             component={CirclesOfLife}
             inputProps={{ locale: locale as Locale }}
-            durationInFrames={TOTAL_DURATION}
+            durationInFrames={getTotalDuration(locale as Locale)}
             compositionWidth={VIDEO.width}
             compositionHeight={VIDEO.height}
             fps={VIDEO.fps}

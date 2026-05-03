@@ -1,13 +1,14 @@
 import { Audio, Sequence, staticFile } from "remotion";
 import { useLocale } from "../LocaleContext";
-import { SCENE_START_FRAMES } from "./scene-starts";
+import { getSceneStartFrames } from "./scene-starts";
 
 export const Voiceover: React.FC = () => {
   const { locale, t } = useLocale();
+  const sceneStarts = getSceneStartFrames(locale);
   return (
     <>
       {t.narration.map((clip) => {
-        const startFrame = SCENE_START_FRAMES[clip.id] ?? 0;
+        const startFrame = sceneStarts[clip.id] ?? 0;
         return (
           <Sequence key={clip.id} from={startFrame}>
             <Audio

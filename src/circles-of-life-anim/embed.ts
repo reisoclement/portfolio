@@ -3,12 +3,13 @@
 
 export { CirclesOfLife } from "./Composition";
 export type { CirclesOfLifeProps } from "./Composition";
-export { SCENE_DURATIONS, TOTAL_DURATION } from "./theme";
+export { getSceneDurations, getTotalDuration } from "./theme";
+export type { SceneDurations } from "./theme";
 export { VIDEO } from "./layout";
 export { LOCALES, getDict } from "./i18n";
 export type { Locale, Dict } from "./i18n";
 
-import { SCENE_DURATIONS } from "./theme";
+import { getSceneDurations } from "./theme";
 import { getDict, type Locale, type Dict } from "./i18n";
 
 const SCENE_KEYS = [
@@ -25,7 +26,7 @@ const SCENE_KEYS = [
 export type SceneKey = (typeof SCENE_KEYS)[number];
 
 // Cumulative frame ranges for each scene: [startFrame, endFrameExclusive].
-// Localized titles live on the dict per `getSceneRanges(locale)`.
+// Both timings AND titles vary per locale.
 export type SceneRange = {
   key: SceneKey;
   title: string;
@@ -35,10 +36,11 @@ export type SceneRange = {
 
 export function getSceneRanges(locale: Locale): SceneRange[] {
   const dict: Dict = getDict(locale);
+  const d = getSceneDurations(locale);
   let acc = 0;
   return SCENE_KEYS.map((key) => {
     const start = acc;
-    const end = acc + SCENE_DURATIONS[key];
+    const end = acc + d[key];
     acc = end;
     return { key, title: dict.sceneTitles[key], start, end };
   });
