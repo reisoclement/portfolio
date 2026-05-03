@@ -1,18 +1,30 @@
 ---
+import { getT, LOCALES, LOCALE_LABELS, localeUrl, stripLocaleFromPath, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getT(locale);
 const base = import.meta.env.BASE_URL;
 const path = Astro.url.pathname;
-const isActive = (href: string) => path === href || path === href + '/';
+const currentRest = stripLocaleFromPath(path, base);
+
+const localeHome = localeUrl(base, locale, '');
+const circlesHref = localeUrl(base, locale, 'circles-of-life');
+
+const isActive = (href: string) => path === href || path === href.replace(/\/$/, '');
 
 const links = [
-  { href: base, label: 'Home' },
-  { href: `${base}circles-of-life/`, label: 'Circles of life' },
-  // Animation links will be appended here automatically once content collection lands.
+  { href: localeHome, label: t.nav.home },
+  { href: circlesHref, label: t.circlesOfLife.heading },
 ];
 ---
 <header class="nav">
   <div class="container nav__inner">
-    <a class="nav__brand" href={base}>Notebook</a>
-    <nav aria-label="Primary">
+    <a class="nav__brand" href={localeHome}>{t.nav.brand}</a>
+    <nav aria-label={t.nav.primaryAriaLabel}>
       <ul class="nav__list">
         {links.map((l) => (
           <li>
@@ -21,6 +33,27 @@ const links = [
             </a>
           </li>
         ))}
+      </ul>
+    </nav>
+    <nav aria-label={t.nav.languageSwitcherAriaLabel} class="nav__lang">
+      <ul class="nav__lang-list">
+        {LOCALES.map((loc) => {
+          const href = localeUrl(base, loc, currentRest);
+          const isCurrent = loc === locale;
+          return (
+            <li>
+              <a
+                href={href}
+                hreflang={loc}
+                lang={loc}
+                aria-current={isCurrent ? 'true' : undefined}
+                class:list={['nav__lang-link', { 'is-active': isCurrent }]}
+              >
+                {LOCALE_LABELS[loc]}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   </div>
@@ -35,7 +68,9 @@ const links = [
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: var(--space-4);
     padding-block: var(--space-3);
+    flex-wrap: wrap;
   }
   .nav__brand {
     font-family: var(--font-serif);
@@ -59,4 +94,25 @@ const links = [
   }
   .nav__link:hover { color: var(--color-text); }
   .nav__link.is-active { color: var(--color-text); }
+  .nav__lang-list {
+    display: flex;
+    gap: var(--space-2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav__lang-link {
+    color: var(--color-text-muted);
+    border-bottom: none;
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+  }
+  .nav__lang-link:hover { color: var(--color-text); }
+  .nav__lang-link.is-active {
+    color: var(--color-text);
+    background: var(--color-border, rgba(255,255,255,0.08));
+  }
 </style>

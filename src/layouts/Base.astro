@@ -2,17 +2,21 @@
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { getT, HTML_LANG, type Locale } from '../i18n';
 
 interface Props {
   title: string;
   description?: string;
+  locale: Locale;
 }
 
-const { title, description = 'A personal collection of animations capturing ideas worth keeping.' } = Astro.props;
+const { title, locale, description } = Astro.props;
+const t = getT(locale);
+const finalDescription = description ?? t.meta.siteDescription;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 ---
 <!doctype html>
-<html lang="en">
+<html lang={HTML_LANG[locale]}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,22 +24,22 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
 
     <title>{title}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={finalDescription} />
     <link rel="canonical" href={canonical} />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={finalDescription} />
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary_large_image" />
 
     <slot name="head" />
   </head>
   <body>
-    <Nav />
+    <Nav locale={locale} />
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer locale={locale} />
   </body>
 </html>

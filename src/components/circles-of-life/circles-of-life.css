@@ -21,14 +21,16 @@
   outline: 2px solid #ffd166;
   outline-offset: 4px;
 }
+.col-stage-button:disabled {
+  cursor: progress;
+}
 
 .col-stage {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: radial-gradient(circle at 50% 50%, #0c1226 0%, #05060a 70%);
+  background: #05060a;
   overflow: hidden;
-  container-type: size;
   border-radius: 12px;
 }
 
@@ -49,7 +51,7 @@
   height: 10px;
   border-radius: 50%;
   background: rgba(245, 247, 255, 0.18);
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
 }
 .col-progress__dot.is-on {
   background: #ffd166;
@@ -116,76 +118,4 @@
   border-radius: 4px;
   padding: 1px 6px;
   font-size: 0.85em;
-}
-
-/* === Animation keyframes used by Scenes.tsx === */
-
-@keyframes col-fade-in {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* The IconLabel/TextLabel components use translate(X%, -50%) too — override the keyframe target
-   by re-defining the reset for elements that have a CSS transform set inline. We use a different
-   keyframe variant that only animates opacity to avoid disturbing transform positioning. */
-.col-fade-in {
-  opacity: 0;
-  animation-name: col-fade-in-opacity;
-  animation-duration: 0.6s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
-}
-@keyframes col-fade-in-opacity {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-@keyframes col-draw-ring {
-  from { stroke-dashoffset: var(--draw-from, 0); }
-  to   { stroke-dashoffset: 0; }
-}
-
-/* Scene 7 phase A → B transition.
-   Phase A holds for 3s with the orange ring + arrow text fully visible,
-   then we zoom in (scale up dramatically) and fade phase A out.
-   Phase B (yellow center) starts hidden, fades in as zoom completes. */
-
-.col-phase-a {
-  animation: col-zoom-out-to-in 8s ease-in-out forwards;
-}
-@keyframes col-zoom-out-to-in {
-  0%   { transform: scale(0.45); opacity: 1; }
-  35%  { transform: scale(0.45); opacity: 1; }
-  60%  { transform: scale(8);    opacity: 0; }
-  100% { transform: scale(8);    opacity: 0; }
-}
-
-.col-phase-a-text {
-  animation: col-fade-out-text 4.5s ease-out forwards;
-}
-@keyframes col-fade-out-text {
-  0%   { opacity: 1; }
-  60%  { opacity: 1; }
-  90%  { opacity: 0; }
-  100% { opacity: 0; }
-}
-
-.col-phase-b {
-  opacity: 0;
-  animation: col-phase-b-in 8s ease-in-out forwards;
-}
-@keyframes col-phase-b-in {
-  0%   { opacity: 0; transform: scale(0.6); }
-  40%  { opacity: 0; transform: scale(0.6); }
-  60%  { opacity: 1; transform: scale(1);   }
-  100% { opacity: 1; transform: scale(1);   }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .col-fade-in,
-  .col-phase-a,
-  .col-phase-b,
-  .col-phase-a-text {
-    animation-duration: 0.01s !important;
-  }
 }

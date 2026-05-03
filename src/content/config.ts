@@ -1,5 +1,11 @@
 import { defineCollection, z } from 'astro:content';
 
+// Localized animation entries.
+// Slug convention: `<animation-slug>/<locale>` (e.g. `welcome/en`, `welcome/fr`).
+// Each entry holds language-specific frontmatter + body. Schema fields that are
+// truly per-locale (title, description, body) live here; language-agnostic
+// fields (date, duration, videoUrl, order) are duplicated across locales for
+// simplicity — the EN copy is the source of truth.
 const animations = defineCollection({
   type: 'content',
   schema: z.object({

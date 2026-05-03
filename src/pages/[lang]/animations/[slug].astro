@@ -1,0 +1,227 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import { LOCALES, getT, isLocale, localeUrl, type Locale } from '../../../i18n';
+
+export async function getStaticPaths() {
+  const all = await getCollection('animations', ({ data }) => !data.draft);
+
+  // Each entry slug is `<animation>/<locale>`. Group by animation slug, then
+  // emit one path per (locale, animation) where that locale exists.
+  type Entry = CollectionEntry<'animations'>;
+  const byAnimation = new Map<string, Map<string, Entry>>();
+  for (const entry of all) {
+    const [animationSlug, loc] = entry.slug.split('/');
+    if (!animationSlug || !loc || !LOCALES.includes(loc as Locale)) continue;
+    if (!byAnimation.has(animationSlug)) byAnimation.set(animationSlug, new Map());
+    byAnimation.get(animationSlug)!.set(loc, entry);
+  }
+
+  // Sort animations by order then date for prev/next.
+  const animationOrder = (slug: string) => {
+    const m = byAnimation.get(slug)!;
+    const en = m.get('en') ?? Array.from(m.values())[0];
+    return [en.data.order, -en.data.date.getTime()] as const;
+  };
+  const sortedSlugs = Array.from(byAnimation.keys()).sort((a, b) => {
+    const [oa, ta] = animationOrder(a);
+    const [ob, tb] = animationOrder(b);
+    if (oa !== ob) return oa - ob;
+    return ta - tb;
+  });
+
+  const paths: Array<{
+    params: { lang: string; slug: string };
+    props: { entry: Entry; prevSlug: string | null; nextSlug: string | null };
+  }> = [];
+  for (const lang of LOCALES) {
+    for (let idx = 0; idx < sortedSlugs.length; idx++) {
+      const animationSlug = sortedSlugs[idx];
+      const localeMap = byAnimation.get(animationSlug)!;
+      const entry = localeMap.get(lang) ?? localeMap.get('en');
+      if (!entry) continue;
+      paths.push({
+        params: { lang, slug: animationSlug },
+        props: {
+          entry,
+          prevSlug: sortedSlugs[idx - 1] ?? null,
+          nextSlug: sortedSlugs[idx + 1] ?? null,
+        },
+      });
+    }
+  }
+  return paths;
+}
+
+interface Props {
+  entry: CollectionEntry<'animations'>;
+  prevSlug: string | null;
+  nextSlug: string | null;
+}
+
+const { entry, prevSlug, nextSlug } = Astro.props;
+const { lang, slug: animationSlug } = Astro.params;
+if (!isLocale(lang)) throw new Error(`unsupported locale: ${lang}`);
+const locale: Locale = lang;
+const t = getT(locale);
+
+const { Content } = await entry.render();
+const { title, description, date, duration, videoUrl, posterImage, specPath, tags } = entry.data;
+
+const base = import.meta.env.BASE_URL;
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
+const isoDate = date.toISOString();
+
+// Convert "mm:ss" → ISO 8601 duration "PT0M42S" for schema.org
+const [mm, ss] = duration.split(':').map(Number);
+const isoDuration = `PT${mm || 0}M${ss || 0}S`;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: title,
+  description,
+  uploadDate: isoDate,
+  duration: isoDuration,
+  contentUrl: videoUrl,
+  thumbnailUrl: posterImage
+    ? new URL(`/portfolio/animations/${animationSlug}/${posterImage.replace(/^\.\//, '')}`, Astro.site).href
+    : undefined,
+  embedUrl: pageUrl,
+  inLanguage: locale,
+};
+
+const homeHref = localeUrl(base, locale, '');
+const prevHref = prevSlug ? localeUrl(base, locale, `animations/${prevSlug}`) : null;
+const nextHref = nextSlug ? localeUrl(base, locale, `animations/${nextSlug}`) : null;
+---
+<Base locale={locale} title={`${title} — ${t.nav.brand}`} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
+
+  <article class="animation container">
+    <header class="animation__header">
+      <p class="animation__eyebrow mono">
+        <a href={homeHref}>{t.animation.backToNotebook}</a>
+      </p>
+      <h1>{title}</h1>
+      <p class="animation__lede">{description}</p>
+    </header>
+
+    <div class="animation__player">
+      <video
+        src={videoUrl}
+        poster={posterImage ? `${base}animations/${animationSlug}/${posterImage.replace(/^\.\//, '')}` : undefined}
+        controls
+        playsinline
+        preload="metadata"
+      ></video>
+    </div>
+
+    <div class="animation__body prose">
+      <Content />
+    </div>
+
+    <footer class="animation__meta">
+      <dl>
+        <div><dt>{t.animation.publishedLabel}</dt><dd><time datetime={isoDate}>{date.toLocaleDateString(t.animation.dateLocaleTag, { year: 'numeric', month: 'long', day: 'numeric' })}</time></dd></div>
+        <div><dt>{t.animation.durationLabel}</dt><dd>{duration}</dd></div>
+        {tags.length > 0 && (
+          <div><dt>{t.animation.tagsLabel}</dt><dd>{tags.join(' · ')}</dd></div>
+        )}
+        {specPath && (
+          <div><dt>{t.animation.sourceLabel}</dt><dd><a href={`https://github.com/reisoclement/portfolio/blob/main/${specPath}`}>{specPath}</a></dd></div>
+        )}
+      </dl>
+
+      <nav class="animation__nav" aria-label={t.animation.adjacentNavAriaLabel}>
+        {prevHref && <a class="animation__nav-link" href={prevHref}>← {prevSlug}</a>}
+        {nextHref && <a class="animation__nav-link animation__nav-link--right" href={nextHref}>{nextSlug} →</a>}
+      </nav>
+    </footer>
+  </article>
+</Base>
+
+<style>
+  .animation {
+    padding-block: var(--space-8) var(--space-12);
+  }
+  .animation__header {
+    max-width: var(--max-prose);
+    margin-bottom: var(--space-6);
+  }
+  .animation__eyebrow {
+    margin-bottom: var(--space-3);
+  }
+  .animation__eyebrow a {
+    color: var(--color-text-muted);
+    border-bottom: none;
+  }
+  .animation__eyebrow a:hover {
+    color: var(--color-text);
+  }
+  .animation__lede {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+    margin-top: var(--space-3);
+    line-height: var(--leading-snug);
+  }
+  .animation__player {
+    margin-bottom: var(--space-6);
+    background: #000;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+  }
+  .animation__player video {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .animation__body {
+    margin-bottom: var(--space-8);
+  }
+  .animation__meta {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-4);
+    max-width: var(--max-prose);
+  }
+  .animation__meta dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: var(--space-1) var(--space-4);
+    margin: 0 0 var(--space-6);
+    font-size: var(--text-sm);
+  }
+  .animation__meta dl > div {
+    display: contents;
+  }
+  .animation__meta dt {
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding-top: 0.15em;
+  }
+  .animation__meta dd {
+    margin: 0;
+  }
+  .animation__nav {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+  .animation__nav-link {
+    color: var(--color-text-muted);
+    border-bottom: none;
+    font-size: var(--text-sm);
+  }
+  .animation__nav-link:hover {
+    color: var(--color-text);
+  }
+  .animation__nav-link--right {
+    margin-left: auto;
+    text-align: right;
+  }
+</style>
