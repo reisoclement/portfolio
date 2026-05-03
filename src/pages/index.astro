@@ -1,7 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 ---
-<Base title="Notebook — A collection of animations">
+<Base
+  title="Notebook — Animations capturing ideas worth keeping · Clément Reiso"
+  description="A personal collection of animations by Clément Reiso. Short videos that turn abstract ideas into something you can watch — built with Remotion."
+>
   <section class="hero container">
     <p class="hero__eyebrow mono">A personal notebook</p>
     <h1 class="hero__title">
@@ -29,10 +32,13 @@ import Base from '../layouts/Base.astro';
       </p>
 
       <h2>Currently</h2>
-      <p class="muted">
-        No animations published yet. The first one is on its way — check back soon, or
-        watch the <a href="#">GitHub repo</a> to be notified when it lands.
-      </p>
+      <ul class="muted">
+        <li>
+          <a href={`${import.meta.env.BASE_URL}circles-of-life/`}>Circles of life</a>
+          — concentric rings of responsibility. Master the centre before you reach
+          for the world.
+        </li>
+      </ul>
     </div>
   </section>
 </Base>

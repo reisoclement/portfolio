@@ -11,10 +11,18 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.0.0",
+    "@astrojs/react": "4.2.0",
     "@astrojs/sitemap": "^3.2.0",
     "@fontsource/fraunces": "^5.1.0",
     "@fontsource/inter": "^5.1.0",
-    "@fontsource/jetbrains-mono": "^5.1.0"
+    "@fontsource/jetbrains-mono": "^5.1.0",
+    "astro": "^5.0.0",
+    "lucide-react": "1.14.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.0"
   }
 }

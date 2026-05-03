@@ -1,0 +1,191 @@
+/* Circles of Life — interactive viewer styles
+   All class names prefixed `col-` to avoid collisions with the rest of the site. */
+
+.col-interactive {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.col-stage-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.col-stage-button:focus-visible {
+  outline: 2px solid #ffd166;
+  outline-offset: 4px;
+}
+
+.col-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: radial-gradient(circle at 50% 50%, #0c1226 0%, #05060a 70%);
+  overflow: hidden;
+  container-type: size;
+  border-radius: 12px;
+}
+
+.col-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.col-progress {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 0.2rem;
+}
+.col-progress__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(245, 247, 255, 0.18);
+  transition: background 0.2s ease;
+}
+.col-progress__dot.is-on {
+  background: #ffd166;
+  box-shadow: 0 0 8px #ffd166;
+}
+
+.col-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.85rem;
+  color: var(--color-text-muted, #8a93b8);
+}
+.col-meta__count {
+  letter-spacing: 0.04em;
+}
+.col-meta__title {
+  color: var(--color-text, #f5f7ff);
+  font-style: italic;
+}
+
+.col-buttons {
+  display: flex;
+  gap: 0.6rem;
+}
+.col-buttons button {
+  font: inherit;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border, rgba(245, 247, 255, 0.2));
+  background: transparent;
+  color: var(--color-text, #f5f7ff);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.col-buttons button:hover:not(:disabled) {
+  background: rgba(255, 209, 102, 0.08);
+  border-color: #ffd166;
+}
+.col-buttons button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.col-buttons__primary {
+  background: #ffd166 !important;
+  color: #05060a !important;
+  border-color: #ffd166 !important;
+  font-weight: 600;
+}
+.col-buttons__primary:hover:not(:disabled) {
+  filter: brightness(1.05);
+}
+
+.col-hint {
+  font-size: 0.8rem;
+  color: var(--color-text-muted, #8a93b8);
+  margin: 0.2rem 0 0;
+}
+.col-hint kbd {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  background: rgba(245, 247, 255, 0.08);
+  border: 1px solid rgba(245, 247, 255, 0.15);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 0.85em;
+}
+
+/* === Animation keyframes used by Scenes.tsx === */
+
+@keyframes col-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* The IconLabel/TextLabel components use translate(X%, -50%) too — override the keyframe target
+   by re-defining the reset for elements that have a CSS transform set inline. We use a different
+   keyframe variant that only animates opacity to avoid disturbing transform positioning. */
+.col-fade-in {
+  opacity: 0;
+  animation-name: col-fade-in-opacity;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+@keyframes col-fade-in-opacity {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes col-draw-ring {
+  from { stroke-dashoffset: var(--draw-from, 0); }
+  to   { stroke-dashoffset: 0; }
+}
+
+/* Scene 7 phase A → B transition.
+   Phase A holds for 3s with the orange ring + arrow text fully visible,
+   then we zoom in (scale up dramatically) and fade phase A out.
+   Phase B (yellow center) starts hidden, fades in as zoom completes. */
+
+.col-phase-a {
+  animation: col-zoom-out-to-in 8s ease-in-out forwards;
+}
+@keyframes col-zoom-out-to-in {
+  0%   { transform: scale(0.45); opacity: 1; }
+  35%  { transform: scale(0.45); opacity: 1; }
+  60%  { transform: scale(8);    opacity: 0; }
+  100% { transform: scale(8);    opacity: 0; }
+}
+
+.col-phase-a-text {
+  animation: col-fade-out-text 4.5s ease-out forwards;
+}
+@keyframes col-fade-out-text {
+  0%   { opacity: 1; }
+  60%  { opacity: 1; }
+  90%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.col-phase-b {
+  opacity: 0;
+  animation: col-phase-b-in 8s ease-in-out forwards;
+}
+@keyframes col-phase-b-in {
+  0%   { opacity: 0; transform: scale(0.6); }
+  40%  { opacity: 0; transform: scale(0.6); }
+  60%  { opacity: 1; transform: scale(1);   }
+  100% { opacity: 1; transform: scale(1);   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .col-fade-in,
+  .col-phase-a,
+  .col-phase-b,
+  .col-phase-a-text {
+    animation-duration: 0.01s !important;
+  }
+}
