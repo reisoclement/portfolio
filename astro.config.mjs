@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const remotionProjectSrc = path.resolve(__dirname, '../projects/circles-of-life/src');
+const animationSrc = path.resolve(__dirname, 'src/circles-of-life-anim');
 
 // Deployed at https://reisoclement.github.io/portfolio/
 // For a custom domain, set `site` to that domain and remove `base`.
@@ -28,20 +28,11 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        '@circles-of-life': remotionProjectSrc,
+        '@circles-of-life': animationSrc,
       },
-      // De-duplicate React across the website and the Remotion project so a single
-      // React instance is used by both the Player host and the imported scenes.
       dedupe: ['react', 'react-dom', 'remotion', '@remotion/player'],
     },
-    server: {
-      fs: {
-        // Allow Vite to serve files from the Remotion project that lives outside the website root.
-        allow: [path.resolve(__dirname, '..')],
-      },
-    },
     optimizeDeps: {
-      // Pre-bundle these so HMR is happy with the cross-package imports.
       include: ['react', 'react-dom', 'remotion', '@remotion/player', 'lucide-react'],
     },
   },

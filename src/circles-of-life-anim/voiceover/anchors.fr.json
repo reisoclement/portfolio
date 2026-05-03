@@ -1,0 +1,246 @@
+{
+  "scene-1-intro": {
+    "sceneStart": 0,
+    "audioStartOffset": 0,
+    "durationSeconds": 5.108,
+    "durationFrames": 154,
+    "anchors": {
+      "circles": {
+        "frame": 48,
+        "audioSeconds": 1.602
+      },
+      "this-is-you": {
+        "frame": 138,
+        "audioSeconds": 4.609
+      }
+    }
+  },
+  "scene-2-self": {
+    "sceneStart": 180,
+    "audioStartOffset": 0,
+    "durationSeconds": 27.632,
+    "durationFrames": 829,
+    "anchors": {
+      "title": {
+        "frame": 356,
+        "audioSeconds": 5.863
+      },
+      "attr-01": {
+        "frame": 428,
+        "audioSeconds": 8.266
+      },
+      "attr-02": {
+        "frame": 475,
+        "audioSeconds": 9.834
+      },
+      "attr-03": {
+        "frame": 562,
+        "audioSeconds": 12.748
+      },
+      "attr-04": {
+        "frame": 638,
+        "audioSeconds": 15.267
+      },
+      "attr-05": {
+        "frame": 696,
+        "audioSeconds": 17.206
+      },
+      "attr-06": {
+        "frame": 738,
+        "audioSeconds": 18.599
+      },
+      "attr-07": {
+        "frame": 796,
+        "audioSeconds": 20.526
+      },
+      "attr-08": {
+        "frame": 829,
+        "audioSeconds": 21.629
+      },
+      "attr-09": {
+        "frame": 860,
+        "audioSeconds": 22.663
+      },
+      "attr-10": {
+        "frame": 898,
+        "audioSeconds": 23.94
+      }
+    }
+  },
+  "scene-3-partner": {
+    "sceneStart": 840,
+    "audioStartOffset": 0,
+    "durationSeconds": 16.254,
+    "durationFrames": 488,
+    "anchors": {
+      "title": {
+        "frame": 862,
+        "audioSeconds": 0.731
+      },
+      "attr-01": {
+        "frame": 990,
+        "audioSeconds": 5.004
+      },
+      "attr-02": {
+        "frame": 1029,
+        "audioSeconds": 6.293
+      },
+      "attr-03": {
+        "frame": 1059,
+        "audioSeconds": 7.291
+      },
+      "attr-04": {
+        "frame": 1093,
+        "audioSeconds": 8.429
+      },
+      "attr-05": {
+        "frame": 1137,
+        "audioSeconds": 9.892
+      },
+      "attr-06": {
+        "frame": 1191,
+        "audioSeconds": 11.714
+      },
+      "attr-07": {
+        "frame": 1219,
+        "audioSeconds": 12.643
+      },
+      "attr-08": {
+        "frame": 1303,
+        "audioSeconds": 15.43
+      }
+    }
+  },
+  "scene-4-children": {
+    "sceneStart": 1380,
+    "audioStartOffset": 0,
+    "durationSeconds": 14.954,
+    "durationFrames": 449,
+    "anchors": {
+      "title": {
+        "frame": 1454,
+        "audioSeconds": 2.461
+      },
+      "attr-01": {
+        "frame": 1565,
+        "audioSeconds": 6.153
+      },
+      "attr-02": {
+        "frame": 1596,
+        "audioSeconds": 7.21
+      },
+      "attr-03": {
+        "frame": 1628,
+        "audioSeconds": 8.266
+      },
+      "attr-04": {
+        "frame": 1663,
+        "audioSeconds": 9.439
+      },
+      "attr-05": {
+        "frame": 1704,
+        "audioSeconds": 10.809
+      },
+      "attr-06": {
+        "frame": 1806,
+        "audioSeconds": 14.187
+      }
+    }
+  },
+  "scene-5-fast-rings": {
+    "sceneStart": 1780,
+    "audioStartOffset": 0,
+    "durationSeconds": 3.344,
+    "durationFrames": 101,
+    "anchors": {
+      "family": {
+        "frame": 1820,
+        "audioSeconds": 1.347
+      },
+      "friends": {
+        "frame": 1842,
+        "audioSeconds": 2.067
+      },
+      "community": {
+        "frame": 1856,
+        "audioSeconds": 2.519
+      }
+    }
+  },
+  "scene-6-world-zoom": {
+    "sceneStart": 1900,
+    "audioStartOffset": 0,
+    "durationSeconds": 4.133,
+    "durationFrames": 124,
+    "anchors": {
+      "country": {
+        "frame": 1953,
+        "audioSeconds": 1.776
+      },
+      "world": {
+        "frame": 1998,
+        "audioSeconds": 3.274
+      }
+    }
+  },
+  "scene-7-reversal": {
+    "sceneStart": 2060,
+    "audioStartOffset": 0,
+    "durationSeconds": 22.384,
+    "durationFrames": 672,
+    "anchors": {
+      "most-people": {
+        "frame": 2113,
+        "audioSeconds": 1.753
+      },
+      "fix-world": {
+        "frame": 2231,
+        "audioSeconds": 5.689
+      },
+      "climate-wars": {
+        "frame": 2274,
+        "audioSeconds": 7.117
+      },
+      "politics": {
+        "frame": 2335,
+        "audioSeconds": 9.172
+      },
+      "never-heard": {
+        "frame": 2416,
+        "audioSeconds": 11.865
+      },
+      "social-media": {
+        "frame": 2474,
+        "audioSeconds": 13.793
+      },
+      "told-them": {
+        "frame": 2525,
+        "audioSeconds": 15.51
+      },
+      "while-center": {
+        "frame": 2569,
+        "audioSeconds": 16.95
+      },
+      "not-balanced": {
+        "frame": 2626,
+        "audioSeconds": 18.866
+      }
+    }
+  },
+  "scene-8-closing": {
+    "sceneStart": 2660,
+    "audioStartOffset": 0,
+    "durationSeconds": 2.926,
+    "durationFrames": 88,
+    "anchors": {
+      "master": {
+        "frame": 2673,
+        "audioSeconds": 0.441
+      },
+      "expand": {
+        "frame": 2727,
+        "audioSeconds": 2.241
+      }
+    }
+  }
+}

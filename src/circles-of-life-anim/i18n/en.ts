@@ -1,0 +1,163 @@
+import type { Dict } from "./types";
+
+export const en: Dict = {
+  text: {
+    intro: { thisIsYou: "This is you" },
+    self: { title: "What you must build" },
+    partner: { title: "Your partner" },
+    children: { title: "Your children" },
+    fastRings: {
+      family: "Family",
+      friends: "Friends",
+      community: "Community",
+    },
+    worldZoom: { country: "Country", world: "The world" },
+    reversal: {
+      mostPeople: "Most people start here",
+      tryingToFix: "trying to fix the world",
+      climateWars: "— climate, wars,",
+      politicsCountries: "politics of countries",
+      neverHeardOf: "they never heard of",
+      socialMediaTV: "before social media or TV",
+      toldThem: "told them.",
+      whileCenter: "…while the center",
+      stillUnfilled: "is still unfilled, not yet balanced.",
+    },
+    closing: { master: "Master the center.", thenExpand: "Then expand." },
+    attributes: {
+      "physical-health": "Physical health",
+      "mental-health": "Mental health",
+      "intellectual-growth": "Intellectual growth",
+      "emotional-regulation": "Emotional regulation",
+      "financial-stability": "Financial stability",
+      "discipline-habits": "Discipline & habits",
+      "purpose-meaning": "Purpose & meaning",
+      "integrity-values": "Integrity & values",
+      "skills-mastery": "Skills & mastery",
+      spirituality: "Spirituality",
+      communication: "Communication",
+      "trust-honesty": "Trust & honesty",
+      "shared-values": "Shared values",
+      "emotional-support": "Emotional support",
+      intimacy: "Intimacy",
+      "conflict-resolution": "Conflict resolution",
+      "shared-goals": "Shared goals",
+      patience: "Patience",
+      "presence-time": "Presence & time",
+      education: "Education",
+      boundaries: "Boundaries",
+      "unconditional-love": "Unconditional love",
+      "modeling-values": "Modeling values",
+    },
+  },
+  sceneTitles: {
+    intro: "This is you",
+    self: "What you must build",
+    partner: "Your partner",
+    children: "Your children",
+    fastRings: "Family · Friends · Community",
+    worldZoom: "Country and world",
+    reversal: "Most people start here",
+    closing: "Master the center. Then expand.",
+  },
+  narration: [
+    {
+      id: "scene-1-intro",
+      text:
+        "Welcome to my idea on how to build his life. And right here in the middle, this is you.",
+      anchors: [
+        { name: "circles", word: "build" },
+        { name: "this-is-you", word: "you" },
+      ],
+    },
+    {
+      id: "scene-2-self",
+      text:
+        "Right at the center, before anything else exists, there's just you. And there's stuff you have to build for yourself. Your physical health. Your mental health. Your ability to keep growing, intellectually. Emotional regulation. Financial stability. Your discipline, and habits. Your purpose in life. Your integrity. Your skills. And even your spirituality. This is the work nobody can do for you.",
+      anchors: [
+        { name: "title", word: "build" },
+        { name: "attr-01", word: "physical" },
+        { name: "attr-02", word: "mental" },
+        { name: "attr-03", word: "intellectually" },
+        { name: "attr-04", word: "Emotional" },
+        { name: "attr-05", word: "Financial" },
+        { name: "attr-06", word: "discipline" },
+        { name: "attr-07", word: "purpose" },
+        { name: "attr-08", word: "integrity" },
+        { name: "attr-09", word: "skills" },
+        { name: "attr-10", word: "spirituality" },
+      ],
+    },
+    {
+      id: "scene-3-partner",
+      text:
+        "Then comes your partner. The person closest to your center. And what actually holds it together is communication. Real trust. Shared values. Emotional support. Intimacy. Knowing how to handle conflict. Shared goals. And honestly, a lot of patience.",
+      anchors: [
+        { name: "title", word: "partner" },
+        { name: "attr-01", word: "communication" },
+        { name: "attr-02", word: "trust" },
+        { name: "attr-03", word: "Shared", occurrence: 1 },
+        { name: "attr-04", word: "Emotional" },
+        { name: "attr-05", word: "Intimacy" },
+        { name: "attr-06", word: "conflict" },
+        { name: "attr-07", word: "Shared", occurrence: 2 },
+        { name: "attr-08", word: "patience" },
+      ],
+    },
+    {
+      id: "scene-4-children",
+      text:
+        "Once the partner relation is strong, the children can come. And what they actually need from you, is your presence. Education. Boundaries. Unconditional love. The values you model every single day. And again, patience, a lot.",
+      anchors: [
+        { name: "title", word: "children" },
+        { name: "attr-01", word: "presence" },
+        { name: "attr-02", word: "Education" },
+        { name: "attr-03", word: "Boundaries" },
+        { name: "attr-04", word: "Unconditional" },
+        { name: "attr-05", word: "values" },
+        { name: "attr-06", word: "patience" },
+      ],
+    },
+    {
+      id: "scene-5-fast-rings",
+      text: "And it keeps going. Family. Friends. Community.",
+      anchors: [
+        { name: "family", word: "Family" },
+        { name: "friends", word: "Friends" },
+        { name: "community", word: "Community" },
+      ],
+    },
+    {
+      id: "scene-6-world-zoom",
+      text: "Until you zoom out to your country. And then, the whole world.",
+      anchors: [
+        { name: "country", word: "country" },
+        { name: "world", word: "world" },
+      ],
+    },
+    {
+      id: "scene-7-reversal",
+      text:
+        "And here's the the trap. Most people start here. At the outside. Trying to fix the world. Climate. Wars. Politics, of countries they had never even heard of, before social media or TV told them about it. Meanwhile, the center, themselves, is still completely unfilled, not yet balanced. So the rest can't held around it.",
+      anchors: [
+        { name: "most-people", word: "Most" },
+        { name: "fix-world", word: "fix" },
+        { name: "climate-wars", word: "Climate" },
+        { name: "politics", word: "Politics" },
+        { name: "never-heard", word: "heard" },
+        { name: "social-media", word: "social" },
+        { name: "told-them", word: "told" },
+        { name: "while-center", word: "center" },
+        { name: "not-balanced", word: "unfilled" },
+      ],
+    },
+    {
+      id: "scene-8-closing",
+      text: "So, master the center first. Then expand.",
+      anchors: [
+        { name: "master", word: "master" },
+        { name: "expand", word: "expand" },
+      ],
+    },
+  ],
+};
