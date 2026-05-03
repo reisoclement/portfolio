@@ -1,0 +1,23 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container footer__inner">
+    <span class="muted">© {year}</span>
+    <span class="muted mono">Built with Remotion + Astro</span>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--color-border);
+    margin-top: var(--space-12);
+  }
+  .footer__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: var(--space-4);
+    font-size: var(--text-xs);
+  }
+</style>

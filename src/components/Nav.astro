@@ -1,0 +1,61 @@
+---
+const base = import.meta.env.BASE_URL;
+const path = Astro.url.pathname;
+const isActive = (href: string) => path === href || path === href + '/';
+
+const links = [
+  { href: base, label: 'Home' },
+  // Animation links will be appended here automatically once content collection lands.
+];
+---
+<header class="nav">
+  <div class="container nav__inner">
+    <a class="nav__brand" href={base}>Notebook</a>
+    <nav aria-label="Primary">
+      <ul class="nav__list">
+        {links.map((l) => (
+          <li>
+            <a href={l.href} class:list={['nav__link', { 'is-active': isActive(l.href) }]}>
+              {l.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg);
+  }
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: var(--space-3);
+  }
+  .nav__brand {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: var(--text-lg);
+    color: var(--color-text);
+    border-bottom: none;
+  }
+  .nav__brand:hover { color: var(--color-accent); }
+  .nav__list {
+    display: flex;
+    gap: var(--space-3);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav__link {
+    color: var(--color-text-muted);
+    border-bottom: none;
+    font-size: var(--text-sm);
+  }
+  .nav__link:hover { color: var(--color-text); }
+  .nav__link.is-active { color: var(--color-text); }
+</style>
