@@ -20,6 +20,7 @@ Thumbs.db
 .vscode/
 .idea/
 
-# internal markdown — kept local, not published
-*.md
-docs/
+# internal Claude-facing docs — kept local, not published
+CLAUDE.md
+PRD.md
+HOW_TO_BUILD.md
