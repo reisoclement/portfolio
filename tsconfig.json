@@ -1,4 +1,10 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": ["src/**/*", "astro.config.mjs"]
+  "include": ["src/**/*", "astro.config.mjs", "../projects/circles-of-life/src/**/*"],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "paths": {
+      "@circles-of-life/*": ["../projects/circles-of-life/src/*"]
+    }
+  }
 }
