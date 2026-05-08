@@ -6,6 +6,9 @@ import path from 'node:path';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const animationSrc = path.resolve(__dirname, 'src/circles-of-life-anim');
+const animatedResumeSrc = path.resolve(__dirname, 'src/animated-resume-anim');
+const buildAgentsSrc = path.resolve(__dirname, 'src/build-agents-anim');
+const whenToUseAiSrc = path.resolve(__dirname, 'src/when-to-use-ai-anim');
 
 // Deployed at https://reisoclement.github.io/portfolio/
 // For a custom domain, set `site` to that domain and remove `base`.
@@ -29,6 +32,9 @@ export default defineConfig({
     resolve: {
       alias: {
         '@circles-of-life': animationSrc,
+        '@animated-resume': animatedResumeSrc,
+        '@build-agents': buildAgentsSrc,
+        '@when-to-use-ai': whenToUseAiSrc,
       },
       dedupe: ['react', 'react-dom', 'remotion', '@remotion/player'],
     },

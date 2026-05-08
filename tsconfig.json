@@ -4,7 +4,9 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "paths": {
-      "@circles-of-life/*": ["./src/circles-of-life-anim/*"]
+      "@circles-of-life/*": ["./src/circles-of-life-anim/*"],
+      "@build-agents/*": ["./src/build-agents-anim/*"],
+      "@when-to-use-ai/*": ["./src/when-to-use-ai-anim/*"]
     }
   }
 }

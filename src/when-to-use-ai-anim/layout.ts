@@ -1,0 +1,6 @@
+// Canvas / playback constants shared with the website embed.
+export const VIDEO = {
+  width: 1920,
+  height: 1080,
+  fps: 30,
+} as const;

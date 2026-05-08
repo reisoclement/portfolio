@@ -13,12 +13,16 @@ const currentRest = stripLocaleFromPath(path, base);
 
 const localeHome = localeUrl(base, locale, '');
 const circlesHref = localeUrl(base, locale, 'circles-of-life');
+const buildAgentsHref = localeUrl(base, locale, 'build-agents');
+const whenToUseAiHref = localeUrl(base, locale, 'when-to-use-ai');
 
 const isActive = (href: string) => path === href || path === href.replace(/\/$/, '');
 
 const links = [
   { href: localeHome, label: t.nav.home },
   { href: circlesHref, label: t.circlesOfLife.heading },
+  { href: buildAgentsHref, label: t.buildAgents.heading },
+  { href: whenToUseAiHref, label: t.whenToUseAi.heading },
 ];
 ---
 <header class="nav">

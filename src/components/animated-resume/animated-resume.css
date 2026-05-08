@@ -1,0 +1,120 @@
+/* Animated resume viewer — class names prefixed `ar-` to avoid collisions. */
+
+.ar-interactive {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ar-stage-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.ar-stage-button:focus-visible {
+  outline: 2px solid #e94f7c;
+  outline-offset: 4px;
+}
+.ar-stage-button:disabled {
+  cursor: progress;
+}
+
+.ar-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0c1f33;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.ar-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.ar-progress {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 0.2rem;
+}
+.ar-progress__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(245, 247, 255, 0.18);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+.ar-progress__dot.is-on {
+  background: #e94f7c;
+  box-shadow: 0 0 8px #e94f7c;
+}
+
+.ar-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.85rem;
+  color: var(--color-text-muted, #8a93b8);
+}
+.ar-meta__count {
+  letter-spacing: 0.04em;
+}
+.ar-meta__title {
+  color: var(--color-text, #f5f7ff);
+  font-style: italic;
+}
+
+.ar-buttons {
+  display: flex;
+  gap: 0.6rem;
+}
+.ar-buttons button {
+  font: inherit;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border, rgba(245, 247, 255, 0.2));
+  background: transparent;
+  color: var(--color-text, #f5f7ff);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.ar-buttons button:hover:not(:disabled) {
+  background: rgba(233, 79, 124, 0.08);
+  border-color: #e94f7c;
+}
+.ar-buttons button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.ar-buttons__primary {
+  background: #e94f7c !important;
+  color: #0c1f33 !important;
+  border-color: #e94f7c !important;
+  font-weight: 600;
+}
+.ar-buttons__primary:hover:not(:disabled) {
+  filter: brightness(1.05);
+}
+
+.ar-hint {
+  font-size: 0.8rem;
+  color: var(--color-text-muted, #8a93b8);
+  margin: 0.2rem 0 0;
+}
+.ar-hint kbd {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  background: rgba(245, 247, 255, 0.08);
+  border: 1px solid rgba(245, 247, 255, 0.15);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 0.85em;
+}

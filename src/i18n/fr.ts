@@ -31,6 +31,95 @@ export const fr: Dict = {
       'Construit avec <a href="https://www.remotion.dev/">Remotion</a> pour les vidéos et <a href="https://astro.build/">Astro</a> pour le site lui-même. Les deux sont ouverts et le code est sur GitHub.',
     currentlyHeading: "Actuellement",
   },
+  resume: {
+    title: "CV — Clément Reiso",
+    description:
+      "Le CV animé de Clément Reiso — parcours, IA, projets personnels, langues et quelques loisirs.",
+    eyebrow: "CV animé",
+    heading: "Mon CV — animé",
+    summaryShort:
+      "Parcours, IA, projets personnels, langues et quelques loisirs — en mouvement.",
+    lede:
+      "Une courte visite animée de qui je suis, où j'ai travaillé, ce que j'ai construit, et ce que je fais en dehors du clavier. Lancez la lecture, ou avancez scène par scène.",
+    tabs: {
+      ariaLabel: "Mode de lecture",
+      video: "Vidéo",
+      interactive: "Pas à pas",
+    },
+    videoCaption: "Lancez la lecture. Environ 95 secondes, sans audio.",
+    videoFallback: "Votre navigateur ne prend pas en charge la balise vidéo.",
+    interactiveCaption:
+      "Une scène par appui. Utilisez cette version pour aller plus lentement, ou commenter chaque temps.",
+    interactive: {
+      stageButtonAriaSkip: "Passer à la fin de la scène en cours",
+      stageButtonAriaRestart: "Recommencer",
+      stageButtonAriaAdvance: "Passer à la scène suivante",
+      back: "← Retour",
+      restart: "Recommencer",
+      next: "Suivant →",
+      skip: "Passer →",
+      hintHtml:
+        "Appuyez sur <kbd>Espace</kbd> ou cliquez sur le canevas pour avancer · <kbd>R</kbd> pour recommencer",
+    },
+  },
+  whenToUseAi: {
+    title: "Quand utiliser l'IA — Carnet",
+    eyebrow: "Animation · 02",
+    heading: "Quand utiliser l'IA (et quand ne pas l'utiliser)",
+    summaryShort:
+      "Un guide visuel court pour bien utiliser l'IA. Quatre leçons, sans narration.",
+    lede:
+      "Un guide visuel court pour les non-techniciens. Où l'IA s'insère dans deux cents ans d'informatique, pourquoi la plupart des projets d'IA échouent, et quatre leçons pour rester du bon côté.",
+    tabs: {
+      ariaLabel: "Mode de lecture",
+      video: "Vidéo",
+      interactive: "Pas à pas",
+    },
+    videoCaption: "Lancez la lecture. Environ 3 min 20, sans audio.",
+    videoFallback: "Votre navigateur ne prend pas en charge la balise vidéo.",
+    interactiveCaption:
+      "Une scène par appui. Utilisez cette version pour aller plus lentement, ou pour commenter chaque temps.",
+    interactive: {
+      stageButtonAriaSkip: "Passer à la fin de la scène en cours",
+      stageButtonAriaRestart: "Recommencer",
+      stageButtonAriaAdvance: "Passer à la scène suivante",
+      back: "← Retour",
+      restart: "Recommencer",
+      next: "Suivant →",
+      skip: "Passer →",
+      hintHtml:
+        "Appuyez sur <kbd>Espace</kbd> ou cliquez sur le canevas pour avancer · <kbd>R</kbd> pour recommencer",
+    },
+  },
+  buildAgents: {
+    title: "Construire des agents en langage naturel — Carnet",
+    eyebrow: "Animation · 03",
+    heading: "Construire des agents en langage naturel",
+    summaryShort:
+      "Comment fonctionne vraiment un agent : deux dossiers de markdown, sans framework, sans magie.",
+    lede:
+      "Un guide visuel court pour les non-techniciens. La thèse : un agent, c'est deux dossiers de texte brut — un pour ce qu'il sait, un pour ce qu'il fait. Regardez-le préparer un gâteau au chocolat.",
+    tabs: {
+      ariaLabel: "Mode de lecture",
+      video: "Vidéo",
+      interactive: "Pas à pas",
+    },
+    videoCaption: "Lancez la lecture. Environ 90 secondes, sans audio.",
+    videoFallback: "Votre navigateur ne prend pas en charge la balise vidéo.",
+    interactiveCaption:
+      "Une scène par appui. Utilisez cette version pour aller plus lentement, ou pour commenter chaque temps.",
+    interactive: {
+      stageButtonAriaSkip: "Passer à la fin de la scène en cours",
+      stageButtonAriaRestart: "Recommencer",
+      stageButtonAriaAdvance: "Passer à la scène suivante",
+      back: "← Retour",
+      restart: "Recommencer",
+      next: "Suivant →",
+      skip: "Passer →",
+      hintHtml:
+        "Appuyez sur <kbd>Espace</kbd> ou cliquez sur le canevas pour avancer · <kbd>R</kbd> pour recommencer",
+    },
+  },
   circlesOfLife: {
     title: "Les cercles de la vie — Carnet",
     eyebrow: "Animation · 01",

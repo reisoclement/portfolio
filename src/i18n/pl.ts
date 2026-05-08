@@ -31,6 +31,95 @@ export const pl: Dict = {
       'Zbudowane z <a href="https://www.remotion.dev/">Remotion</a> dla filmów i <a href="https://astro.build/">Astro</a> dla samej witryny. Oba są open source, kod jest na GitHubie.',
     currentlyHeading: "Aktualnie",
   },
+  resume: {
+    title: "CV — Clément Reiso",
+    description:
+      "Animowane CV Clémenta Reiso — kariera, AI, projekty osobiste, języki i kilka pasji.",
+    eyebrow: "Animowane CV",
+    heading: "Moje CV — animowane",
+    summaryShort:
+      "Kariera, AI, projekty osobiste, języki i kilka pasji — w ruchu.",
+    lede:
+      "Krótka animowana opowieść o tym, kim jestem, gdzie pracowałem, co zbudowałem i co robię poza klawiaturą. Naciśnij play albo przechodź scena po scenie.",
+    tabs: {
+      ariaLabel: "Tryb odtwarzania",
+      video: "Wideo",
+      interactive: "Krok po kroku",
+    },
+    videoCaption: "Naciśnij play. Około 95 sekund, bez dźwięku.",
+    videoFallback: "Twoja przeglądarka nie obsługuje znacznika wideo.",
+    interactiveCaption:
+      "Jedna scena na kliknięcie. Użyj tej wersji, by iść wolniej lub omówić każdy moment.",
+    interactive: {
+      stageButtonAriaSkip: "Przewiń do końca obecnej sceny",
+      stageButtonAriaRestart: "Zacznij od nowa",
+      stageButtonAriaAdvance: "Przejdź do następnej sceny",
+      back: "← Wstecz",
+      restart: "Od nowa",
+      next: "Dalej →",
+      skip: "Pomiń →",
+      hintHtml:
+        "Naciśnij <kbd>Spacja</kbd> lub kliknij obszar, aby przejść dalej · <kbd>R</kbd>, aby zacząć od nowa",
+    },
+  },
+  whenToUseAi: {
+    title: "Kiedy używać AI — Notatnik",
+    eyebrow: "Animacja · 02",
+    heading: "Kiedy używać AI (i kiedy nie)",
+    summaryShort:
+      "Krótki przewodnik wizualny, jak dobrze używać AI. Cztery lekcje, bez narracji.",
+    lede:
+      "Krótki przewodnik wizualny dla osób nietechnicznych. Gdzie AI mieści się w dwustu latach informatyki, dlaczego większość projektów AI ponosi porażkę, i cztery lekcje, by pozostać po właściwej stronie.",
+    tabs: {
+      ariaLabel: "Tryb odtwarzania",
+      video: "Wideo",
+      interactive: "Krok po kroku",
+    },
+    videoCaption: "Naciśnij play. Około 3 min 20, bez dźwięku.",
+    videoFallback: "Twoja przeglądarka nie obsługuje tagu wideo.",
+    interactiveCaption:
+      "Jedna scena na kliknięcie. Wybierz tę wersję, gdy chcesz iść wolniej lub komentować każdą scenę.",
+    interactive: {
+      stageButtonAriaSkip: "Przejdź do końca bieżącej sceny",
+      stageButtonAriaRestart: "Zacznij od nowa",
+      stageButtonAriaAdvance: "Przejdź do następnej sceny",
+      back: "← Wstecz",
+      restart: "Zacznij od nowa",
+      next: "Dalej →",
+      skip: "Pomiń →",
+      hintHtml:
+        "Naciśnij <kbd>Spacja</kbd> lub kliknij obszar, aby przejść dalej · <kbd>R</kbd>, aby zacząć od nowa",
+    },
+  },
+  buildAgents: {
+    title: "Buduj agentów w języku naturalnym — Notatnik",
+    eyebrow: "Animacja · 03",
+    heading: "Buduj agentów w języku naturalnym",
+    summaryShort:
+      "Jak naprawdę działa agent: dwa foldery markdown, bez frameworka, bez magii.",
+    lede:
+      "Krótki przewodnik wizualny dla osób nietechnicznych. Teza: agent to dwa foldery zwykłego tekstu — jeden na to, co wie, drugi na to, co robi. Patrz, jak piecze ciasto czekoladowe.",
+    tabs: {
+      ariaLabel: "Tryb odtwarzania",
+      video: "Wideo",
+      interactive: "Krok po kroku",
+    },
+    videoCaption: "Naciśnij play. Około 90 sekund, bez dźwięku.",
+    videoFallback: "Twoja przeglądarka nie obsługuje tagu wideo.",
+    interactiveCaption:
+      "Jedna scena na kliknięcie. Wybierz tę wersję, gdy chcesz iść wolniej lub komentować każdą scenę.",
+    interactive: {
+      stageButtonAriaSkip: "Przejdź do końca bieżącej sceny",
+      stageButtonAriaRestart: "Zacznij od nowa",
+      stageButtonAriaAdvance: "Przejdź do następnej sceny",
+      back: "← Wstecz",
+      restart: "Zacznij od nowa",
+      next: "Dalej →",
+      skip: "Pomiń →",
+      hintHtml:
+        "Naciśnij <kbd>Spacja</kbd> lub kliknij obszar, aby przejść dalej · <kbd>R</kbd>, aby zacząć od nowa",
+    },
+  },
   circlesOfLife: {
     title: "Kręgi życia — Notatnik",
     eyebrow: "Animacja · 01",

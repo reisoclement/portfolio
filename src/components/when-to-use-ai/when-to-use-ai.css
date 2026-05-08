@@ -1,0 +1,129 @@
+/* When To Use AI — interactive viewer styles
+   All class names prefixed `wta-` to avoid collisions with the rest of the site. */
+
+.wta-interactive {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wta-stage-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.wta-stage-button:focus-visible {
+  outline: 2px solid #ffd166;
+  outline-offset: 4px;
+}
+.wta-stage-button:disabled {
+  cursor: progress;
+}
+
+.wta-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #05060a;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.wta-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.wta-progress {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 0.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+}
+.wta-progress__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(245, 247, 255, 0.18);
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+  flex-shrink: 0;
+}
+.wta-progress__dot.is-on {
+  background: #ffd166;
+  box-shadow: 0 0 6px #ffd166;
+}
+
+.wta-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.85rem;
+  color: var(--color-text-muted, #8a93b8);
+}
+.wta-meta__count {
+  letter-spacing: 0.04em;
+}
+.wta-meta__title {
+  color: var(--color-text, #f5f7ff);
+  font-style: italic;
+}
+
+.wta-buttons {
+  display: flex;
+  gap: 0.6rem;
+}
+.wta-buttons button {
+  font: inherit;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border, rgba(245, 247, 255, 0.2));
+  background: transparent;
+  color: var(--color-text, #f5f7ff);
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+.wta-buttons button:hover:not(:disabled) {
+  background: rgba(255, 209, 102, 0.08);
+  border-color: #ffd166;
+}
+.wta-buttons button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.wta-buttons__primary {
+  background: #ffd166 !important;
+  color: #05060a !important;
+  border-color: #ffd166 !important;
+  font-weight: 600;
+}
+.wta-buttons__primary:hover:not(:disabled) {
+  filter: brightness(1.05);
+}
+
+.wta-hint {
+  font-size: 0.8rem;
+  color: var(--color-text-muted, #8a93b8);
+  margin: 0.2rem 0 0;
+}
+.wta-hint kbd {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  background: rgba(245, 247, 255, 0.08);
+  border: 1px solid rgba(245, 247, 255, 0.15);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 0.85em;
+}
