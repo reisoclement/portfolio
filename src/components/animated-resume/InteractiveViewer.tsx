@@ -8,11 +8,11 @@ import {
   VIDEO,
   type Locale,
 } from "@animated-resume/embed";
-import { getT, type Locale as WebLocale } from "../../i18n";
+import { getResumeStrings, type ResumeLocale } from "../../i18n/resume-locales";
 import "./animated-resume.css";
 
 interface Props {
-  locale: WebLocale;
+  locale: ResumeLocale;
 }
 
 export default function InteractiveViewer({ locale }: Props) {
@@ -21,8 +21,7 @@ export default function InteractiveViewer({ locale }: Props) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const sceneRanges = useMemo(() => getSceneRanges(locale as Locale), [locale]);
-  const tWeb = getT(locale);
-  const tInteractive = tWeb.resume.interactive;
+  const tInteractive = getResumeStrings(locale).interactive;
 
   const currentSceneIndex = Math.max(0, completedSceneIndex);
   const stopAtRef = useRef<number | null>(null);

@@ -1,36 +1,71 @@
 ---
 import Base from '../../layouts/Base.astro';
 import InteractiveViewer from '../../components/animated-resume/InteractiveViewer';
-import { LOCALES, getT, isLocale, type Locale } from '../../i18n';
+import { isLocale, type Locale } from '../../i18n';
+import {
+  RESUME_LOCALES,
+  RESUME_LOCALE_LABELS,
+  isResumeLocale,
+  getResumeStrings,
+  type ResumeLocale,
+} from '../../i18n/resume-locales';
 
 export async function getStaticPaths() {
-  return LOCALES.map((lang) => ({ params: { lang } }));
+  return RESUME_LOCALES.map((lang) => ({ params: { lang } }));
 }
 
 const { lang } = Astro.params;
-if (!isLocale(lang)) throw new Error(`unsupported locale: ${lang}`);
-const locale: Locale = lang;
-const t = getT(locale);
+if (!isResumeLocale(lang)) throw new Error(`unsupported resume locale: ${lang}`);
+const locale: ResumeLocale = lang;
+const t = getResumeStrings(locale);
+
+// The Base layout requires a site-wide Locale for nav/footer rendering.
+// For zh (resume-only), fall back to English chrome.
+const siteLocale: Locale = isLocale(locale) ? locale : 'en';
 
 const base = import.meta.env.BASE_URL;
-// Per-locale MP4: animations/animated-resume/<lang>/animated-resume.mp4
-// Drop the rendered MP4 there once it's exported from Remotion Studio.
 const videoSrc = `${base}animations/animated-resume/${locale}/animated-resume.mp4`;
+
+// Resume-language switcher links: each option points to /<lang>/resume/.
+const switcherLinks = RESUME_LOCALES.map((l) => ({
+  locale: l,
+  label: RESUME_LOCALE_LABELS[l],
+  href: `${base}${l}/resume/`,
+  active: l === locale,
+}));
 ---
-<Base locale={locale} title={t.resume.title} description={t.resume.description}>
+<Base locale={siteLocale} title={t.title} description={t.description}>
   <section class="page container">
     <header class="page__header">
-      <p class="page__eyebrow mono">{t.resume.eyebrow}</p>
-      <h1 class="page__title">{t.resume.heading}</h1>
-      <p class="page__lede prose">{t.resume.lede}</p>
+      <p class="page__eyebrow mono">{t.eyebrow}</p>
+      <h1 class="page__title">{t.heading}</h1>
+      <p class="page__lede prose">{t.lede}</p>
     </header>
 
-    <div class="tabs" role="tablist" aria-label={t.resume.tabs.ariaLabel}>
+    <nav class="resume-langs" aria-label={t.resumeLanguageLabel}>
+      <span class="resume-langs__label mono">{t.resumeLanguageLabel}</span>
+      <ul>
+        {switcherLinks.map((l) => (
+          <li>
+            <a
+              href={l.href}
+              class={l.active ? 'is-active' : ''}
+              aria-current={l.active ? 'page' : undefined}
+              lang={l.locale === 'zh' ? 'zh-CN' : l.locale}
+            >
+              {l.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="tabs" role="tablist" aria-label={t.tabs.ariaLabel}>
       <button type="button" class="tab is-active" data-tab="video" role="tab" aria-selected="true" aria-controls="panel-video">
-        {t.resume.tabs.video}
+        {t.tabs.video}
       </button>
       <button type="button" class="tab" data-tab="interactive" role="tab" aria-selected="false" aria-controls="panel-interactive">
-        {t.resume.tabs.interactive}
+        {t.tabs.interactive}
       </button>
     </div>
 
@@ -38,15 +73,15 @@ const videoSrc = `${base}animations/animated-resume/${locale}/animated-resume.mp
       <div class="video-frame">
         <video controls preload="metadata" playsinline>
           <source src={videoSrc} type="video/mp4" />
-          {t.resume.videoFallback}
+          {t.videoFallback}
         </video>
       </div>
-      <p class="panel__caption muted">{t.resume.videoCaption}</p>
+      <p class="panel__caption muted">{t.videoCaption}</p>
     </div>
 
     <div id="panel-interactive" class="panel" role="tabpanel" aria-labelledby="tab-interactive" hidden>
       <InteractiveViewer client:visible locale={locale} />
-      <p class="panel__caption muted">{t.resume.interactiveCaption}</p>
+      <p class="panel__caption muted">{t.interactiveCaption}</p>
     </div>
   </section>
 </Base>
@@ -80,7 +115,7 @@ const videoSrc = `${base}animations/animated-resume/${locale}/animated-resume.mp
     padding-block: var(--space-8) var(--space-12);
   }
   .page__header {
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-5);
   }
   .page__eyebrow {
     color: var(--color-text-muted);
@@ -96,6 +131,49 @@ const videoSrc = `${base}animations/animated-resume/${locale}/animated-resume.mp
     color: var(--color-text-muted);
     line-height: var(--leading-snug);
     max-width: 60ch;
+  }
+
+  .resume-langs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 1rem;
+    margin-bottom: var(--space-4);
+  }
+  .resume-langs__label {
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .resume-langs ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .resume-langs a {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    line-height: 1.2;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .resume-langs a:hover {
+    color: var(--color-text);
+    border-color: #e94f7c;
+  }
+  .resume-langs a.is-active {
+    color: #0c1f33;
+    background: #e94f7c;
+    border-color: #e94f7c;
+    font-weight: 600;
   }
 
   .tabs {

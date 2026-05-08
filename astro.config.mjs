@@ -18,7 +18,10 @@ export default defineConfig({
   trailingSlash: 'always',
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'fr', 'es', 'pl'],
+    // Site-wide locales. zh is included so /zh/resume/ can render — only the
+    // resume page emits a zh path. Other pages keep using en/fr/es/pl from
+    // src/i18n/index.ts.
+    locales: ['en', 'fr', 'es', 'pl', 'zh'],
     routing: {
       prefixDefaultLocale: true,
       redirectToDefaultLocale: true,

@@ -13,7 +13,7 @@ export const COLORS = {
 } as const;
 
 export const FONT =
-  '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
+  '"Inter", "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
 
 export const FPS = 30;
 
@@ -62,6 +62,9 @@ const DURATIONS: Record<Locale, SceneDurations> = {
   fr: PAD(BASE, 18),
   es: PAD(BASE, 18),
   pl: PAD(BASE, 22),
+  // Chinese is character-dense but the line-counts on screen are similar to
+  // English; keep timing identical to en. Adjust if reading feels rushed.
+  zh: BASE,
 };
 
 export function getSceneDurations(locale: Locale): SceneDurations {
