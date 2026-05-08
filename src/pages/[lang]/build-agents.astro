@@ -1,0 +1,145 @@
+---
+import Base from '../../layouts/Base.astro';
+import InteractiveViewer from '../../components/build-agents/InteractiveViewer';
+import { LOCALES, getT, isLocale, type Locale } from '../../i18n';
+
+export async function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+if (!isLocale(lang)) throw new Error(`unsupported locale: ${lang}`);
+const locale: Locale = lang;
+const t = getT(locale);
+
+const base = import.meta.env.BASE_URL;
+// Per-locale MP4: animations/build-agents/<lang>/build-agents.mp4
+const videoSrc = `${base}animations/build-agents/${locale}/build-agents.mp4`;
+---
+<Base locale={locale} title={t.buildAgents.title}>
+  <section class="page container">
+    <header class="page__header">
+      <p class="page__eyebrow mono">{t.buildAgents.eyebrow}</p>
+      <h1 class="page__title">{t.buildAgents.heading}</h1>
+      <p class="page__lede prose">{t.buildAgents.lede}</p>
+    </header>
+
+    <div class="tabs" role="tablist" aria-label={t.buildAgents.tabs.ariaLabel}>
+      <button type="button" class="tab is-active" data-tab="video" role="tab" aria-selected="true" aria-controls="panel-video">
+        {t.buildAgents.tabs.video}
+      </button>
+      <button type="button" class="tab" data-tab="interactive" role="tab" aria-selected="false" aria-controls="panel-interactive">
+        {t.buildAgents.tabs.interactive}
+      </button>
+    </div>
+
+    <div id="panel-video" class="panel is-active" role="tabpanel" aria-labelledby="tab-video">
+      <div class="video-frame">
+        <video controls preload="metadata" playsinline>
+          <source src={videoSrc} type="video/mp4" />
+          {t.buildAgents.videoFallback}
+        </video>
+      </div>
+      <p class="panel__caption muted">{t.buildAgents.videoCaption}</p>
+    </div>
+
+    <div id="panel-interactive" class="panel" role="tabpanel" aria-labelledby="tab-interactive" hidden>
+      <InteractiveViewer client:visible locale={locale} />
+      <p class="panel__caption muted">{t.buildAgents.interactiveCaption}</p>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.tab');
+  const panels = document.querySelectorAll<HTMLElement>('.panel');
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      tabs.forEach((t) => {
+        const active = t === tab;
+        t.classList.toggle('is-active', active);
+        t.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      panels.forEach((p) => {
+        const active = p.id === `panel-${target}`;
+        p.classList.toggle('is-active', active);
+        if (active) {
+          p.removeAttribute('hidden');
+        } else {
+          p.setAttribute('hidden', '');
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .page {
+    padding-block: var(--space-8) var(--space-12);
+  }
+  .page__header {
+    margin-bottom: var(--space-6);
+  }
+  .page__eyebrow {
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-3);
+  }
+  .page__title {
+    margin-bottom: var(--space-3);
+  }
+  .page__lede {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+    line-height: var(--leading-snug);
+    max-width: 60ch;
+  }
+
+  .tabs {
+    display: inline-flex;
+    gap: 0.4rem;
+    margin-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 0;
+  }
+  .tab {
+    font: inherit;
+    padding: 0.5rem 1.1rem;
+    border: 0;
+    background: transparent;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+  }
+  .tab:hover { color: var(--color-text); }
+  .tab.is-active {
+    color: var(--color-text);
+    border-bottom-color: #ffd166;
+  }
+
+  .panel {
+    display: none;
+  }
+  .panel.is-active {
+    display: block;
+  }
+  .panel__caption {
+    margin-top: var(--space-3);
+    font-size: var(--text-sm);
+    text-align: center;
+  }
+
+  .video-frame {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #05060a;
+  }
+  .video-frame video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>
