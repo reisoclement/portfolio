@@ -16,14 +16,14 @@ export const SceneRules: React.FC = () => {
   const numeric = rise(frame, 200, 22, 18);
 
   const cats: { key: Category; label: string; sample: string }[] = [
-    { key: "obligation",  label: "Obligation",   sample: t.text.rules.categories.obligation },
-    { key: "application", label: "Application",  sample: t.text.rules.categories.application },
-    { key: "compliance",  label: "Compliance",   sample: t.text.rules.categories.compliance },
-    { key: "requirement", label: "Requirement",  sample: t.text.rules.categories.requirement },
-    { key: "expectation", label: "Expectation",  sample: t.text.rules.categories.expectation },
-    { key: "assessment",  label: "Assessment",   sample: t.text.rules.categories.assessment },
-    { key: "guarantee",   label: "Guarantee",    sample: t.text.rules.categories.guarantee },
-    { key: "numerical",   label: "Numerical",    sample: t.text.rules.categories.numerical },
+    { key: "obligation",  label: t.text.rules.labels.obligation,  sample: t.text.rules.categories.obligation },
+    { key: "application", label: t.text.rules.labels.application, sample: t.text.rules.categories.application },
+    { key: "compliance",  label: t.text.rules.labels.compliance,  sample: t.text.rules.categories.compliance },
+    { key: "requirement", label: t.text.rules.labels.requirement, sample: t.text.rules.categories.requirement },
+    { key: "expectation", label: t.text.rules.labels.expectation, sample: t.text.rules.categories.expectation },
+    { key: "assessment",  label: t.text.rules.labels.assessment,  sample: t.text.rules.categories.assessment },
+    { key: "guarantee",   label: t.text.rules.labels.guarantee,   sample: t.text.rules.categories.guarantee },
+    { key: "numerical",   label: t.text.rules.labels.numerical,   sample: t.text.rules.categories.numerical },
   ];
 
   return (

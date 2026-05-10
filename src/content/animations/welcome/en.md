@@ -1,5 +1,5 @@
 ---
-title: "Welcome — what this notebook is"
+title: "Welcome, what this notebook is"
 description: "A short opening note. The first animation will replace this once it's ready."
 date: 2026-05-03
 duration: "00:30"

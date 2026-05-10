@@ -1,5 +1,5 @@
 ---
-title: "Bienvenue — à quoi sert ce carnet"
+title: "Bienvenue, à quoi sert ce carnet"
 description: "Une courte note d'ouverture. La première animation viendra remplacer ceci dès qu'elle sera prête."
 date: 2026-05-03
 duration: "00:30"

@@ -93,7 +93,7 @@ export const SceneFTLIntro: React.FC = () => {
             marginBottom: 14,
           }}
         >
-          The third option
+          {t.text.ftlIntro.thirdOption}
         </div>
         <div
           style={{

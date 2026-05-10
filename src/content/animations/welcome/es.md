@@ -1,5 +1,5 @@
 ---
-title: "Bienvenida — qué es este cuaderno"
+title: "Bienvenida, qué es este cuaderno"
 description: "Una breve nota de apertura. La primera animación reemplazará esto en cuanto esté lista."
 date: 2026-05-03
 duration: "00:30"

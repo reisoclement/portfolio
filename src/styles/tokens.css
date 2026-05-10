@@ -1,8 +1,8 @@
-/* Notebook palette — design tokens.
+/* Notebook palette, design tokens.
    Change values here; everything cascades. */
 
 :root {
-  /* Color */
+  /* Color — light (Notebook) */
   --color-bg: #FAF7F2;
   --color-text: #1F1B16;
   --color-text-muted: #6B6357;
@@ -10,6 +10,9 @@
   --color-accent-hover: #9A6238;
   --color-surface: #FFFFFF;
   --color-border: #ECE6DC;
+  /* Tonal helpers used by transparent overlays / shadows. RGB triplets so
+     code can do rgba(var(--shadow-rgb), 0.18) without color-mix support. */
+  --shadow-rgb: 31, 27, 22;
 
   /* Typography */
   --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
@@ -29,7 +32,7 @@
   --leading-snug: 1.4;
   --leading-normal: 1.65;
 
-  /* Spacing — 8px base unit */
+  /* Spacing, 8px base unit */
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
@@ -48,4 +51,22 @@
   --radius-sm: 4px;
   --radius-md: 8px;
   --transition-fast: 120ms ease-out;
+}
+
+/* Color — dark (Notebook After Dark).
+   Tuned to harmonize with the animation backgrounds: deep slate-navy bg
+   (#0F1620 matches spec-extractor / pdf-comparer bgCore) with cream text
+   (#F2EAD8 matches the animation text color exactly), so the embedded
+   players blend into the page instead of floating on a contrasting card.
+   Accent is shifted lighter (#D69763) so it clears WCAG AA contrast on
+   the dark surface. */
+:root[data-theme="dark"] {
+  --color-bg: #0F1620;
+  --color-text: #F2EAD8;
+  --color-text-muted: #9AA3B5;
+  --color-accent: #D69763;
+  --color-accent-hover: #E8AE7C;
+  --color-surface: #161E2A;
+  --color-border: #2A3343;
+  --shadow-rgb: 0, 0, 0;
 }

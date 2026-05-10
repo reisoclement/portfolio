@@ -37,15 +37,17 @@ type ResumeStrings = {
     next: string;
     skip: string;
     hintHtml: string;
+    fullscreen: string;
+    exitFullscreen: string;
   };
 };
 
 const en: ResumeStrings = {
-  title: "Resume — Clément Reiso",
+  title: "Resume, Clément Reiso",
   description:
-    "An animated CV by Clément Reiso — career, AI work, side projects, languages and a few hobbies.",
+    "An animated CV by Clément Reiso, career, AI work, side projects, languages and a few hobbies.",
   eyebrow: "Animated CV",
-  heading: "My resume — animated",
+  heading: "My resume, animated",
   lede:
     "A short animated walkthrough of who I am, where I've worked, what I've built, and what I do off the keyboard. Press play, or step through it scene by scene.",
   resumeLanguageLabel: "Resume language",
@@ -64,15 +66,17 @@ const en: ResumeStrings = {
     skip: "Skip →",
     hintHtml:
       "Press <kbd>Space</kbd> or click the canvas to advance · <kbd>R</kbd> to restart",
+    fullscreen: "Fullscreen",
+    exitFullscreen: "Exit fullscreen",
   },
 };
 
 const fr: ResumeStrings = {
-  title: "CV — Clément Reiso",
+  title: "CV, Clément Reiso",
   description:
-    "Le CV animé de Clément Reiso — parcours, IA, projets personnels, langues et quelques loisirs.",
+    "Le CV animé de Clément Reiso, parcours, IA, projets personnels, langues et quelques loisirs.",
   eyebrow: "CV animé",
-  heading: "Mon CV — animé",
+  heading: "Mon CV, animé",
   lede:
     "Une courte visite animée de qui je suis, où j'ai travaillé, ce que j'ai construit, et ce que je fais en dehors du clavier. Lancez la lecture, ou avancez scène par scène.",
   resumeLanguageLabel: "Langue du CV",
@@ -91,15 +95,17 @@ const fr: ResumeStrings = {
     skip: "Passer →",
     hintHtml:
       "Appuyez sur <kbd>Espace</kbd> ou cliquez sur le canevas pour avancer · <kbd>R</kbd> pour recommencer",
+    fullscreen: "Plein écran",
+    exitFullscreen: "Quitter le plein écran",
   },
 };
 
 const es: ResumeStrings = {
-  title: "CV — Clément Reiso",
+  title: "CV, Clément Reiso",
   description:
-    "El CV animado de Clément Reiso — trayectoria, IA, proyectos personales, idiomas y algunas aficiones.",
+    "El CV animado de Clément Reiso, trayectoria, IA, proyectos personales, idiomas y algunas aficiones.",
   eyebrow: "CV animado",
-  heading: "Mi CV — animado",
+  heading: "Mi CV, animado",
   lede:
     "Un breve recorrido animado por quién soy, dónde he trabajado, qué he construido y qué hago fuera del teclado. Pulsa play, o avanza escena a escena.",
   resumeLanguageLabel: "Idioma del CV",
@@ -118,15 +124,17 @@ const es: ResumeStrings = {
     skip: "Saltar →",
     hintHtml:
       "Pulsa <kbd>Espacio</kbd> o haz clic en el lienzo para avanzar · <kbd>R</kbd> para reiniciar",
+    fullscreen: "Pantalla completa",
+    exitFullscreen: "Salir de pantalla completa",
   },
 };
 
 const pl: ResumeStrings = {
-  title: "CV — Clément Reiso",
+  title: "CV, Clément Reiso",
   description:
-    "Animowane CV Clémenta Reiso — kariera, AI, projekty osobiste, języki i kilka pasji.",
+    "Animowane CV Clémenta Reiso, kariera, AI, projekty osobiste, języki i kilka pasji.",
   eyebrow: "Animowane CV",
-  heading: "Moje CV — animowane",
+  heading: "Moje CV, animowane",
   lede:
     "Krótka animowana opowieść o tym, kim jestem, gdzie pracowałem, co zbudowałem i co robię poza klawiaturą. Naciśnij play albo przechodź scena po scenie.",
   resumeLanguageLabel: "Język CV",
@@ -145,14 +153,16 @@ const pl: ResumeStrings = {
     skip: "Pomiń →",
     hintHtml:
       "Naciśnij <kbd>Spacja</kbd> lub kliknij obszar, aby przejść dalej · <kbd>R</kbd>, aby zacząć od nowa",
+    fullscreen: "Pełny ekran",
+    exitFullscreen: "Wyjdź z pełnego ekranu",
   },
 };
 
 const zh: ResumeStrings = {
-  title: "简历 — Clément Reiso",
-  description: "Clément Reiso 的动画简历 — 职业经历、AI 工作、个人项目、语言能力以及一些兴趣爱好。",
+  title: "简历, Clément Reiso",
+  description: "Clément Reiso 的动画简历, 职业经历、AI 工作、个人项目、语言能力以及一些兴趣爱好。",
   eyebrow: "动画简历",
-  heading: "我的简历 — 动画版",
+  heading: "我的简历, 动画版",
   lede:
     "一段简短的动画讲述：我是谁、在哪里工作过、做过什么，以及工作之外的爱好。点击播放，或一幕一幕地慢慢看。",
   resumeLanguageLabel: "简历语言",
@@ -170,6 +180,8 @@ const zh: ResumeStrings = {
     skip: "跳过 →",
     hintHtml:
       "按 <kbd>空格</kbd> 或点击画面继续 · 按 <kbd>R</kbd> 重新开始",
+    fullscreen: "全屏",
+    exitFullscreen: "退出全屏",
   },
 };
 

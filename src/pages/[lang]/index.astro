@@ -11,83 +11,495 @@ if (!isLocale(lang)) throw new Error(`unsupported locale: ${lang}`);
 const locale: Locale = lang;
 const t = getT(locale);
 const base = import.meta.env.BASE_URL;
-const circlesHref = localeUrl(base, locale, 'circles-of-life');
-const resumeHref = localeUrl(base, locale, 'resume');
-const buildAgentsHref = localeUrl(base, locale, 'build-agents');
-const whenToUseAiHref = localeUrl(base, locale, 'when-to-use-ai');
-const specExtractorHref = localeUrl(base, locale, 'spec-extractor');
+
+const items = [
+  {
+    href: localeUrl(base, locale, 'circles-of-life'),
+    eyebrow: t.circlesOfLife.eyebrow,
+    title: t.circlesOfLife.heading,
+    summary: t.circlesOfLife.summaryShort,
+    motif: 'circles',
+  },
+  {
+    href: localeUrl(base, locale, 'when-to-use-ai'),
+    eyebrow: t.whenToUseAi.eyebrow,
+    title: t.whenToUseAi.heading,
+    summary: t.whenToUseAi.summaryShort,
+    motif: 'brain',
+  },
+  {
+    href: localeUrl(base, locale, 'build-agents'),
+    eyebrow: t.buildAgents.eyebrow,
+    title: t.buildAgents.heading,
+    summary: t.buildAgents.summaryShort,
+    motif: 'robot',
+  },
+  {
+    href: localeUrl(base, locale, 'resume'),
+    eyebrow: t.resume.eyebrow,
+    title: t.resume.heading,
+    summary: t.resume.summaryShort,
+    motif: 'user',
+  },
+  {
+    href: localeUrl(base, locale, 'spec-extractor'),
+    eyebrow: t.specExtractor.eyebrow,
+    title: t.specExtractor.heading,
+    summary: t.specExtractor.summaryShort,
+    motif: 'pickaxe',
+  },
+];
 ---
 <Base locale={locale} title={t.home.title} description={t.home.description}>
   <section class="hero container">
-    <p class="hero__eyebrow mono">{t.home.eyebrow}</p>
     <h1 class="hero__title">
       {t.home.headlineLine1}<br />{t.home.headlineLine2}
     </h1>
-    <p class="hero__lede prose">
-      {t.home.lede}
-    </p>
   </section>
 
-  <section class="intro container">
-    <div class="prose">
-      <h2>{t.home.whatYouFindHeading}</h2>
-      <p>{t.home.whatYouFindParagraph}</p>
-      <p set:html={t.home.builtWithParagraphHtml} />
+  <section class="grid-section container">
+    <header class="grid-section__head">
+      <h2 class="grid-section__title">{t.home.whatYouFindHeading}</h2>
+      <p class="grid-section__lede prose muted">{t.home.whatYouFindParagraph}</p>
+    </header>
 
-      <h2>{t.home.currentlyHeading}</h2>
-      <ul class="muted">
-        <li>
-          <a href={resumeHref}>{t.resume.heading}</a>
-          — {t.resume.summaryShort}
+    <ul class="grid">
+      {items.map((it, i) => (
+        <li class={`card card--${it.motif}`} style={`--i: ${i};`}>
+          <a class="card__link" href={it.href}>
+            <div class="card__art" aria-hidden="true">
+              {it.motif === 'circles' && (
+                <svg viewBox="0 0 200 200">
+                  <circle cx="100" cy="100" r="90" />
+                  <circle cx="100" cy="100" r="65" />
+                  <circle cx="100" cy="100" r="40" />
+                  <circle cx="100" cy="100" r="15" />
+                </svg>
+              )}
+              {it.motif === 'brain' && (
+                <svg viewBox="0 0 200 200">
+                  {/* Left half: organic brain outline with sulci/gyri lines */}
+                  <path class="brain-organic" d="M100 38 C 80 38, 62 48, 54 66 C 42 70, 34 84, 38 100 C 32 112, 38 128, 50 134 C 52 150, 68 162, 86 160 C 92 168, 100 168, 100 168 Z" />
+                  <path class="brain-organic-line" d="M72 60 C 78 70, 76 82, 68 88" />
+                  <path class="brain-organic-line" d="M62 96 C 70 100, 76 110, 72 122" />
+                  <path class="brain-organic-line" d="M82 130 C 88 138, 88 148, 82 156" />
+                  {/* Right half: circuit board — traces and nodes */}
+                  <path class="brain-circuit" d="M100 38 C 120 38, 138 48, 146 66 C 158 70, 166 84, 162 100 C 168 112, 162 128, 150 134 C 148 150, 132 162, 114 160 C 108 168, 100 168, 100 168 Z" />
+                  {/* Vertical spine separating the two halves */}
+                  <line x1="100" y1="38" x2="100" y2="168" />
+                  {/* Circuit traces */}
+                  <path class="brain-trace" d="M100 60 H 124 V 78 H 144" />
+                  <path class="brain-trace" d="M100 100 H 138 V 116 H 154" />
+                  <path class="brain-trace" d="M100 138 H 120 V 152" />
+                  {/* Circuit nodes */}
+                  <circle class="brain-node" cx="124" cy="60" r="3.5" />
+                  <circle class="brain-node" cx="144" cy="78" r="3.5" />
+                  <circle class="brain-node" cx="138" cy="100" r="3.5" />
+                  <circle class="brain-node" cx="154" cy="116" r="3.5" />
+                  <circle class="brain-node" cx="120" cy="152" r="3.5" />
+                </svg>
+              )}
+              {it.motif === 'user' && (
+                <svg viewBox="0 0 200 200">
+                  {/* Head */}
+                  <circle cx="100" cy="68" r="32" />
+                  {/* Mustache — bold filled handlebar, tips curling UP, sits high on the face */}
+                  <path class="user-mustache" d="M82 72 C 86 76, 91 76, 95 73 C 97 72, 99 71, 100 71 C 101 71, 103 72, 105 73 C 109 76, 114 76, 118 72 C 121 69, 121 66, 119 64 C 116 66, 112 67, 108 66 C 104 65, 102 63, 100 63 C 98 63, 96 65, 92 66 C 88 67, 84 66, 81 64 C 79 66, 79 69, 82 72 Z" />
+                  {/* Shoulders / torso (t-shirt) */}
+                  <path d="M40 180 C 44 138, 70 118, 100 118 C 130 118, 156 138, 160 180 Z" />
+                  {/* CR monogram on the t-shirt body */}
+                  <text class="user-cr" x="100" y="160" text-anchor="middle">CR</text>
+                </svg>
+              )}
+              {it.motif === 'robot' && (
+                <svg viewBox="0 0 200 200">
+                  {/* Antenna */}
+                  <line class="robot-antenna" x1="78" y1="58" x2="78" y2="36" />
+                  <circle class="robot-antenna-tip" cx="78" cy="32" r="5" />
+                  {/* Head */}
+                  <rect class="robot-head" x="44" y="58" width="68" height="58" rx="10" />
+                  {/* Eyes */}
+                  <circle class="robot-eye" cx="64" cy="84" r="5" />
+                  <circle class="robot-eye" cx="92" cy="84" r="5" />
+                  {/* Mouth — small grid of teeth */}
+                  <rect class="robot-mouth" x="62" y="98" width="32" height="8" rx="2" />
+                  <line class="robot-mouth-tick" x1="70" y1="98" x2="70" y2="106" />
+                  <line class="robot-mouth-tick" x1="78" y1="98" x2="78" y2="106" />
+                  <line class="robot-mouth-tick" x1="86" y1="98" x2="86" y2="106" />
+                  {/* Neck */}
+                  <rect class="robot-neck" x="68" y="116" width="20" height="8" rx="2" />
+                  {/* Body */}
+                  <rect class="robot-body" x="38" y="124" width="80" height="48" rx="8" />
+                  {/* Chest light */}
+                  <circle class="robot-chest" cx="78" cy="148" r="6" />
+                  {/* Empty speech bubble — agent is talking */}
+                  <path class="robot-bubble" d="
+                    M 124 50
+                    Q 124 42, 132 42
+                    L 178 42
+                    Q 186 42, 186 50
+                    L 186 88
+                    Q 186 96, 178 96
+                    L 146 96
+                    L 134 110
+                    L 138 96
+                    L 132 96
+                    Q 124 96, 124 88
+                    Z
+                  " />
+                </svg>
+              )}
+              {it.motif === 'spark' && (
+                <svg viewBox="0 0 200 200">
+                  <path d="M100 30 L 110 90 L 170 100 L 110 110 L 100 170 L 90 110 L 30 100 L 90 90 Z" />
+                </svg>
+              )}
+              {it.motif === 'pickaxe' && (
+                <svg viewBox="0 0 200 200">
+                  {/* Ore chunk — irregular jagged silhouette so it reads as a rock, not a clean polygon. Top edge has chipped facets; sides angle in and out; bottom is uneven. */}
+                  <path class="pick-ore" d="
+                    M 36 124
+                    L 44 108
+                    L 56 102
+                    L 66 110
+                    L 78 100
+                    L 92 96
+                    L 106 102
+                    L 118 96
+                    L 132 104
+                    L 146 100
+                    L 158 112
+                    L 164 124
+                    L 156 138
+                    L 162 152
+                    L 152 164
+                    L 138 160
+                    L 124 166
+                    L 108 162
+                    L 92 168
+                    L 76 164
+                    L 60 168
+                    L 46 160
+                    L 38 148
+                    L 42 136
+                    Z
+                  " />
+                  {/* Internal facet lines to suggest rock surface depth */}
+                  <path class="pick-ore-facet" d="M 56 102 L 70 124 L 92 116" />
+                  <path class="pick-ore-facet" d="M 132 104 L 124 124 L 146 132" />
+                  <path class="pick-ore-facet" d="M 76 164 L 88 148 L 108 162" />
+                  <text class="pick-data" x="100" y="142" text-anchor="middle">DATA</text>
+
+                  {/*
+                    Pickaxe — Arcticons "Minecraft Pickaxe" outline, CC BY-SA 4.0
+                    Source: https://github.com/Arcticons-Team/Arcticons/blob/main/icons/black/minecraft_pickaxe.svg
+                    Original viewBox is 48×48 with the head in the upper-right and the grip in the lower-left.
+                    We scale to 110×110, then rotate 180° so the head ends up at the lower-left (biting into the top of the rock) and the grip at the upper-right (handle rises out of the rock).
+                  */}
+                  {/*
+                    Transform pipeline (applied right-to-left in SVG):
+                    1. translate(-24, -24)   — move icon center to origin so rotation pivots around its middle
+                    2. scale(2.2)            — scale 48-unit icon to ~106 units wide
+                    3. rotate(180)           — flip so head ends up at lower-left, grip at upper-right
+                    4. translate(100, 90)    — drop the now-rotated icon into place; head pixel ends at ~(60, 130) which sits on the top-left of the rock; handle grip at ~(140, 50) — up and to the right.
+                    Tune translate(100, 90) to nudge the head onto the rock.
+                  */}
+                  <g class="pick-icon"
+                     transform="translate(122 60) rotate(180) scale(2.3) translate(-24 -24)">
+                    <polygon points="8.3462 36.8077 8.3462 33.9615 11.1923 33.9615 11.1923 31.1154 14.0385 31.1154 14.0385 28.2692 16.8846 28.2692 16.8846 25.4231 19.7308 25.4231 19.7308 22.5769 22.5769 22.5769 22.5769 19.7308 25.4231 19.7308 25.4231 16.8846 28.2692 16.8846 28.2692 14.0385 22.5769 14.0385 16.8846 14.0385 16.8846 11.1923 14.0385 11.1923 14.0385 8.3462 16.8846 8.3462 16.8846 5.5 22.5769 5.5 25.4231 5.5 28.2692 5.5 31.1154 5.5 31.1154 8.3462 33.9615 8.3462 39.6538 8.3462 39.6538 14.0385 39.6538 16.8846 42.5 16.8846 42.5 19.7308 42.5 22.5769 42.5 25.4231 42.5 31.1154 39.6538 31.1154 39.6538 33.9615 36.8077 33.9615 36.8077 31.1154 33.9615 31.1154 33.9615 25.4231 33.9615 22.5769 33.9615 19.7308 31.1154 19.7308 31.1154 22.5769 28.2692 22.5769 28.2692 25.4231 25.4231 25.4231 25.4231 28.2692 22.5769 28.2692 22.5769 31.1154 19.7308 31.1154 19.7308 33.9615 16.8846 33.9615 16.8846 36.8077 14.0385 36.8077 14.0385 39.6538 11.1923 39.6538 11.1923 42.5 5.5 42.5 5.5 36.8077 8.3462 36.8077" />
+                    <polyline points="33.9615 8.3462 33.9615 14.0385 39.6538 14.0385" />
+                    <polyline points="33.9615 19.7308 33.9615 16.8846 31.1154 16.8846 31.1154 14.0385 28.2692 14.0385" />
+                  </g>
+                </svg>
+              )}
+            </div>
+            <div class="card__body">
+              <span class="card__eyebrow mono">{it.eyebrow}</span>
+              <h3 class="card__title">{it.title}</h3>
+              <p class="card__summary">{it.summary}</p>
+              <span class="card__cta">
+                <span aria-hidden="true">↳</span>
+                <span class="card__cta-text">{t.home.watch}</span>
+              </span>
+            </div>
+          </a>
         </li>
-        <li>
-          <a href={circlesHref}>{t.circlesOfLife.heading}</a>
-          — {t.circlesOfLife.summaryShort}
-        </li>
-        <li>
-          <a href={buildAgentsHref}>{t.buildAgents.heading}</a>
-          — {t.buildAgents.summaryShort}
-        </li>
-        <li>
-          <a href={whenToUseAiHref}>{t.whenToUseAi.heading}</a>
-          — {t.whenToUseAi.summaryShort}
-        </li>
-        <li>
-          <a href={specExtractorHref}>{t.specExtractor.heading}</a>
-          — {t.specExtractor.summaryShort}
-        </li>
-      </ul>
-    </div>
+      ))}
+    </ul>
   </section>
 </Base>
 
 <style>
   .hero {
-    padding-block: var(--space-12) var(--space-8);
-  }
-  .hero__eyebrow {
-    color: var(--color-text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: var(--space-3);
+    padding-block: var(--space-12) var(--space-6);
   }
   .hero__title {
-    margin-bottom: var(--space-4);
-    max-width: 16ch;
+    max-width: 18ch;
   }
-  .hero__lede {
-    font-size: var(--text-lg);
+
+  .grid-section {
+    padding-block: var(--space-4) var(--space-12);
+  }
+  .grid-section__head {
+    margin-bottom: var(--space-6);
+    max-width: var(--max-prose);
+  }
+  .grid-section__title {
+    margin-bottom: var(--space-2);
+  }
+  .grid-section__lede {
+    font-size: var(--text-base);
+  }
+
+  .grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-3);
+  }
+  /* Make the first card span 2 columns when there's room, hero feel */
+  @media (min-width: 920px) {
+    .grid > li:first-child {
+      grid-column: span 2;
+    }
+    .grid > li:first-child .card__link {
+      grid-template-columns: 200px 1fr;
+    }
+  }
+
+  .card {
+    list-style: none;
+    animation: card-in 480ms ease-out both;
+    animation-delay: calc(var(--i, 0) * 60ms + 80ms);
+  }
+  @keyframes card-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card { animation: none; }
+  }
+
+  .card__link {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    overflow: hidden;
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
+    height: 100%;
+    transition:
+      transform 240ms cubic-bezier(.2,.7,.2,1),
+      box-shadow 240ms ease-out,
+      border-color 240ms ease-out;
+  }
+  .card__link:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+    box-shadow: 0 20px 40px -18px rgba(var(--shadow-rgb), 0.22),
+                0 6px 14px -6px rgba(var(--shadow-rgb), 0.10);
+  }
+  .card__link:focus-visible {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 30%, transparent);
+  }
+
+  .card__art {
+    aspect-ratio: 16 / 9;
+    background:
+      radial-gradient(120% 120% at 30% 10%, color-mix(in srgb, var(--color-accent) 12%, var(--color-bg)) 0%, var(--color-bg) 60%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--color-border);
+    position: relative;
+    overflow: hidden;
+  }
+  .card__art::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, color-mix(in srgb, var(--color-text) 4%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--color-text) 4%, transparent) 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.7;
+    pointer-events: none;
+  }
+  .card__art svg {
+    width: 56%;
+    height: 56%;
+    fill: none;
+    stroke: var(--color-accent);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    position: relative;
+    z-index: 1;
+    transition: transform 480ms cubic-bezier(.2,.7,.2,1);
+  }
+  .card__link:hover .card__art svg {
+    transform: rotate(-2deg) scale(1.05);
+  }
+  .card--spark .card__art svg { fill: color-mix(in srgb, var(--color-accent) 16%, transparent); }
+  .card--circles .card__art svg circle:last-child { fill: var(--color-accent); }
+  /* Robot motif (build-agents): friendly robot with empty speech bubble */
+  .card--robot .card__art svg .robot-head,
+  .card--robot .card__art svg .robot-body {
+    fill: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  }
+  .card--robot .card__art svg .robot-neck {
+    fill: color-mix(in srgb, var(--color-text) 18%, transparent);
+    stroke: color-mix(in srgb, var(--color-text) 35%, transparent);
+    stroke-width: 1.2;
+  }
+  .card--robot .card__art svg .robot-eye,
+  .card--robot .card__art svg .robot-chest,
+  .card--robot .card__art svg .robot-antenna-tip {
+    fill: var(--color-accent);
+    stroke: none;
+  }
+  .card--robot .card__art svg .robot-mouth {
+    fill: color-mix(in srgb, var(--color-accent) 6%, transparent);
+  }
+  .card--robot .card__art svg .robot-mouth-tick {
+    stroke: color-mix(in srgb, var(--color-text) 35%, transparent);
+    stroke-width: 1.2;
+  }
+  .card--robot .card__art svg .robot-antenna {
+    stroke-width: 1.6;
+  }
+  .card--robot .card__art svg .robot-bubble {
+    fill: color-mix(in srgb, var(--color-accent) 4%, transparent);
+    stroke: var(--color-accent);
+    stroke-width: 1.6;
+    stroke-linejoin: round;
+  }
+
+  /* User motif (animated resume): person silhouette with CR + mustache */
+  .card--user .card__art svg circle,
+  .card--user .card__art svg path { fill: color-mix(in srgb, var(--color-accent) 14%, transparent); }
+  .card--user .card__art svg .user-mustache {
+    fill: var(--color-accent);
+    stroke: var(--color-accent);
+    stroke-width: 2;
+    stroke-linejoin: round;
+  }
+  .card--user .card__art svg .user-cr {
+    fill: var(--color-accent);
+    stroke: none;
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: 0.02em;
+  }
+
+  /* Brain motif (when-to-use-ai): half organic brain, half circuit board */
+  .card--brain .card__art svg .brain-organic {
+    fill: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  }
+  .card--brain .card__art svg .brain-organic-line {
+    stroke: color-mix(in srgb, var(--color-text) 35%, transparent);
+    stroke-width: 1.2;
+  }
+  .card--brain .card__art svg .brain-circuit {
+    fill: color-mix(in srgb, var(--color-accent) 6%, transparent);
+  }
+  .card--brain .card__art svg .brain-trace {
+    stroke: var(--color-accent);
+    stroke-width: 1.2;
+  }
+  .card--brain .card__art svg .brain-node {
+    fill: var(--color-accent);
+    stroke: none;
+  }
+
+  /* Pickaxe motif (spec-extractor): Arcticons Minecraft pickaxe striking a DATA ore chunk */
+  .card--pickaxe .card__art svg .pick-icon polygon,
+  .card--pickaxe .card__art svg .pick-icon polyline {
+    fill: color-mix(in srgb, var(--color-accent) 14%, transparent);
+    stroke: var(--color-accent);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+  }
+  .card--pickaxe .card__art svg .pick-ore {
+    fill: color-mix(in srgb, var(--color-accent) 18%, transparent);
+    stroke: var(--color-accent);
+    stroke-linejoin: miter;
+  }
+  .card--pickaxe .card__art svg .pick-ore-facet {
+    fill: none;
+    stroke: color-mix(in srgb, var(--color-accent) 55%, transparent);
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .card--pickaxe .card__art svg .pick-data {
+    fill: var(--color-accent);
+    stroke: none;
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.12em;
+  }
+
+  /* On the wide first card, art sits on the left */
+  @media (min-width: 920px) {
+    .grid > li:first-child .card__art {
+      aspect-ratio: auto;
+      height: 100%;
+      border-bottom: none;
+      border-right: 1px solid var(--color-border);
+    }
+  }
+
+  .card__body {
+    padding: 1.25rem 1.35rem 1.35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .card__eyebrow {
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+  }
+  .card__title {
+    font-size: var(--text-xl);
+    line-height: 1.2;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .card__summary {
     color: var(--color-text-muted);
-    line-height: var(--leading-snug);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    margin-top: 0.25rem;
   }
-  .intro {
-    padding-block: var(--space-4) var(--space-8);
+  .card__cta {
+    margin-top: auto;
+    padding-top: 0.85rem;
+    color: var(--color-accent);
+    font-size: var(--text-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 500;
   }
-  .intro h2 {
-    margin-top: var(--space-6);
-    margin-bottom: var(--space-3);
+  .card__cta-text {
+    transform: translateX(0);
+    transition: transform 200ms ease-out;
   }
-  .intro h2:first-child {
-    margin-top: 0;
+  .card__link:hover .card__cta-text {
+    transform: translateX(2px);
   }
 </style>

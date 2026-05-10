@@ -40,12 +40,10 @@ const videoSrc = `${base}animations/when-to-use-ai/${locale}/when-to-use-ai.mp4`
           {t.whenToUseAi.videoFallback}
         </video>
       </div>
-      <p class="panel__caption muted">{t.whenToUseAi.videoCaption}</p>
     </div>
 
     <div id="panel-interactive" class="panel" role="tabpanel" aria-labelledby="tab-interactive" hidden>
       <InteractiveViewer client:visible locale={locale} />
-      <p class="panel__caption muted">{t.whenToUseAi.interactiveCaption}</p>
     </div>
   </section>
 </Base>

@@ -49,14 +49,14 @@ export const SceneTutorialControls: React.FC = () => {
           flexWrap: "wrap",
         }}
       >
-        <ToolbarChip label="Simple · Full" active />
-        <ToolbarChip label="Categories: 8/8" />
-        <ToolbarChip label="Table view" />
-        <ToolbarChip label="Hide empty pages" />
-        <ToolbarChip label="Assessment: all" />
+        <ToolbarChip label={t.text.tutorialControls.toolbar.colorMode} active />
+        <ToolbarChip label={t.text.tutorialControls.toolbar.categories} />
+        <ToolbarChip label={t.text.tutorialControls.toolbar.tableView} />
+        <ToolbarChip label={t.text.tutorialControls.toolbar.hideEmpty} />
+        <ToolbarChip label={t.text.tutorialControls.toolbar.assessment} />
         <div style={{ flex: 1 }} />
-        <ToolbarChip label="Download CSV" highlight />
-        <ToolbarChip label="Download JSON" highlight />
+        <ToolbarChip label={t.text.tutorialControls.toolbar.downloadCsv} highlight />
+        <ToolbarChip label={t.text.tutorialControls.toolbar.downloadJson} highlight />
       </div>
 
       {/* 5-card grid */}

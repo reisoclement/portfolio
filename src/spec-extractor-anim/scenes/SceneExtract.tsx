@@ -142,7 +142,7 @@ export const SceneExtract: React.FC = () => {
               letterSpacing: -0.3,
             }}
           >
-            matches found
+            {t.text.extract.matchesFound}
           </div>
         </div>
 

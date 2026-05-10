@@ -44,13 +44,27 @@ export type Dict = {
         guarantee: string;
         numerical: string;
       };
+      // Translatable category labels shown on each card. Keys mirror
+      // `categories` but the values are localized (e.g. "Obligation" in EN,
+      // "Obligation" in FR, "Obligación" in ES, "Obowiązek" in PL).
+      labels: {
+        obligation: string;
+        application: string;
+        compliance: string;
+        requirement: string;
+        expectation: string;
+        assessment: string;
+        guarantee: string;
+        numerical: string;
+      };
       numericNote: string;   // numbers must be followed by a unit
     };
     extract: {
       kicker: string;
       heading: string;
-      libNote: string;       // "PyMuPDF, words + bounding boxes"
+      libNote: string;       // "PyMuPDF — words + bounding boxes"
       bullet: string;        // every word tested against compiled regexes
+      matchesFound: string;  // label next to the running hit count
     };
     hybrid: {
       kicker: string;
@@ -69,7 +83,7 @@ export type Dict = {
     };
     tutorialDivider: {
       kicker: string;        // "Part 2"
-      heading: string;       // "Now, how to use it."
+      heading: string;       // "Now — how to use it."
       sub: string;
     };
     tutorialLayout: {
@@ -93,7 +107,7 @@ export type Dict = {
         add: { name: string; desc: string };
       };
       meta: {
-        assessment: string;     // "Assessment dropdown, OK / NOK / N/A"
+        assessment: string;     // "Assessment dropdown — OK / NOK / N/A"
         critical: string;       // "Critical toggle"
         triggerLocked: string;  // "Trigger words stay locked so you can't lose them"
       };
@@ -108,6 +122,17 @@ export type Dict = {
         pageNav: { name: string; desc: string };
         export: { name: string; desc: string };
       };
+      // Translatable labels for the demo toolbar shown above the cards.
+      // These echo the chip text rendered inside the scene.
+      toolbar: {
+        colorMode: string;       // "Simple · Full"
+        categories: string;      // "Categories: 8/8"
+        tableView: string;       // "Table view"
+        hideEmpty: string;       // "Hide empty pages"
+        assessment: string;      // "Assessment: all"
+        downloadCsv: string;     // "Download CSV"
+        downloadJson: string;    // "Download JSON"
+      };
       payoff: string;
     };
     ftlIntro: {
@@ -115,7 +140,8 @@ export type Dict = {
       heading: string;       // "When v2 of the spec arrives…"
       bad1: string;          // re-extract → lose curated edits
       bad2: string;          // diff by hand
-      ftl: string;           // FTL New Gen, Forward, Track, Learn
+      thirdOption: string;   // mono eyebrow above the FTL card, e.g. "The third option"
+      ftl: string;           // FTL New Gen — Forward, Track, Learn
       payoff: string;
     };
     ftlDiff: {
@@ -139,7 +165,7 @@ export type Dict = {
       closer: string;
     };
   };
-  // Short titles shown by the website's interactive viewer chip, one per
+  // Short titles shown by the website's interactive viewer chip — one per
   // SCENE_DURATIONS key. Order is independent of `text`.
   sceneTitles: {
     hook: string;

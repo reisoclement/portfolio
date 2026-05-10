@@ -95,7 +95,7 @@ const homeHref = localeUrl(base, locale, '');
 const prevHref = prevSlug ? localeUrl(base, locale, `animations/${prevSlug}`) : null;
 const nextHref = nextSlug ? localeUrl(base, locale, `animations/${nextSlug}`) : null;
 ---
-<Base locale={locale} title={`${title} — ${t.nav.brand}`} description={description}>
+<Base locale={locale} title={`${title}, ${t.nav.brand}`} description={description}>
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
 
   <article class="animation container">

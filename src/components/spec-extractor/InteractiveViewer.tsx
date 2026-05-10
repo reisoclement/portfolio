@@ -11,10 +11,15 @@ import {
 import { getT, type Locale as WebLocale } from "../../i18n";
 import "./spec-extractor.css";
 
-// Spec-extractor source currently ships English only; map any website locale
-// to "en" so the embed renders cleanly in every site language. When fr/es/pl
-// dicts land in the source project, this falls through automatically.
-const ANIM_LOCALE: AnimLocale = "en";
+// Spec-extractor source ships en/fr/es/pl; the website locale set is the same
+// shape, so we forward it directly. This object lets us narrow the website
+// `Locale` to the animation's `Locale` even if the two diverge in the future.
+const WEB_TO_ANIM: Record<WebLocale, AnimLocale> = {
+  en: "en",
+  fr: "fr",
+  es: "es",
+  pl: "pl",
+};
 
 interface Props {
   locale: WebLocale;
@@ -22,10 +27,13 @@ interface Props {
 
 export default function InteractiveViewer({ locale }: Props) {
   const playerRef = useRef<PlayerRef>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
   const [completedSceneIndex, setCompletedSceneIndex] = useState<number>(-1);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
-  const sceneRanges = useMemo(() => getSceneRanges(ANIM_LOCALE), []);
+  const animLocale = WEB_TO_ANIM[locale];
+  const sceneRanges = useMemo(() => getSceneRanges(animLocale), [animLocale]);
   const tWeb = getT(locale);
   const tInteractive = tWeb.specExtractor.interactive;
 
@@ -149,12 +157,27 @@ export default function InteractiveViewer({ locale }: Props) {
     return () => window.removeEventListener("keydown", onKey);
   }, [next, prev, restart]);
 
+  useEffect(() => {
+    const onChange = () => setIsFullscreen(document.fullscreenElement === rootRef.current);
+    document.addEventListener("fullscreenchange", onChange);
+    return () => document.removeEventListener("fullscreenchange", onChange);
+  }, []);
+
+  const toggleFullscreen = useCallback(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    if (document.fullscreenElement === el) {
+      void document.exitFullscreen();
+    } else {
+      void el.requestFullscreen();
+    }
+  }, []);
+
   const isAtEnd = completedSceneIndex === TOTAL_SCENES - 1 && !isPlaying;
-  const displayCount = Math.max(1, completedSceneIndex + 1);
   const displayTitle = sceneRanges[Math.max(0, currentSceneIndex)].title;
 
   return (
-    <div className="sx-interactive">
+    <div ref={rootRef} className={`sx-interactive${isFullscreen ? " is-fullscreen" : ""}`}>
       <button
         type="button"
         className="sx-stage-button"
@@ -171,8 +194,8 @@ export default function InteractiveViewer({ locale }: Props) {
           <Player
             ref={playerRef}
             component={SpecExtractor}
-            inputProps={{ locale: ANIM_LOCALE }}
-            durationInFrames={getTotalDuration(ANIM_LOCALE)}
+            inputProps={{ locale: animLocale }}
+            durationInFrames={getTotalDuration(animLocale)}
             compositionWidth={VIDEO.width}
             compositionHeight={VIDEO.height}
             fps={VIDEO.fps}
@@ -198,9 +221,6 @@ export default function InteractiveViewer({ locale }: Props) {
           ))}
         </div>
         <div className="sx-meta">
-          <span className="sx-meta__count">
-            {displayCount} / {TOTAL_SCENES}
-          </span>
           <span className="sx-meta__title">{displayTitle}</span>
         </div>
         <div className="sx-buttons">
@@ -220,6 +240,24 @@ export default function InteractiveViewer({ locale }: Props) {
               {isPlaying ? tInteractive.skip : tInteractive.next}
             </button>
           )}
+
+          <button
+            type="button"
+            className="sx-buttons__icon"
+            onClick={toggleFullscreen}
+            aria-label={isFullscreen ? tInteractive.exitFullscreen : tInteractive.fullscreen}
+            title={isFullscreen ? tInteractive.exitFullscreen : tInteractive.fullscreen}
+          >
+            {isFullscreen ? (
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M6 2v4H2 M10 2v4h4 M6 14v-4H2 M10 14v-4h4" />
+              </svg>
+            ) : (
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M2 6V2h4 M14 6V2h-4 M2 10v4h4 M14 10v4h-4" />
+              </svg>
+            )}
+          </button>
         </div>
         <p
           className="sx-hint"

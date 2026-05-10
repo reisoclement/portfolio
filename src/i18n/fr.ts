@@ -14,6 +14,9 @@ export const fr: Dict = {
     menuLabel: "Menu",
     closeLabel: "Fermer",
     languagesLabel: "Langues",
+    themeToggleAriaLabel: "Basculer le mode sombre",
+    themeLight: "Clair",
+    themeDark: "Sombre",
   },
   footer: {
     builtWith: "Réalisé avec Remotion + Astro",
@@ -170,6 +173,13 @@ export const fr: Dict = {
       "Comment des milliers de pages de spécifications deviennent des lignes structurées et éditables.",
     lede:
       "Comment le Spec Data Extractor transforme un long PDF de spécification en lignes structurées et éditables, et comment utiliser l'espace de travail côte à côte une fois le rapport ouvert. Inclut un aperçu de FTL, l'outil de migration v2 à venir.",
+    tabs: {
+      ariaLabel: "Mode de lecture",
+      video: "Vidéo",
+      interactive: "Pas à pas",
+    },
+    videoCaption: "Appuyez sur play. Environ 2 minutes, sans audio.",
+    videoFallback: "Votre navigateur ne prend pas en charge la balise vidéo.",
     interactiveCaption:
       "Une scène par appui. Idéal pour avancer doucement ou commenter chaque temps.",
     interactive: {

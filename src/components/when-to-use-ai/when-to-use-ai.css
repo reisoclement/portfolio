@@ -1,4 +1,4 @@
-/* When To Use AI — interactive viewer styles
+/* When To Use AI, interactive viewer styles
    All class names prefixed `wta-` to avoid collisions with the rest of the site. */
 
 .wta-interactive {
@@ -53,7 +53,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(245, 247, 255, 0.18);
+  background: rgba(var(--shadow-rgb), 0.20);
   transition:
     background 0.2s ease,
     box-shadow 0.2s ease;
@@ -126,4 +126,51 @@
   border-radius: 4px;
   padding: 1px 6px;
   font-size: 0.85em;
+}
+
+.wta-buttons__icon {
+  width: 38px;
+  padding: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fullscreen layout */
+.wta-interactive:fullscreen {
+  background: #05060a;
+  padding: 24px;
+  gap: 12px;
+  justify-content: center;
+}
+.wta-interactive:fullscreen .wta-stage-button {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  border-radius: 0;
+  overflow: visible;
+}
+.wta-interactive:fullscreen .wta-stage {
+  aspect-ratio: 16 / 9;
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+}
+.wta-interactive:fullscreen .wta-controls {
+  flex: 0 0 auto;
+}
+.wta-interactive:fullscreen .wta-meta__title,
+.wta-interactive:fullscreen .wta-hint {
+  color: rgba(245, 247, 255, 0.85);
+}
+.wta-interactive:fullscreen .wta-progress__dot {
+  background: rgba(245, 247, 255, 0.20);
+}
+.wta-interactive:fullscreen .wta-buttons button {
+  border-color: rgba(245, 247, 255, 0.25);
+  color: #f5f7ff;
 }

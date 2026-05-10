@@ -20,8 +20,10 @@ interface Props {
 
 export default function InteractiveViewer({ locale }: Props) {
   const playerRef = useRef<PlayerRef>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
   const [completedSceneIndex, setCompletedSceneIndex] = useState<number>(-1);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const sceneRanges = useMemo(() => getSceneRanges(locale as Locale), [locale]);
   const tWeb = getT(locale);
@@ -147,12 +149,27 @@ export default function InteractiveViewer({ locale }: Props) {
     return () => window.removeEventListener("keydown", onKey);
   }, [next, prev, restart]);
 
+  useEffect(() => {
+    const onChange = () => setIsFullscreen(document.fullscreenElement === rootRef.current);
+    document.addEventListener("fullscreenchange", onChange);
+    return () => document.removeEventListener("fullscreenchange", onChange);
+  }, []);
+
+  const toggleFullscreen = useCallback(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    if (document.fullscreenElement === el) {
+      void document.exitFullscreen();
+    } else {
+      void el.requestFullscreen();
+    }
+  }, []);
+
   const isAtEnd = completedSceneIndex === TOTAL_SCENES - 1 && !isPlaying;
-  const displayCount = Math.max(1, completedSceneIndex + 1);
   const displayTitle = sceneRanges[Math.max(0, currentSceneIndex)].title;
 
   return (
-    <div className="wta-interactive">
+    <div ref={rootRef} className={`wta-interactive${isFullscreen ? " is-fullscreen" : ""}`}>
       <button
         type="button"
         className="wta-stage-button"
@@ -196,9 +213,6 @@ export default function InteractiveViewer({ locale }: Props) {
           ))}
         </div>
         <div className="wta-meta">
-          <span className="wta-meta__count">
-            {displayCount} / {TOTAL_SCENES}
-          </span>
           <span className="wta-meta__title">{displayTitle}</span>
         </div>
         <div className="wta-buttons">
@@ -218,6 +232,24 @@ export default function InteractiveViewer({ locale }: Props) {
               {isPlaying ? tInteractive.skip : tInteractive.next}
             </button>
           )}
+
+          <button
+            type="button"
+            className="wta-buttons__icon"
+            onClick={toggleFullscreen}
+            aria-label={isFullscreen ? tInteractive.exitFullscreen : tInteractive.fullscreen}
+            title={isFullscreen ? tInteractive.exitFullscreen : tInteractive.fullscreen}
+          >
+            {isFullscreen ? (
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M6 2v4H2 M10 2v4h4 M6 14v-4H2 M10 14v-4h4" />
+              </svg>
+            ) : (
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M2 6V2h4 M14 6V2h-4 M2 10v4h4 M14 10v4h-4" />
+              </svg>
+            )}
+          </button>
         </div>
         <p
           className="wta-hint"

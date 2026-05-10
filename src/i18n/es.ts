@@ -14,6 +14,9 @@ export const es: Dict = {
     menuLabel: "Menú",
     closeLabel: "Cerrar",
     languagesLabel: "Idiomas",
+    themeToggleAriaLabel: "Cambiar modo oscuro",
+    themeLight: "Claro",
+    themeDark: "Oscuro",
   },
   footer: {
     builtWith: "Hecho con Remotion + Astro",
@@ -170,6 +173,13 @@ export const es: Dict = {
       "Cómo miles de páginas de especificaciones se convierten en filas estructuradas y editables.",
     lede:
       "Cómo el Spec Data Extractor convierte un PDF de especificación largo en filas estructuradas y editables, y cómo usar el espacio de trabajo lado a lado una vez abierto el informe. Incluye un adelanto de FTL, la próxima herramienta de migración v2.",
+    tabs: {
+      ariaLabel: "Modo de reproducción",
+      video: "Vídeo",
+      interactive: "Paso a paso",
+    },
+    videoCaption: "Pulsa play. Alrededor de 2 minutos, sin audio.",
+    videoFallback: "Tu navegador no soporta la etiqueta de vídeo.",
     interactiveCaption:
       "Una escena por pulsación. Ideal para avanzar despacio o comentar cada momento.",
     interactive: {

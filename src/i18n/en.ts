@@ -15,6 +15,9 @@ export const en = {
     menuLabel: "Menu",
     closeLabel: "Close",
     languagesLabel: "Languages",
+    themeToggleAriaLabel: "Toggle dark mode",
+    themeLight: "Light",
+    themeDark: "Dark",
   },
   footer: {
     builtWith: "Built with Remotion + Astro",
@@ -170,6 +173,13 @@ export const en = {
       "How thousands of pages of specs turn into structured, editable rows.",
     lede:
       "How the Spec Data Extractor turns a long PDF spec into structured, editable rows, and how to use the side-by-side workspace once the report opens. Includes a teaser for FTL, the upcoming v2-migration tool.",
+    tabs: {
+      ariaLabel: "Playback mode",
+      video: "Video",
+      interactive: "Step by step",
+    },
+    videoCaption: "Press play. Around 2 minutes, no audio.",
+    videoFallback: "Your browser does not support the video tag.",
     interactiveCaption:
       "One scene per press. Use this version when you want to take it slowly, or talk over each beat.",
     interactive: {

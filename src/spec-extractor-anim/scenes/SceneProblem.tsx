@@ -13,7 +13,7 @@ export const SceneProblem: React.FC = () => {
   return (
     <AbsoluteFill style={{ opacity: exit }}>
       <div style={{ position: "absolute", left: 120, top: 200, right: 120 }}>
-        <SectionHeading kicker="The pain" title={t.text.problem.heading} />
+        <SectionHeading kicker={t.sceneTitles.problem} title={t.text.problem.heading} />
       </div>
 
       <div

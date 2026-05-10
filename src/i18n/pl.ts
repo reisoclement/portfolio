@@ -14,6 +14,9 @@ export const pl: Dict = {
     menuLabel: "Menu",
     closeLabel: "Zamknij",
     languagesLabel: "Języki",
+    themeToggleAriaLabel: "Przełącz tryb ciemny",
+    themeLight: "Jasny",
+    themeDark: "Ciemny",
   },
   footer: {
     builtWith: "Zbudowane z Remotion + Astro",
@@ -170,6 +173,13 @@ export const pl: Dict = {
       "Jak tysiące stron specyfikacji zamieniają się w ustrukturyzowane, edytowalne wiersze.",
     lede:
       "Jak Spec Data Extractor zamienia obszerny PDF ze specyfikacją w ustrukturyzowane, edytowalne wiersze, i jak korzystać z obszaru roboczego obok siebie po otwarciu raportu. Zawiera zapowiedź FTL, nadchodzącego narzędzia migracji v2.",
+    tabs: {
+      ariaLabel: "Tryb odtwarzania",
+      video: "Wideo",
+      interactive: "Krok po kroku",
+    },
+    videoCaption: "Naciśnij play. Około 2 minuty, bez dźwięku.",
+    videoFallback: "Twoja przeglądarka nie obsługuje znacznika wideo.",
     interactiveCaption:
       "Jedna scena na kliknięcie. Idealne, gdy chcesz iść powoli lub komentować każdy moment.",
     interactive: {

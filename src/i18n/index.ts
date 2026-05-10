@@ -1,5 +1,5 @@
 // i18n entry point. All UI strings live in the per-locale files (en/fr/es/pl).
-// English is the source of truth — sibling files mirror its shape, and TS will
+// English is the source of truth, sibling files mirror its shape, and TS will
 // flag missing keys.
 
 import { en } from "./en";

@@ -1,5 +1,6 @@
 ---
 import { getT, LOCALES, LOCALE_LABELS, localeUrl, stripLocaleFromPath, type Locale } from '../i18n';
+import BrandLogo from './BrandLogo.astro';
 
 interface Props {
   locale: Locale;
@@ -12,37 +13,220 @@ const path = Astro.url.pathname;
 const currentRest = stripLocaleFromPath(path, base);
 
 const localeHome = localeUrl(base, locale, '');
-const circlesHref = localeUrl(base, locale, 'circles-of-life');
-const buildAgentsHref = localeUrl(base, locale, 'build-agents');
-const whenToUseAiHref = localeUrl(base, locale, 'when-to-use-ai');
-const specExtractorHref = localeUrl(base, locale, 'spec-extractor');
 
-const isActive = (href: string) => path === href || path === href.replace(/\/$/, '');
-
-const links = [
-  { href: localeHome, label: t.nav.home },
-  { href: circlesHref, label: t.circlesOfLife.heading },
-  { href: buildAgentsHref, label: t.buildAgents.heading },
-  { href: whenToUseAiHref, label: t.whenToUseAi.heading },
-  { href: specExtractorHref, label: t.specExtractor.heading },
+// Animations menu, title + summary so the user understands what each is.
+const animations = [
+  {
+    href: localeUrl(base, locale, 'circles-of-life'),
+    label: t.circlesOfLife.heading,
+    summary: t.circlesOfLife.summaryShort,
+    eyebrow: '01',
+  },
+  {
+    href: localeUrl(base, locale, 'when-to-use-ai'),
+    label: t.whenToUseAi.heading,
+    summary: t.whenToUseAi.summaryShort,
+    eyebrow: '02',
+  },
+  {
+    href: localeUrl(base, locale, 'build-agents'),
+    label: t.buildAgents.heading,
+    summary: t.buildAgents.summaryShort,
+    eyebrow: '03',
+  },
+  {
+    href: localeUrl(base, locale, 'resume'),
+    label: t.resume.heading,
+    summary: t.resume.summaryShort,
+    eyebrow: '04',
+  },
+  {
+    href: localeUrl(base, locale, 'spec-extractor'),
+    label: t.specExtractor.heading,
+    summary: t.specExtractor.summaryShort,
+    eyebrow: '05',
+  },
 ];
+
+// Short locale codes for the trigger button.
+const LOCALE_CODE: Record<Locale, string> = {
+  en: 'EN',
+  fr: 'FR',
+  es: 'ES',
+  pl: 'PL',
+};
 ---
-<header class="nav">
+<header class="nav" data-nav>
   <div class="container nav__inner">
-    <a class="nav__brand" href={localeHome}>{t.nav.brand}</a>
-    <nav aria-label={t.nav.primaryAriaLabel}>
-      <ul class="nav__list">
-        {links.map((l) => (
+    <a class="nav__brand" href={localeHome} aria-label={t.nav.brand}>
+      <BrandLogo size={40} ariaLabel={t.nav.brand} />
+    </a>
+
+    <!-- Desktop: theme toggle + hover/click animations menu + language switcher -->
+    <div class="nav__desktop">
+      <button
+        type="button"
+        class="nav__theme"
+        aria-label={t.nav.themeToggleAriaLabel}
+        aria-pressed="false"
+        data-theme-toggle
+      >
+        <svg class="nav__theme-icon nav__theme-icon--sun" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+          <circle cx="8" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="1.4" />
+          <g stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+            <line x1="8" y1="1.5" x2="8" y2="3" />
+            <line x1="8" y1="13" x2="8" y2="14.5" />
+            <line x1="1.5" y1="8" x2="3" y2="8" />
+            <line x1="13" y1="8" x2="14.5" y2="8" />
+            <line x1="3.3" y1="3.3" x2="4.4" y2="4.4" />
+            <line x1="11.6" y1="11.6" x2="12.7" y2="12.7" />
+            <line x1="3.3" y1="12.7" x2="4.4" y2="11.6" />
+            <line x1="11.6" y1="4.4" x2="12.7" y2="3.3" />
+          </g>
+        </svg>
+        <svg class="nav__theme-icon nav__theme-icon--moon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M13.2 9.6A5.2 5.2 0 0 1 6.4 2.8a5.5 5.5 0 1 0 6.8 6.8z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <div class="nav__group" data-menu="animations">
+        <button
+          type="button"
+          class="nav__trigger"
+          aria-haspopup="true"
+          aria-expanded="false"
+          data-menu-trigger="animations"
+        >
+          <span>{t.nav.animationsLabel}</span>
+          <svg class="nav__chev" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
+            <path d="M2 3.5L5 6.5L8 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="nav__panel" role="menu" data-menu-panel="animations">
+          <ul class="nav__panel-list">
+            {animations.map((a) => (
+              <li>
+                <a class="nav__panel-item" href={a.href} role="menuitem">
+                  <span class="nav__panel-eyebrow mono">{a.eyebrow}</span>
+                  <span class="nav__panel-body">
+                    <span class="nav__panel-title">{a.label}</span>
+                    <span class="nav__panel-summary">{a.summary}</span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__group nav__group--lang" data-menu="lang">
+        <button
+          type="button"
+          class="nav__trigger nav__trigger--lang"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-label={t.nav.languageSwitcherAriaLabel}
+          data-menu-trigger="lang"
+        >
+          <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.25" />
+            <path d="M1.5 8 H14.5 M8 1.5 C 10.5 4 10.5 12 8 14.5 M8 1.5 C 5.5 4 5.5 12 8 14.5" fill="none" stroke="currentColor" stroke-width="1.25" />
+          </svg>
+          <span>{LOCALE_CODE[locale]}</span>
+          <svg class="nav__chev" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
+            <path d="M2 3.5L5 6.5L8 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="nav__panel nav__panel--lang" role="menu" data-menu-panel="lang">
+          <ul class="nav__lang-list">
+            {LOCALES.map((loc) => {
+              const href = localeUrl(base, loc, currentRest);
+              const isCurrent = loc === locale;
+              return (
+                <li>
+                  <a
+                    href={href}
+                    hreflang={loc}
+                    lang={loc}
+                    aria-current={isCurrent ? 'true' : undefined}
+                    class:list={['nav__lang-item', { 'is-active': isCurrent }]}
+                    role="menuitem"
+                  >
+                    <span class="nav__lang-code mono">{LOCALE_CODE[loc]}</span>
+                    <span class="nav__lang-name">{LOCALE_LABELS[loc]}</span>
+                    {isCurrent && (
+                      <svg class="nav__lang-check" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+                        <path d="M2 6.5L4.8 9L10 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    )}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile cluster: theme toggle (always visible) + burger -->
+    <div class="nav__mobile">
+      <button
+        type="button"
+        class="nav__theme nav__theme--mobile"
+        aria-label={t.nav.themeToggleAriaLabel}
+        aria-pressed="false"
+        data-theme-toggle
+      >
+        <svg class="nav__theme-icon nav__theme-icon--sun" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+          <circle cx="8" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="1.4" />
+          <g stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+            <line x1="8" y1="1.5" x2="8" y2="3" />
+            <line x1="8" y1="13" x2="8" y2="14.5" />
+            <line x1="1.5" y1="8" x2="3" y2="8" />
+            <line x1="13" y1="8" x2="14.5" y2="8" />
+            <line x1="3.3" y1="3.3" x2="4.4" y2="4.4" />
+            <line x1="11.6" y1="11.6" x2="12.7" y2="12.7" />
+            <line x1="3.3" y1="12.7" x2="4.4" y2="11.6" />
+            <line x1="11.6" y1="4.4" x2="12.7" y2="3.3" />
+          </g>
+        </svg>
+        <svg class="nav__theme-icon nav__theme-icon--moon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M13.2 9.6A5.2 5.2 0 0 1 6.4 2.8a5.5 5.5 0 1 0 6.8 6.8z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" />
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="nav__burger"
+        aria-label={t.nav.menuLabel}
+        aria-expanded="false"
+        data-burger
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div class="nav__drawer" data-drawer hidden>
+    <div class="container nav__drawer-inner">
+      <p class="nav__drawer-heading mono">{t.nav.animationsLabel}</p>
+      <ul class="nav__drawer-list">
+        {animations.map((a) => (
           <li>
-            <a href={l.href} class:list={['nav__link', { 'is-active': isActive(l.href) }]}>
-              {l.label}
+            <a class="nav__drawer-item" href={a.href}>
+              <span class="nav__panel-eyebrow mono">{a.eyebrow}</span>
+              <span class="nav__panel-body">
+                <span class="nav__panel-title">{a.label}</span>
+                <span class="nav__panel-summary">{a.summary}</span>
+              </span>
             </a>
           </li>
         ))}
       </ul>
-    </nav>
-    <nav aria-label={t.nav.languageSwitcherAriaLabel} class="nav__lang">
-      <ul class="nav__lang-list">
+      <p class="nav__drawer-heading mono">{t.nav.languagesLabel}</p>
+      <ul class="nav__drawer-langs">
         {LOCALES.map((loc) => {
           const href = localeUrl(base, loc, currentRest);
           const isCurrent = loc === locale;
@@ -53,72 +237,450 @@ const links = [
                 hreflang={loc}
                 lang={loc}
                 aria-current={isCurrent ? 'true' : undefined}
-                class:list={['nav__lang-link', { 'is-active': isCurrent }]}
+                class:list={['nav__drawer-lang', { 'is-active': isCurrent }]}
               >
-                {LOCALE_LABELS[loc]}
+                <span class="mono">{LOCALE_CODE[loc]}</span>
+                <span>{LOCALE_LABELS[loc]}</span>
               </a>
             </li>
           );
         })}
       </ul>
-    </nav>
+    </div>
   </div>
 </header>
 
 <style>
   .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+    backdrop-filter: saturate(140%) blur(12px);
+    -webkit-backdrop-filter: saturate(140%) blur(12px);
     border-bottom: 1px solid var(--color-border);
-    background: var(--color-bg);
   }
   .nav__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: var(--space-4);
-    padding-block: var(--space-3);
-    flex-wrap: wrap;
+    padding-block: var(--space-2);
+    min-height: 64px;
   }
+
+  /* Brand */
   .nav__brand {
-    font-family: var(--font-serif);
-    font-weight: 600;
-    font-size: var(--text-lg);
+    display: inline-flex;
+    align-items: center;
     color: var(--color-text);
     border-bottom: none;
+    transition: color var(--transition-fast), transform 220ms cubic-bezier(.2,.7,.2,1);
+    padding: 4px;
+    margin-left: -4px;
   }
-  .nav__brand:hover { color: var(--color-accent); }
-  .nav__list {
+  .nav__brand:hover {
+    color: var(--color-accent);
+    border-bottom: none;
+    transform: rotate(-3deg);
+  }
+  .nav__brand:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Desktop strip */
+  .nav__desktop {
     display: flex;
-    gap: var(--space-3);
+    align-items: center;
+    gap: var(--space-2);
+  }
+  @media (max-width: 760px) {
+    .nav__desktop { display: none; }
+  }
+
+  /* Trigger button */
+  .nav__group { position: relative; }
+  .nav__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: transparent;
+    border: 1px solid transparent;
+    padding: 0.45rem 0.75rem;
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    font: inherit;
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  }
+  .nav__trigger:hover,
+  .nav__trigger[aria-expanded="true"] {
+    background: var(--color-surface);
+    border-color: var(--color-border);
+  }
+  .nav__chev {
+    transition: transform 160ms ease-out;
+    color: var(--color-text-muted);
+  }
+  .nav__trigger[aria-expanded="true"] .nav__chev {
+    transform: rotate(180deg);
+  }
+
+  /* Dropdown panel */
+  .nav__panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 360px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    box-shadow: 0 18px 50px -12px rgba(var(--shadow-rgb), 0.18), 0 4px 12px -4px rgba(var(--shadow-rgb), 0.08);
+    padding: 0.5rem;
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 160ms ease-out, transform 160ms ease-out, visibility 0s linear 160ms;
+  }
+  .nav__group[data-open="true"] .nav__panel {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    visibility: visible;
+    transition: opacity 160ms ease-out, transform 160ms ease-out, visibility 0s;
+  }
+  /* The first group's panel left-aligns under its trigger */
+  .nav__group[data-menu="animations"] .nav__panel {
+    left: 0;
+    right: auto;
+    min-width: 420px;
+  }
+
+  .nav__panel-list {
     list-style: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
   }
-  .nav__link {
+  .nav__panel-item {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 0.85rem;
+    padding: 0.7rem 0.85rem;
+    border-radius: 10px;
+    color: var(--color-text);
+    border-bottom: none;
+    transition: background var(--transition-fast);
+  }
+  .nav__panel-item:hover {
+    background: var(--color-bg);
+    border-bottom: none;
+  }
+  .nav__panel-eyebrow {
+    color: var(--color-accent);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    padding-top: 0.15rem;
+  }
+  .nav__panel-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+  .nav__panel-title {
+    font-weight: 500;
+    font-size: var(--text-sm);
+    line-height: 1.3;
+  }
+  .nav__panel-summary {
     color: var(--color-text-muted);
+    font-size: var(--text-xs);
+    line-height: 1.45;
+  }
+
+  /* Language panel */
+  .nav__trigger--lang { gap: 0.45rem; }
+  .nav__panel--lang { min-width: 200px; padding: 0.4rem; }
+  .nav__lang-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .nav__lang-item {
+    display: grid;
+    grid-template-columns: 32px 1fr 16px;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0.7rem;
+    border-radius: 8px;
+    color: var(--color-text);
     border-bottom: none;
     font-size: var(--text-sm);
   }
-  .nav__link:hover { color: var(--color-text); }
-  .nav__link.is-active { color: var(--color-text); }
-  .nav__lang-list {
+  .nav__lang-item:hover { background: var(--color-bg); border-bottom: none; }
+  .nav__lang-item.is-active { color: var(--color-accent); }
+  .nav__lang-code {
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+  }
+  .nav__lang-item.is-active .nav__lang-code { color: var(--color-accent); }
+  .nav__lang-check { color: var(--color-accent); }
+
+  /* Theme toggle (sun/moon button, shared between desktop + mobile) */
+  .nav__theme {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid transparent;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    cursor: pointer;
+    transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  }
+  .nav__theme:hover {
+    background: var(--color-surface);
+    border-color: var(--color-border);
+  }
+  .nav__theme:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  /* Show the icon that represents the *target* theme: sun in dark mode
+     (click to go light), moon in light mode (click to go dark). */
+  .nav__theme-icon { display: block; }
+  .nav__theme-icon--sun { display: none; }
+  :root[data-theme="dark"] .nav__theme-icon--moon { display: none; }
+  :root[data-theme="dark"] .nav__theme-icon--sun { display: block; }
+
+  /* Mobile cluster wrapping the theme toggle + burger so they sit together */
+  .nav__mobile {
+    display: none;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  @media (max-width: 760px) {
+    .nav__mobile { display: flex; }
+    /* The desktop nav__theme is hidden along with the rest of nav__desktop;
+       the mobile copy in nav__mobile takes over. */
+  }
+
+  /* Burger */
+  .nav__burger {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    padding: 0.55rem;
+    border-radius: var(--radius-md);
+    width: 40px;
+    height: 40px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+  }
+  .nav__burger span {
+    display: block;
+    width: 18px;
+    height: 1.5px;
+    background: var(--color-text);
+    border-radius: 2px;
+    transition: transform 180ms ease-out, opacity 180ms ease-out;
+  }
+  .nav__burger[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(5.5px) rotate(45deg);
+  }
+  .nav__burger[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav__burger[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-5.5px) rotate(-45deg);
+  }
+  @media (max-width: 760px) {
+    .nav__burger { display: flex; }
+  }
+
+  /* Drawer */
+  .nav__drawer {
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg);
+  }
+  .nav__drawer[hidden] { display: none; }
+  .nav__drawer-inner { padding-block: var(--space-3) var(--space-4); }
+  .nav__drawer-heading {
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.6rem;
+    margin-top: var(--space-2);
+  }
+  .nav__drawer-heading:first-child { margin-top: 0; }
+  .nav__drawer-list {
+    list-style: none;
+    margin: 0 0 var(--space-3);
+    padding: 0;
     display: flex;
-    gap: var(--space-2);
+    flex-direction: column;
+    gap: 2px;
+  }
+  .nav__drawer-item {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 0.85rem;
+    padding: 0.75rem 0.85rem;
+    border-radius: 10px;
+    color: var(--color-text);
+    border-bottom: none;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+  }
+  .nav__drawer-langs {
     list-style: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
   }
-  .nav__lang-link {
-    color: var(--color-text-muted);
-    border-bottom: none;
-    font-size: var(--text-xs);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    padding: 0.15rem 0.4rem;
-    border-radius: 3px;
-  }
-  .nav__lang-link:hover { color: var(--color-text); }
-  .nav__lang-link.is-active {
+  .nav__drawer-lang {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
     color: var(--color-text);
-    background: var(--color-border, rgba(255,255,255,0.08));
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--text-sm);
+  }
+  .nav__drawer-lang.is-active {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
   }
 </style>
+
+<script>
+  // Hover-and-click dropdowns with smart open/close.
+  // - Desktop: pointerenter opens the menu, pointerleave on the whole group closes it.
+  //   Click also toggles (keyboard / touch fallback).
+  // - Closes on Escape and on click outside.
+  // - Burger toggles a drawer, body scroll locked while open.
+  const root = document.querySelector('[data-nav]');
+  if (root) {
+    const groups = root.querySelectorAll<HTMLElement>('[data-menu]');
+    const HOVER_CLOSE_DELAY = 140;
+    const closeTimers = new WeakMap<HTMLElement, number>();
+
+    const closeAll = (except?: HTMLElement) => {
+      groups.forEach((g) => {
+        if (g === except) return;
+        g.removeAttribute('data-open');
+        const trig = g.querySelector<HTMLButtonElement>('[data-menu-trigger]');
+        trig?.setAttribute('aria-expanded', 'false');
+      });
+    };
+
+    const open = (g: HTMLElement) => {
+      const t = closeTimers.get(g);
+      if (t) { window.clearTimeout(t); closeTimers.delete(g); }
+      closeAll(g);
+      g.setAttribute('data-open', 'true');
+      g.querySelector<HTMLButtonElement>('[data-menu-trigger]')
+        ?.setAttribute('aria-expanded', 'true');
+    };
+
+    const close = (g: HTMLElement, immediate = false) => {
+      const run = () => {
+        g.removeAttribute('data-open');
+        g.querySelector<HTMLButtonElement>('[data-menu-trigger]')
+          ?.setAttribute('aria-expanded', 'false');
+      };
+      if (immediate) { run(); return; }
+      const id = window.setTimeout(run, HOVER_CLOSE_DELAY);
+      closeTimers.set(g, id);
+    };
+
+    groups.forEach((g) => {
+      const trigger = g.querySelector<HTMLButtonElement>('[data-menu-trigger]');
+      if (!trigger) return;
+
+      g.addEventListener('pointerenter', (e) => {
+        if ((e as PointerEvent).pointerType === 'mouse') open(g);
+      });
+      g.addEventListener('pointerleave', (e) => {
+        if ((e as PointerEvent).pointerType === 'mouse') close(g);
+      });
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const isOpen = g.getAttribute('data-open') === 'true';
+        if (isOpen) close(g, true); else open(g);
+      });
+      trigger.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          open(g);
+          const first = g.querySelector<HTMLAnchorElement>('[role="menuitem"]');
+          first?.focus();
+        }
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeAll();
+    });
+    document.addEventListener('click', (e) => {
+      if (!root.contains(e.target as Node)) closeAll();
+    });
+
+    // Theme toggle: flips data-theme on <html>, persists to localStorage,
+    // syncs all toggle buttons (desktop + mobile share state).
+    const themeButtons = root.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]');
+    const syncThemePressed = () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      themeButtons.forEach((b) => b.setAttribute('aria-pressed', String(isDark)));
+    };
+    syncThemePressed();
+    themeButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (_) { /* private mode */ }
+        syncThemePressed();
+      });
+    });
+
+    // Burger
+    const burger = root.querySelector<HTMLButtonElement>('[data-burger]');
+    const drawer = root.querySelector<HTMLElement>('[data-drawer]');
+    if (burger && drawer) {
+      burger.addEventListener('click', () => {
+        const open = burger.getAttribute('aria-expanded') === 'true';
+        const next = !open;
+        burger.setAttribute('aria-expanded', String(next));
+        if (next) {
+          drawer.removeAttribute('hidden');
+          document.body.style.overflow = 'hidden';
+        } else {
+          drawer.setAttribute('hidden', '');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+  }
+</script>

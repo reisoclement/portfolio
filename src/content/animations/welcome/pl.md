@@ -1,5 +1,5 @@
 ---
-title: "Witaj — czym jest ten notatnik"
+title: "Witaj, czym jest ten notatnik"
 description: "Krótka notka otwierająca. Pierwsza animacja zastąpi to, gdy tylko będzie gotowa."
 date: 2026-05-03
 duration: "00:30"

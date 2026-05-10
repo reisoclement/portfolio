@@ -42,12 +42,10 @@ const videoSrc = `${base}animations/circles-of-life/${locale}/circles-of-life.mp
           {t.circlesOfLife.videoFallback}
         </video>
       </div>
-      <p class="panel__caption muted">{t.circlesOfLife.videoCaption}</p>
     </div>
 
     <div id="panel-interactive" class="panel" role="tabpanel" aria-labelledby="tab-interactive" hidden>
       <InteractiveViewer client:visible locale={locale} />
-      <p class="panel__caption muted">{t.circlesOfLife.interactiveCaption}</p>
     </div>
   </section>
 </Base>
