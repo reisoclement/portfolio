@@ -1,5 +1,5 @@
 // Public surface for embedders (e.g. the website's interactive viewer).
-// Studio entry point stays in `index.ts`. This module is import-only — no
+// Studio entry point stays in `index.ts`. This module is import-only, no
 // side effects.
 
 export { SpecExtractor } from "./Composition";

@@ -6,7 +6,7 @@ import { PdfPage } from "../components/PdfPage";
 import { SectionHeading } from "../components/SectionHeading";
 
 // Browser-style frame containing v2 (left) + matched v1 pages (right). Mirrors
-// pdf-comparer's output layout — same green/red/grey palette.
+// pdf-comparer's output layout, same green/red/grey palette.
 export const SceneFTLDiff: React.FC = () => {
   const frame = useCurrentFrame();
   const { t } = useLocale();
@@ -143,7 +143,7 @@ const DiffRow: React.FC<{ rowIndex: number }> = ({ rowIndex }) => {
       <PdfPage
         width={520}
         height={300}
-        label={`v2 — page ${rowIndex}`}
+        label={`v2, page ${rowIndex}`}
         labelColor={COLORS.added}
         lines={9}
         highlights={v2Highlights}
@@ -151,7 +151,7 @@ const DiffRow: React.FC<{ rowIndex: number }> = ({ rowIndex }) => {
       <PdfPage
         width={520}
         height={300}
-        label={`v1 — matched`}
+        label={`v1, matched`}
         labelColor={COLORS.removed}
         lines={9}
         highlights={v1Highlights}

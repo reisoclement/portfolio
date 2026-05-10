@@ -10,13 +10,17 @@ export const fr: Dict = {
     home: "Accueil",
     primaryAriaLabel: "Principal",
     languageSwitcherAriaLabel: "Langue",
+    animationsLabel: "Animations",
+    menuLabel: "Menu",
+    closeLabel: "Fermer",
+    languagesLabel: "Langues",
   },
   footer: {
     builtWith: "Réalisé avec Remotion + Astro",
   },
   home: {
     title:
-      "Carnet — Animations qui capturent des idées à garder · Clément Reiso",
+      "Carnet, Animations qui capturent des idées à garder · Clément Reiso",
     description:
       "Une collection personnelle d'animations par Clément Reiso. Des courtes vidéos qui transforment des idées abstraites en quelque chose à regarder, construites avec Remotion.",
     eyebrow: "Un carnet personnel",
@@ -30,15 +34,16 @@ export const fr: Dict = {
     builtWithParagraphHtml:
       'Construit avec <a href="https://www.remotion.dev/">Remotion</a> pour les vidéos et <a href="https://astro.build/">Astro</a> pour le site lui-même. Les deux sont ouverts et le code est sur GitHub.',
     currentlyHeading: "Actuellement",
+    watch: "Regarder",
   },
   resume: {
-    title: "CV — Clément Reiso",
+    title: "CV, Clément Reiso",
     description:
-      "Le CV animé de Clément Reiso — parcours, IA, projets personnels, langues et quelques loisirs.",
+      "Le CV animé de Clément Reiso, parcours, IA, projets personnels, langues et quelques loisirs.",
     eyebrow: "CV animé",
-    heading: "Mon CV — animé",
+    heading: "Mon CV, animé",
     summaryShort:
-      "Parcours, IA, projets personnels, langues et quelques loisirs — en mouvement.",
+      "Parcours, IA, projets personnels, langues et quelques loisirs, en mouvement.",
     lede:
       "Une courte visite animée de qui je suis, où j'ai travaillé, ce que j'ai construit, et ce que je fais en dehors du clavier. Lancez la lecture, ou avancez scène par scène.",
     tabs: {
@@ -54,6 +59,8 @@ export const fr: Dict = {
       stageButtonAriaSkip: "Passer à la fin de la scène en cours",
       stageButtonAriaRestart: "Recommencer",
       stageButtonAriaAdvance: "Passer à la scène suivante",
+      fullscreen: "Plein écran",
+      exitFullscreen: "Quitter le plein écran",
       back: "← Retour",
       restart: "Recommencer",
       next: "Suivant →",
@@ -63,7 +70,7 @@ export const fr: Dict = {
     },
   },
   whenToUseAi: {
-    title: "Quand utiliser l'IA — Carnet",
+    title: "Quand utiliser l'IA, Carnet",
     eyebrow: "Animation · 02",
     heading: "Quand utiliser l'IA (et quand ne pas l'utiliser)",
     summaryShort:
@@ -83,6 +90,8 @@ export const fr: Dict = {
       stageButtonAriaSkip: "Passer à la fin de la scène en cours",
       stageButtonAriaRestart: "Recommencer",
       stageButtonAriaAdvance: "Passer à la scène suivante",
+      fullscreen: "Plein écran",
+      exitFullscreen: "Quitter le plein écran",
       back: "← Retour",
       restart: "Recommencer",
       next: "Suivant →",
@@ -92,13 +101,13 @@ export const fr: Dict = {
     },
   },
   buildAgents: {
-    title: "Construire des agents en langage naturel — Carnet",
+    title: "Construire des agents en langage naturel, Carnet",
     eyebrow: "Animation · 03",
     heading: "Construire des agents en langage naturel",
     summaryShort:
       "Comment fonctionne vraiment un agent : deux dossiers de markdown, sans framework, sans magie.",
     lede:
-      "Un guide visuel court pour les non-techniciens. La thèse : un agent, c'est deux dossiers de texte brut — un pour ce qu'il sait, un pour ce qu'il fait. Regardez-le préparer un gâteau au chocolat.",
+      "Un guide visuel court pour les non-techniciens. La thèse : un agent, c'est deux dossiers de texte brut, un pour ce qu'il sait, un pour ce qu'il fait. Regardez-le préparer un gâteau au chocolat.",
     tabs: {
       ariaLabel: "Mode de lecture",
       video: "Vidéo",
@@ -112,6 +121,8 @@ export const fr: Dict = {
       stageButtonAriaSkip: "Passer à la fin de la scène en cours",
       stageButtonAriaRestart: "Recommencer",
       stageButtonAriaAdvance: "Passer à la scène suivante",
+      fullscreen: "Plein écran",
+      exitFullscreen: "Quitter le plein écran",
       back: "← Retour",
       restart: "Recommencer",
       next: "Suivant →",
@@ -121,7 +132,7 @@ export const fr: Dict = {
     },
   },
   circlesOfLife: {
-    title: "Les cercles de la vie — Carnet",
+    title: "Les cercles de la vie, Carnet",
     eyebrow: "Animation · 01",
     heading: "Les cercles de la vie",
     summaryShort:
@@ -136,11 +147,13 @@ export const fr: Dict = {
     videoCaption: "Lancez la lecture. Environ 95 secondes, avec narration.",
     videoFallback: "Votre navigateur ne prend pas en charge la balise vidéo.",
     interactiveCaption:
-      "Une scène par appui. Utilisez cette version pour commenter chaque temps — pour une présentation, une discussion, ou simplement pour aller plus lentement.",
+      "Une scène par appui. Utilisez cette version pour commenter chaque temps, pour une présentation, une discussion, ou simplement pour aller plus lentement.",
     interactive: {
       stageButtonAriaSkip: "Passer à la fin de la scène en cours",
       stageButtonAriaRestart: "Recommencer",
       stageButtonAriaAdvance: "Passer à la scène suivante",
+      fullscreen: "Plein écran",
+      exitFullscreen: "Quitter le plein écran",
       back: "← Retour",
       restart: "Recommencer",
       next: "Suivant →",
@@ -150,19 +163,21 @@ export const fr: Dict = {
     },
   },
   specExtractor: {
-    title: "Spec Data Extractor — Carnet",
+    title: "Spec Data Extractor, Carnet",
     eyebrow: "Animation · 05",
-    heading: "Spec Data Extractor — comment ça marche",
+    heading: "Spec Data Extractor, comment ça marche",
     summaryShort:
-      "Comment 150 pages de spécifications deviennent des lignes structurées et éditables.",
+      "Comment des milliers de pages de spécifications deviennent des lignes structurées et éditables.",
     lede:
-      "Comment le Spec Data Extractor transforme un PDF de spécification de 150 pages en lignes structurées et éditables — et comment utiliser l'espace de travail côte à côte une fois le rapport ouvert. Inclut un aperçu de FTL, l'outil de migration v2 à venir.",
+      "Comment le Spec Data Extractor transforme un long PDF de spécification en lignes structurées et éditables, et comment utiliser l'espace de travail côte à côte une fois le rapport ouvert. Inclut un aperçu de FTL, l'outil de migration v2 à venir.",
     interactiveCaption:
       "Une scène par appui. Idéal pour avancer doucement ou commenter chaque temps.",
     interactive: {
       stageButtonAriaSkip: "Passer à la fin de la scène actuelle",
       stageButtonAriaRestart: "Recommencer",
       stageButtonAriaAdvance: "Avancer à la scène suivante",
+      fullscreen: "Plein écran",
+      exitFullscreen: "Quitter le plein écran",
       back: "← Retour",
       restart: "Recommencer",
       next: "Suivant →",

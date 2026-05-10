@@ -4,7 +4,7 @@ import { fadeOut, rise, easeOutQuart } from "../anim";
 import { useLocale } from "../LocaleContext";
 import { SectionHeading } from "../components/SectionHeading";
 
-// Two "bad" choices on the left, FTL_new_gen as the answer on the right.
+// Two "bad" choices on the left, FTL New Gen as the answer on the right.
 export const SceneFTLIntro: React.FC = () => {
   const frame = useCurrentFrame();
   const { t } = useLocale();

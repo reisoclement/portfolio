@@ -168,7 +168,7 @@ const Locked: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       fontWeight: 700,
       cursor: "not-allowed",
     }}
-    title="Trigger word — locked"
+    title="Trigger word, locked"
   >
     {children}
   </span>

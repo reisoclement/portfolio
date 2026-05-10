@@ -10,13 +10,17 @@ export const pl: Dict = {
     home: "Strona główna",
     primaryAriaLabel: "Główne",
     languageSwitcherAriaLabel: "Język",
+    animationsLabel: "Animacje",
+    menuLabel: "Menu",
+    closeLabel: "Zamknij",
+    languagesLabel: "Języki",
   },
   footer: {
     builtWith: "Zbudowane z Remotion + Astro",
   },
   home: {
     title:
-      "Notatnik — Animacje, które utrwalają warte zapamiętania pomysły · Clément Reiso",
+      "Notatnik, Animacje, które utrwalają warte zapamiętania pomysły · Clément Reiso",
     description:
       "Osobista kolekcja animacji autorstwa Clémenta Reiso. Krótkie filmy, które zamieniają abstrakcyjne idee w coś, co można obejrzeć, zbudowane z Remotion.",
     eyebrow: "Osobisty notatnik",
@@ -30,15 +34,16 @@ export const pl: Dict = {
     builtWithParagraphHtml:
       'Zbudowane z <a href="https://www.remotion.dev/">Remotion</a> dla filmów i <a href="https://astro.build/">Astro</a> dla samej witryny. Oba są open source, kod jest na GitHubie.',
     currentlyHeading: "Aktualnie",
+    watch: "Obejrzyj",
   },
   resume: {
-    title: "CV — Clément Reiso",
+    title: "CV, Clément Reiso",
     description:
-      "Animowane CV Clémenta Reiso — kariera, AI, projekty osobiste, języki i kilka pasji.",
+      "Animowane CV Clémenta Reiso, kariera, AI, projekty osobiste, języki i kilka pasji.",
     eyebrow: "Animowane CV",
-    heading: "Moje CV — animowane",
+    heading: "Moje CV, animowane",
     summaryShort:
-      "Kariera, AI, projekty osobiste, języki i kilka pasji — w ruchu.",
+      "Kariera, AI, projekty osobiste, języki i kilka pasji, w ruchu.",
     lede:
       "Krótka animowana opowieść o tym, kim jestem, gdzie pracowałem, co zbudowałem i co robię poza klawiaturą. Naciśnij play albo przechodź scena po scenie.",
     tabs: {
@@ -54,6 +59,8 @@ export const pl: Dict = {
       stageButtonAriaSkip: "Przewiń do końca obecnej sceny",
       stageButtonAriaRestart: "Zacznij od nowa",
       stageButtonAriaAdvance: "Przejdź do następnej sceny",
+      fullscreen: "Pełny ekran",
+      exitFullscreen: "Wyjdź z pełnego ekranu",
       back: "← Wstecz",
       restart: "Od nowa",
       next: "Dalej →",
@@ -63,7 +70,7 @@ export const pl: Dict = {
     },
   },
   whenToUseAi: {
-    title: "Kiedy używać AI — Notatnik",
+    title: "Kiedy używać AI, Notatnik",
     eyebrow: "Animacja · 02",
     heading: "Kiedy używać AI (i kiedy nie)",
     summaryShort:
@@ -83,6 +90,8 @@ export const pl: Dict = {
       stageButtonAriaSkip: "Przejdź do końca bieżącej sceny",
       stageButtonAriaRestart: "Zacznij od nowa",
       stageButtonAriaAdvance: "Przejdź do następnej sceny",
+      fullscreen: "Pełny ekran",
+      exitFullscreen: "Wyjdź z pełnego ekranu",
       back: "← Wstecz",
       restart: "Zacznij od nowa",
       next: "Dalej →",
@@ -92,13 +101,13 @@ export const pl: Dict = {
     },
   },
   buildAgents: {
-    title: "Buduj agentów w języku naturalnym — Notatnik",
+    title: "Buduj agentów w języku naturalnym, Notatnik",
     eyebrow: "Animacja · 03",
     heading: "Buduj agentów w języku naturalnym",
     summaryShort:
       "Jak naprawdę działa agent: dwa foldery markdown, bez frameworka, bez magii.",
     lede:
-      "Krótki przewodnik wizualny dla osób nietechnicznych. Teza: agent to dwa foldery zwykłego tekstu — jeden na to, co wie, drugi na to, co robi. Patrz, jak piecze ciasto czekoladowe.",
+      "Krótki przewodnik wizualny dla osób nietechnicznych. Teza: agent to dwa foldery zwykłego tekstu, jeden na to, co wie, drugi na to, co robi. Patrz, jak piecze ciasto czekoladowe.",
     tabs: {
       ariaLabel: "Tryb odtwarzania",
       video: "Wideo",
@@ -112,6 +121,8 @@ export const pl: Dict = {
       stageButtonAriaSkip: "Przejdź do końca bieżącej sceny",
       stageButtonAriaRestart: "Zacznij od nowa",
       stageButtonAriaAdvance: "Przejdź do następnej sceny",
+      fullscreen: "Pełny ekran",
+      exitFullscreen: "Wyjdź z pełnego ekranu",
       back: "← Wstecz",
       restart: "Zacznij od nowa",
       next: "Dalej →",
@@ -121,7 +132,7 @@ export const pl: Dict = {
     },
   },
   circlesOfLife: {
-    title: "Kręgi życia — Notatnik",
+    title: "Kręgi życia, Notatnik",
     eyebrow: "Animacja · 01",
     heading: "Kręgi życia",
     summaryShort:
@@ -136,11 +147,13 @@ export const pl: Dict = {
     videoCaption: "Naciśnij play. Około 95 sekund, z narracją.",
     videoFallback: "Twoja przeglądarka nie obsługuje znacznika wideo.",
     interactiveCaption:
-      "Jedna scena na kliknięcie. Użyj tej wersji, gdy chcesz omówić każdy moment — na prezentację, dyskusję lub po prostu, by iść wolniej.",
+      "Jedna scena na kliknięcie. Użyj tej wersji, gdy chcesz omówić każdy moment, na prezentację, dyskusję lub po prostu, by iść wolniej.",
     interactive: {
       stageButtonAriaSkip: "Przewiń do końca obecnej sceny",
       stageButtonAriaRestart: "Zacznij od nowa",
       stageButtonAriaAdvance: "Przejdź do następnej sceny",
+      fullscreen: "Pełny ekran",
+      exitFullscreen: "Wyjdź z pełnego ekranu",
       back: "← Wstecz",
       restart: "Od nowa",
       next: "Dalej →",
@@ -150,19 +163,21 @@ export const pl: Dict = {
     },
   },
   specExtractor: {
-    title: "Spec Data Extractor — Notatnik",
+    title: "Spec Data Extractor, Notatnik",
     eyebrow: "Animacja · 05",
-    heading: "Spec Data Extractor — jak to działa",
+    heading: "Spec Data Extractor, jak to działa",
     summaryShort:
-      "Jak 150 stron specyfikacji zamienia się w ustrukturyzowane, edytowalne wiersze.",
+      "Jak tysiące stron specyfikacji zamieniają się w ustrukturyzowane, edytowalne wiersze.",
     lede:
-      "Jak Spec Data Extractor zamienia 150-stronicowy PDF ze specyfikacją w ustrukturyzowane, edytowalne wiersze — i jak korzystać z obszaru roboczego obok siebie po otwarciu raportu. Zawiera zapowiedź FTL, nadchodzącego narzędzia migracji v2.",
+      "Jak Spec Data Extractor zamienia obszerny PDF ze specyfikacją w ustrukturyzowane, edytowalne wiersze, i jak korzystać z obszaru roboczego obok siebie po otwarciu raportu. Zawiera zapowiedź FTL, nadchodzącego narzędzia migracji v2.",
     interactiveCaption:
       "Jedna scena na kliknięcie. Idealne, gdy chcesz iść powoli lub komentować każdy moment.",
     interactive: {
       stageButtonAriaSkip: "Pomiń do końca bieżącej sceny",
       stageButtonAriaRestart: "Od nowa",
       stageButtonAriaAdvance: "Przejdź do następnej sceny",
+      fullscreen: "Pełny ekran",
+      exitFullscreen: "Wyjdź z pełnego ekranu",
       back: "← Wstecz",
       restart: "Od nowa",
       next: "Dalej →",

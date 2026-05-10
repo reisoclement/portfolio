@@ -1,4 +1,4 @@
-// English — source of truth for the website's UI strings.
+// English: source of truth for the website's UI strings.
 // All other locales mirror this shape; missing keys will surface as TS errors.
 
 export const en = {
@@ -11,34 +11,39 @@ export const en = {
     home: "Home",
     primaryAriaLabel: "Primary",
     languageSwitcherAriaLabel: "Language",
+    animationsLabel: "Animations",
+    menuLabel: "Menu",
+    closeLabel: "Close",
+    languagesLabel: "Languages",
   },
   footer: {
     builtWith: "Built with Remotion + Astro",
   },
   home: {
-    title: "Notebook — Animations capturing ideas worth keeping · Clément Reiso",
+    title: "Notebook · Animations capturing ideas worth keeping · Clément Reiso",
     description:
-      "A personal collection of animations by Clément Reiso. Short videos that turn abstract ideas into something you can watch — built with Remotion.",
+      "A personal collection of animations by Clément Reiso. Short videos that turn abstract ideas into something you can watch, built with Remotion.",
     eyebrow: "A personal notebook",
     headlineLine1: "Animations to remember",
     headlineLine2: "what I learn.",
     lede:
-      "This is a small corner of the internet where I keep the ideas I want to hold onto. Each one is turned into a short animation — a way to make abstract knowledge feel concrete, and to revisit it later without re-reading a book.",
+      "This is a small corner of the internet where I keep the ideas I want to hold onto. Each one is turned into a short animation, a way to make abstract knowledge feel concrete, and to revisit it later without re-reading a book.",
     whatYouFindHeading: "What you'll find here",
     whatYouFindParagraph:
-      "Every page on this site is one animation. Press play, watch it through, and the idea will probably stick longer than a paragraph would. The collection grows slowly — quality over volume.",
+      "Every page on this site is one animation. Press play, watch it through, and the idea will probably stick longer than a paragraph would. The collection grows slowly. Quality over volume.",
     builtWithParagraphHtml:
       'Built with <a href="https://www.remotion.dev/">Remotion</a> for the videos and <a href="https://astro.build/">Astro</a> for the site itself. Both are open and the source lives on GitHub.',
     currentlyHeading: "Currently",
+    watch: "Watch",
   },
   resume: {
-    title: "Resume — Clément Reiso",
+    title: "Resume · Clément Reiso",
     description:
-      "An animated CV by Clément Reiso — career, AI work, side projects, languages and a few hobbies.",
+      "An animated CV by Clément Reiso. Career, AI work, side projects, languages and a few hobbies.",
     eyebrow: "Animated CV",
-    heading: "My resume — animated",
+    heading: "My resume, animated",
     summaryShort:
-      "Career, AI work, side projects, languages and a few hobbies — in motion.",
+      "Career, AI work, side projects, languages and a few hobbies, in motion.",
     lede:
       "A short animated walkthrough of who I am, where I've worked, what I've built, and what I do off the keyboard. Press play, or step through it scene by scene.",
     tabs: {
@@ -54,6 +59,8 @@ export const en = {
       stageButtonAriaSkip: "Skip to end of current scene",
       stageButtonAriaRestart: "Restart",
       stageButtonAriaAdvance: "Advance to next scene",
+      fullscreen: "Fullscreen",
+      exitFullscreen: "Exit fullscreen",
       back: "← Back",
       restart: "Restart",
       next: "Next →",
@@ -63,7 +70,7 @@ export const en = {
     },
   },
   whenToUseAi: {
-    title: "When to use AI — Notebook",
+    title: "When to use AI · Notebook",
     eyebrow: "Animation · 02",
     heading: "When to use AI (and when not to)",
     summaryShort:
@@ -83,6 +90,8 @@ export const en = {
       stageButtonAriaSkip: "Skip to end of current scene",
       stageButtonAriaRestart: "Restart",
       stageButtonAriaAdvance: "Advance to next scene",
+      fullscreen: "Fullscreen",
+      exitFullscreen: "Exit fullscreen",
       back: "← Back",
       restart: "Restart",
       next: "Next →",
@@ -92,13 +101,13 @@ export const en = {
     },
   },
   buildAgents: {
-    title: "Build agents with natural language — Notebook",
+    title: "Build agents with natural language · Notebook",
     eyebrow: "Animation · 03",
     heading: "Build agents with natural language",
     summaryShort:
       "How an agent really works: two folders of markdown, no framework, no magic.",
     lede:
-      "A short visual guide for non-technical teammates. The thesis: an agent is two folders of plain text — one for what it knows, one for what it does. Watch it bake a chocolate cake.",
+      "A short visual guide for non-technical teammates. The thesis: an agent is two folders of plain text, one for what it knows, one for what it does. Watch it bake a chocolate cake.",
     tabs: {
       ariaLabel: "Playback mode",
       video: "Video",
@@ -112,6 +121,8 @@ export const en = {
       stageButtonAriaSkip: "Skip to end of current scene",
       stageButtonAriaRestart: "Restart",
       stageButtonAriaAdvance: "Advance to next scene",
+      fullscreen: "Fullscreen",
+      exitFullscreen: "Exit fullscreen",
       back: "← Back",
       restart: "Restart",
       next: "Next →",
@@ -121,13 +132,13 @@ export const en = {
     },
   },
   circlesOfLife: {
-    title: "Circles of Life — Notebook",
+    title: "Circles of Life · Notebook",
     eyebrow: "Animation · 01",
     heading: "Circles of life",
     summaryShort:
       "Concentric rings of responsibility. Master the centre before you reach for the world.",
     lede:
-      "Concentric circles of responsibility. You earn the right to influence the next ring only by mastering the inner one — yet most people invert it, trying to fix the outside while the centre stays unfinished.",
+      "Concentric circles of responsibility. You earn the right to influence the next ring only by mastering the inner one, yet most people invert it, trying to fix the outside while the centre stays unfinished.",
     tabs: {
       ariaLabel: "Playback mode",
       video: "Video",
@@ -136,11 +147,13 @@ export const en = {
     videoCaption: "Press play. Around 95 seconds, with narration.",
     videoFallback: "Your browser does not support the video tag.",
     interactiveCaption:
-      "One scene per press. Use this version when you want to talk over each beat — for a presentation, a discussion, or just to take it slowly.",
+      "One scene per press. Use this version when you want to talk over each beat, for a presentation, a discussion, or just to take it slowly.",
     interactive: {
       stageButtonAriaSkip: "Skip to end of current scene",
       stageButtonAriaRestart: "Restart",
       stageButtonAriaAdvance: "Advance to next scene",
+      fullscreen: "Fullscreen",
+      exitFullscreen: "Exit fullscreen",
       back: "← Back",
       restart: "Restart",
       next: "Next →",
@@ -150,19 +163,21 @@ export const en = {
     },
   },
   specExtractor: {
-    title: "Spec Data Extractor — Notebook",
+    title: "Spec Data Extractor · Notebook",
     eyebrow: "Animation · 05",
-    heading: "Spec Data Extractor — how it works",
+    heading: "Spec Data Extractor: how it works",
     summaryShort:
-      "How a 150-page spec turns into structured, editable rows.",
+      "How thousands of pages of specs turn into structured, editable rows.",
     lede:
-      "How the Spec Data Extractor turns a 150-page PDF spec into structured, editable rows — and how to use the side-by-side workspace once the report opens. Includes a teaser for FTL, the upcoming v2-migration tool.",
+      "How the Spec Data Extractor turns a long PDF spec into structured, editable rows, and how to use the side-by-side workspace once the report opens. Includes a teaser for FTL, the upcoming v2-migration tool.",
     interactiveCaption:
       "One scene per press. Use this version when you want to take it slowly, or talk over each beat.",
     interactive: {
       stageButtonAriaSkip: "Skip to end of current scene",
       stageButtonAriaRestart: "Restart",
       stageButtonAriaAdvance: "Advance to next scene",
+      fullscreen: "Fullscreen",
+      exitFullscreen: "Exit fullscreen",
       back: "← Back",
       restart: "Restart",
       next: "Next →",
@@ -178,7 +193,7 @@ export const en = {
     tagsLabel: "Tags",
     sourceLabel: "Source",
     adjacentNavAriaLabel: "Adjacent animations",
-    // Used by toLocaleDateString — locale tag.
+    // Used by toLocaleDateString. Locale tag.
     dateLocaleTag: "en-US",
   },
 } as const;

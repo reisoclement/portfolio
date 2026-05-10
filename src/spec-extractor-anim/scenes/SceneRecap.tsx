@@ -93,7 +93,7 @@ export const SceneRecap: React.FC = () => {
         {t.text.recap.closer}
       </div>
 
-      {/* Watermark — bottom-right */}
+      {/* Watermark, bottom-right */}
       <div
         style={{
           position: "absolute",

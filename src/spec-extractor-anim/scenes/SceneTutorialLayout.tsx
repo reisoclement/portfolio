@@ -117,7 +117,7 @@ export const SceneTutorialLayout: React.FC = () => {
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             <ColumnLabel text={t.text.tutorialLayout.rightLabel} color={COLORS.added} />
             <Row label="OBLIGATION" cat="obligation" text="The device shall withstand 5 mm vibration." assess="OK" />
-            <Row label="COMPLIANCE" cat="compliance" text="Compliance with ISO 16750-3 is required." assess="—" />
+            <Row label="COMPLIANCE" cat="compliance" text="Compliance with ISO 16750-3 is required." assess="," />
             <Row label="NUMERICAL" cat="numerical" text="Operating range −40 °C to +85 °C." assess="OK" />
             <Row label="REQUIREMENT" cat="requirement" text="Endurance test required before shipment." assess="NOK" critical />
           </div>
@@ -164,7 +164,7 @@ const Row: React.FC<{
   label: string;
   cat: keyof typeof CATEGORY_COLORS;
   text: string;
-  assess: "OK" | "NOK" | "N/A" | "—";
+  assess: "OK" | "NOK" | "N/A" | ",";
   critical?: boolean;
 }> = ({ label, cat, text, assess, critical }) => {
   const c = CATEGORY_COLORS[cat];

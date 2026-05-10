@@ -25,7 +25,7 @@ import { SceneRecap } from "./scenes/SceneRecap";
 const D = SCENE_DURATIONS;
 
 const ORDER = [
-  // Part 1 — How it works
+  // Part 1, How it works
   "hook",
   "title",
   "problem",
@@ -36,7 +36,7 @@ const ORDER = [
   "hybrid",
   "outputs",
 
-  // Part 2 — How to use it
+  // Part 2, How to use it
   "tutorialDivider",
   "tutorialLayout",
   "tutorialRowActions",

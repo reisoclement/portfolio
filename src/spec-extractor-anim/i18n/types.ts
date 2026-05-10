@@ -5,7 +5,7 @@ export type Dict = {
   text: {
     hook: {
       kicker: string;
-      stat: string;          // big number, e.g. "150 pages"
+      stat: string;          // big phrase, e.g. "Thousands of pages."
       line: string;          // supporting line e.g. "50+ requirements buried in them."
     };
     title: {
@@ -49,7 +49,7 @@ export type Dict = {
     extract: {
       kicker: string;
       heading: string;
-      libNote: string;       // "PyMuPDF — words + bounding boxes"
+      libNote: string;       // "PyMuPDF, words + bounding boxes"
       bullet: string;        // every word tested against compiled regexes
     };
     hybrid: {
@@ -69,7 +69,7 @@ export type Dict = {
     };
     tutorialDivider: {
       kicker: string;        // "Part 2"
-      heading: string;       // "Now — how to use it."
+      heading: string;       // "Now, how to use it."
       sub: string;
     };
     tutorialLayout: {
@@ -93,7 +93,7 @@ export type Dict = {
         add: { name: string; desc: string };
       };
       meta: {
-        assessment: string;     // "Assessment dropdown — OK / NOK / N/A"
+        assessment: string;     // "Assessment dropdown, OK / NOK / N/A"
         critical: string;       // "Critical toggle"
         triggerLocked: string;  // "Trigger words stay locked so you can't lose them"
       };
@@ -115,7 +115,7 @@ export type Dict = {
       heading: string;       // "When v2 of the spec arrives…"
       bad1: string;          // re-extract → lose curated edits
       bad2: string;          // diff by hand
-      ftl: string;           // FTL_new_gen — Forward, Track, Learn
+      ftl: string;           // FTL New Gen, Forward, Track, Learn
       payoff: string;
     };
     ftlDiff: {
@@ -139,7 +139,7 @@ export type Dict = {
       closer: string;
     };
   };
-  // Short titles shown by the website's interactive viewer chip — one per
+  // Short titles shown by the website's interactive viewer chip, one per
   // SCENE_DURATIONS key. Order is independent of `text`.
   sceneTitles: {
     hook: string;

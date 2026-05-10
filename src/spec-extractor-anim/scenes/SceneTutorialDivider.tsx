@@ -3,7 +3,7 @@ import { COLORS, FONT, FPS } from "../theme";
 import { fadeOut, rise } from "../anim";
 import { useLocale } from "../LocaleContext";
 
-// Short divider card between "Part 1 — How it works" and "Part 2 — How to use it".
+// Short divider card between "Part 1, How it works" and "Part 2, How to use it".
 export const SceneTutorialDivider: React.FC = () => {
   const frame = useCurrentFrame();
   const { t } = useLocale();

@@ -88,7 +88,7 @@ export const SceneTitle: React.FC = () => {
         {t.text.title.subtitle}
       </div>
 
-      {/* Watermark — bottom-right corner. 5s scene, plays its full arc. */}
+      {/* Watermark, bottom-right corner. 5s scene, plays its full arc. */}
       <div
         style={{
           position: "absolute",

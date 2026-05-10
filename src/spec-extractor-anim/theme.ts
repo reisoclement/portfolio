@@ -11,7 +11,7 @@ export const COLORS = {
   amberSoft: "rgba(242, 160, 61, 0.18)",
   amberHalo: "rgba(242, 160, 61, 0.35)",
 
-  // Diff highlight palette — same hues as pdf-comparer for FTL section.
+  // Diff highlight palette, same hues as pdf-comparer for FTL section.
   added: "#7AB386",
   addedSoft: "rgba(122, 179, 134, 0.32)",
   addedHalo: "rgba(122, 179, 134, 0.55)",
@@ -34,14 +34,14 @@ export const COLORS = {
 // category, the visual layering (paragraph/sentence/line) is done with
 // different opacities at render time.
 export const CATEGORY_COLORS = {
-  obligation: "#E16E5E",      // red — must / shall
-  application: "#F2A03D",     // amber — applies / applicable
-  compliance: "#5BA3D9",      // blue — comply / conform
-  requirement: "#B97AE0",     // violet — required / requested
-  expectation: "#7ABF99",     // teal — expected / target
-  assessment: "#E0B047",      // gold — assessed
-  guarantee: "#3FBFB0",       // mint — ensure / guarantee
-  numerical: "#D8D080",       // pale yellow — 5 mm, 80 dB
+  obligation: "#E16E5E",      // red, must / shall
+  application: "#F2A03D",     // amber, applies / applicable
+  compliance: "#5BA3D9",      // blue, comply / conform
+  requirement: "#B97AE0",     // violet, required / requested
+  expectation: "#7ABF99",     // teal, expected / target
+  assessment: "#E0B047",      // gold, assessed
+  guarantee: "#3FBFB0",       // mint, ensure / guarantee
+  numerical: "#D8D080",       // pale yellow, 5 mm, 80 dB
 } as const;
 
 export type Category = keyof typeof CATEGORY_COLORS;
@@ -62,19 +62,19 @@ export const FONT_SIZE = {
 
 export const FPS = 30;
 
-// ~2:07 arc — split into PART 1 ("how it works") and PART 2 ("how to use it"):
+// ~2:07 arc, split into PART 1 ("how it works") and PART 2 ("how to use it"):
 //
-//   PART 1 — How it works
+//   PART 1, How it works
 //     Hook → Title → Problem → Pipeline → Language → Rules →
 //     Extract → Hybrid view (smart row granularity) → Outputs (3 deliverables)
 //
-//   PART 2 — How to use it (in-report tutorial)
+//   PART 2, How to use it (in-report tutorial)
 //     Tutorial divider → Side-by-side layout → Per-row actions → Toolbar
 //
-//   FTL — what's coming next
+//   FTL, what's coming next
 //     FTL intro → Diff → Drawer → Recap
 export const SCENE_DURATIONS = {
-  hook: 5 * FPS,                  // 0:00  "150 pages. 50 requirements."
+  hook: 5 * FPS,                  // 0:00  "Thousands of pages. 50+ requirements."
   title: 5 * FPS,                 // 0:05  Spec Data Extractor V2.0
   problem: 7 * FPS,               // 0:10  manual review pain
   pipeline: 8 * FPS,              // 0:17  9-step pipeline overview
@@ -84,8 +84,8 @@ export const SCENE_DURATIONS = {
   hybrid: 9 * FPS,                // 0:50  prose → sentence rows · table → kept whole
   outputs: 8 * FPS,               // 0:59  three deliverables
 
-  // PART 2 — tutorial
-  tutorialDivider: 4 * FPS,       // 1:07  "Now — how to use it."
+  // PART 2, tutorial
+  tutorialDivider: 4 * FPS,       // 1:07  "Now, how to use it."
   tutorialLayout: 8 * FPS,        // 1:11  PDF preview + editable rows side-by-side
   tutorialRowActions: 9 * FPS,    // 1:19  edit / split / merge / dup / delete / add
   tutorialControls: 8 * FPS,      // 1:28  color mode · filter · table view · J/K · export

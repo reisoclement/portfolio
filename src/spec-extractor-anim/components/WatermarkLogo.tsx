@@ -44,12 +44,12 @@ const MUSTACHE_PATH =
  *   0.30 - 0.90s  Mustache fades in
  *   0.30 - 1.90s  Mustache tips rotate (pivot at inner edge, center fixed)
  *   1.90 - 2.10s  Tips settle to rest
- *   2.00 - 5.00s  Frozen — logo holds, no movement
+ *   2.00 - 5.00s  Frozen, logo holds, no movement
  *
  * The mustache is split via SVG clip-paths into three bands:
- *   - left tip   (x=0..145)   — translates with bounce
- *   - center     (x=135..265) — never moves (fixed)
- *   - right tip  (x=255..400) — translates with mirrored bounce
+ *   - left tip   (x=0..145)  , translates with bounce
+ *   - center     (x=135..265), never moves (fixed)
+ *   - right tip  (x=255..400), translates with mirrored bounce
  * Bands overlap by ~10px so joins remain invisible.
  */
 export const WatermarkLogo: React.FC<Props> = ({
@@ -73,7 +73,7 @@ export const WatermarkLogo: React.FC<Props> = ({
   const { fps } = useVideoConfig();
   const t = frame / fps;
 
-  // Master fade-in (no fade-out — logo holds for the rest of the duration)
+  // Master fade-in (no fade-out, logo holds for the rest of the duration)
   const opacity = interpolate(t, [0, 0.3], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
@@ -103,7 +103,7 @@ export const WatermarkLogo: React.FC<Props> = ({
     extrapolateRight: "clamp",
   });
 
-  // Tip rotation — active during the assembly, settles to 0 by t=2.0s, frozen after.
+  // Tip rotation, active during the assembly, settles to 0 by t=2.0s, frozen after.
   // Each tip pivots around the inner edge where it joins the center band.
   // Small angle (±4°) keeps the seam invisible at the clip boundary.
   const settle = interpolate(t, [1.9, 2.1], [1, 0], {
@@ -127,7 +127,7 @@ export const WatermarkLogo: React.FC<Props> = ({
         gap: 0,
       }}
     >
-      {/* CR monogram — traced from reference */}
+      {/* CR monogram, traced from reference */}
       <svg
         width={crWidth}
         height={crWidth}
@@ -177,14 +177,14 @@ export const WatermarkLogo: React.FC<Props> = ({
           </clipPath>
         </defs>
 
-        {/* Center band — fixed, never moves */}
+        {/* Center band, fixed, never moves */}
         <g clipPath={`url(#${centerClipId})`}>
           <g transform="matrix(2.82719,0,0,2.82719,-340.059,-408.763)">
             <path d={MUSTACHE_PATH} fill={color} />
           </g>
         </g>
 
-        {/* Left tip — rotates around inner edge */}
+        {/* Left tip, rotates around inner edge */}
         <g
           clipPath={`url(#${leftClipId})`}
           transform={`rotate(${-tipAngle} ${LEFT_PIVOT_X} ${PIVOT_Y})`}
@@ -194,7 +194,7 @@ export const WatermarkLogo: React.FC<Props> = ({
           </g>
         </g>
 
-        {/* Right tip — mirrored rotation */}
+        {/* Right tip, mirrored rotation */}
         <g
           clipPath={`url(#${rightClipId})`}
           transform={`rotate(${tipAngle} ${RIGHT_PIVOT_X} ${PIVOT_Y})`}

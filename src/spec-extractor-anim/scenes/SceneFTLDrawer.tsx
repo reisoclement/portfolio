@@ -108,7 +108,7 @@ export const SceneFTLDrawer: React.FC = () => {
               color: COLORS.textDim,
             }}
           >
-            <span>—</span>
+            <span>,</span>
             <span>□</span>
             <span>×</span>
           </div>

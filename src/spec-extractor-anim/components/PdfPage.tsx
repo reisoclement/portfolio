@@ -28,7 +28,7 @@ type Props = {
   // Each row is a horizontal band of small word boxes with optional colors.
   rows?: Row[];
   pageNumber?: number;
-  // Replaces the default paper color — used to mark "selected" / "matched"
+  // Replaces the default paper color, used to mark "selected" / "matched"
   // pages without drawing connection lines.
   paperColor?: string;
 };
