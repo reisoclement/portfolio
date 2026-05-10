@@ -34,6 +34,16 @@ export default function InteractiveViewer({ locale }: Props) {
 
   const stopAtRef = useRef<number | null>(null);
 
+  // Pause this many frames before the scene boundary so the freeze frame is
+  // fully opaque. Scenes fade out in their last ~10–28 frames; stopping at
+  // `range.end - 1` lands on a near-invisible frame that looks black.
+  const HOLD_OFFSET = 30;
+  const holdFrame = (sceneIdx: number) => {
+    const range = sceneRanges[sceneIdx];
+    if (!range) return 0;
+    return Math.max(range.start, range.end - HOLD_OFFSET);
+  };
+
   // Pause the player precisely at our target frame.
   useEffect(() => {
     const player = playerRef.current;
@@ -62,8 +72,8 @@ export default function InteractiveViewer({ locale }: Props) {
     if (!player) return;
     const range = sceneRanges[sceneIdx];
     if (!range) return;
-    // Last frame of the scene (inclusive in display, but ranges use exclusive end).
-    const target = range.end - 1;
+    // Hold on a fully opaque frame — past every scene's fade-out window.
+    const target = holdFrame(sceneIdx);
     stopAtRef.current = target;
     player.play();
     setIsPlaying(true);
@@ -112,9 +122,8 @@ export default function InteractiveViewer({ locale }: Props) {
       return;
     }
     const prevIdx = completedSceneIndex - 1;
-    const range = sceneRanges[prevIdx];
     player.pause();
-    player.seekTo(range.end - 1);
+    player.seekTo(holdFrame(prevIdx));
     setCompletedSceneIndex(prevIdx);
     stopAtRef.current = null;
   }, [completedSceneIndex, isPlaying, sceneRanges]);
