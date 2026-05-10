@@ -149,6 +149,28 @@ export const fr: Dict = {
         "Appuyez sur <kbd>Espace</kbd> ou cliquez sur le canevas pour avancer · <kbd>R</kbd> pour recommencer",
     },
   },
+  specExtractor: {
+    title: "Spec Data Extractor — Carnet",
+    eyebrow: "Animation · 05",
+    heading: "Spec Data Extractor — comment ça marche",
+    summaryShort:
+      "Comment 150 pages de spécifications deviennent des lignes structurées et éditables.",
+    lede:
+      "Comment le Spec Data Extractor transforme un PDF de spécification de 150 pages en lignes structurées et éditables — et comment utiliser l'espace de travail côte à côte une fois le rapport ouvert. Inclut un aperçu de FTL, l'outil de migration v2 à venir.",
+    interactiveCaption:
+      "Une scène par appui. Idéal pour avancer doucement ou commenter chaque temps.",
+    interactive: {
+      stageButtonAriaSkip: "Passer à la fin de la scène actuelle",
+      stageButtonAriaRestart: "Recommencer",
+      stageButtonAriaAdvance: "Avancer à la scène suivante",
+      back: "← Retour",
+      restart: "Recommencer",
+      next: "Suivant →",
+      skip: "Passer →",
+      hintHtml:
+        "Appuyez sur <kbd>Espace</kbd> ou cliquez sur le canevas pour avancer · <kbd>R</kbd> pour recommencer",
+    },
+  },
   animation: {
     backToNotebook: "← Carnet",
     publishedLabel: "Publié",

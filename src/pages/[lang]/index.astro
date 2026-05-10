@@ -15,6 +15,7 @@ const circlesHref = localeUrl(base, locale, 'circles-of-life');
 const resumeHref = localeUrl(base, locale, 'resume');
 const buildAgentsHref = localeUrl(base, locale, 'build-agents');
 const whenToUseAiHref = localeUrl(base, locale, 'when-to-use-ai');
+const specExtractorHref = localeUrl(base, locale, 'spec-extractor');
 ---
 <Base locale={locale} title={t.home.title} description={t.home.description}>
   <section class="hero container">
@@ -50,6 +51,10 @@ const whenToUseAiHref = localeUrl(base, locale, 'when-to-use-ai');
         <li>
           <a href={whenToUseAiHref}>{t.whenToUseAi.heading}</a>
           — {t.whenToUseAi.summaryShort}
+        </li>
+        <li>
+          <a href={specExtractorHref}>{t.specExtractor.heading}</a>
+          — {t.specExtractor.summaryShort}
         </li>
       </ul>
     </div>

@@ -15,6 +15,7 @@ const localeHome = localeUrl(base, locale, '');
 const circlesHref = localeUrl(base, locale, 'circles-of-life');
 const buildAgentsHref = localeUrl(base, locale, 'build-agents');
 const whenToUseAiHref = localeUrl(base, locale, 'when-to-use-ai');
+const specExtractorHref = localeUrl(base, locale, 'spec-extractor');
 
 const isActive = (href: string) => path === href || path === href.replace(/\/$/, '');
 
@@ -23,6 +24,7 @@ const links = [
   { href: circlesHref, label: t.circlesOfLife.heading },
   { href: buildAgentsHref, label: t.buildAgents.heading },
   { href: whenToUseAiHref, label: t.whenToUseAi.heading },
+  { href: specExtractorHref, label: t.specExtractor.heading },
 ];
 ---
 <header class="nav">

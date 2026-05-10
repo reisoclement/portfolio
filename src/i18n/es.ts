@@ -149,6 +149,28 @@ export const es: Dict = {
         "Pulsa <kbd>Espacio</kbd> o haz clic en el lienzo para avanzar · <kbd>R</kbd> para reiniciar",
     },
   },
+  specExtractor: {
+    title: "Spec Data Extractor — Cuaderno",
+    eyebrow: "Animación · 05",
+    heading: "Spec Data Extractor — cómo funciona",
+    summaryShort:
+      "Cómo 150 páginas de especificaciones se convierten en filas estructuradas y editables.",
+    lede:
+      "Cómo el Spec Data Extractor convierte un PDF de especificación de 150 páginas en filas estructuradas y editables — y cómo usar el espacio de trabajo lado a lado una vez abierto el informe. Incluye un adelanto de FTL, la próxima herramienta de migración v2.",
+    interactiveCaption:
+      "Una escena por pulsación. Ideal para avanzar despacio o comentar cada momento.",
+    interactive: {
+      stageButtonAriaSkip: "Saltar al final de la escena actual",
+      stageButtonAriaRestart: "Reiniciar",
+      stageButtonAriaAdvance: "Avanzar a la siguiente escena",
+      back: "← Atrás",
+      restart: "Reiniciar",
+      next: "Siguiente →",
+      skip: "Saltar →",
+      hintHtml:
+        "Pulsa <kbd>Espacio</kbd> o haz clic en el lienzo para avanzar · <kbd>R</kbd> para reiniciar",
+    },
+  },
   animation: {
     backToNotebook: "← Cuaderno",
     publishedLabel: "Publicado",

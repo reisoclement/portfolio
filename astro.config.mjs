@@ -9,6 +9,7 @@ const animationSrc = path.resolve(__dirname, 'src/circles-of-life-anim');
 const animatedResumeSrc = path.resolve(__dirname, 'src/animated-resume-anim');
 const buildAgentsSrc = path.resolve(__dirname, 'src/build-agents-anim');
 const whenToUseAiSrc = path.resolve(__dirname, 'src/when-to-use-ai-anim');
+const specExtractorSrc = path.resolve(__dirname, 'src/spec-extractor-anim');
 
 // Deployed at https://reisoclement.github.io/portfolio/
 // For a custom domain, set `site` to that domain and remove `base`.
@@ -38,6 +39,7 @@ export default defineConfig({
         '@animated-resume': animatedResumeSrc,
         '@build-agents': buildAgentsSrc,
         '@when-to-use-ai': whenToUseAiSrc,
+        '@spec-extractor': specExtractorSrc,
       },
       dedupe: ['react', 'react-dom', 'remotion', '@remotion/player'],
     },

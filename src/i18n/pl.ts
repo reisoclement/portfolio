@@ -149,6 +149,28 @@ export const pl: Dict = {
         "Naciśnij <kbd>Spacja</kbd> lub kliknij obszar, aby przejść dalej · <kbd>R</kbd>, aby zacząć od nowa",
     },
   },
+  specExtractor: {
+    title: "Spec Data Extractor — Notatnik",
+    eyebrow: "Animacja · 05",
+    heading: "Spec Data Extractor — jak to działa",
+    summaryShort:
+      "Jak 150 stron specyfikacji zamienia się w ustrukturyzowane, edytowalne wiersze.",
+    lede:
+      "Jak Spec Data Extractor zamienia 150-stronicowy PDF ze specyfikacją w ustrukturyzowane, edytowalne wiersze — i jak korzystać z obszaru roboczego obok siebie po otwarciu raportu. Zawiera zapowiedź FTL, nadchodzącego narzędzia migracji v2.",
+    interactiveCaption:
+      "Jedna scena na kliknięcie. Idealne, gdy chcesz iść powoli lub komentować każdy moment.",
+    interactive: {
+      stageButtonAriaSkip: "Pomiń do końca bieżącej sceny",
+      stageButtonAriaRestart: "Od nowa",
+      stageButtonAriaAdvance: "Przejdź do następnej sceny",
+      back: "← Wstecz",
+      restart: "Od nowa",
+      next: "Dalej →",
+      skip: "Pomiń →",
+      hintHtml:
+        "Naciśnij <kbd>Spacja</kbd> lub kliknij obszar, aby przejść dalej · <kbd>R</kbd>, aby zacząć od nowa",
+    },
+  },
   animation: {
     backToNotebook: "← Notatnik",
     publishedLabel: "Opublikowano",

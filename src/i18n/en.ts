@@ -149,6 +149,28 @@ export const en = {
         "Press <kbd>Space</kbd> or click the canvas to advance · <kbd>R</kbd> to restart",
     },
   },
+  specExtractor: {
+    title: "Spec Data Extractor — Notebook",
+    eyebrow: "Animation · 05",
+    heading: "Spec Data Extractor — how it works",
+    summaryShort:
+      "How a 150-page spec turns into structured, editable rows.",
+    lede:
+      "How the Spec Data Extractor turns a 150-page PDF spec into structured, editable rows — and how to use the side-by-side workspace once the report opens. Includes a teaser for FTL, the upcoming v2-migration tool.",
+    interactiveCaption:
+      "One scene per press. Use this version when you want to take it slowly, or talk over each beat.",
+    interactive: {
+      stageButtonAriaSkip: "Skip to end of current scene",
+      stageButtonAriaRestart: "Restart",
+      stageButtonAriaAdvance: "Advance to next scene",
+      back: "← Back",
+      restart: "Restart",
+      next: "Next →",
+      skip: "Skip →",
+      hintHtml:
+        "Press <kbd>Space</kbd> or click the canvas to advance · <kbd>R</kbd> to restart",
+    },
+  },
   animation: {
     backToNotebook: "← Notebook",
     publishedLabel: "Published",

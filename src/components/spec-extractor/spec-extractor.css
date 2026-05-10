@@ -1,0 +1,129 @@
+/* Spec Extractor — interactive viewer styles
+   Class names prefixed `sx-` to avoid collisions. */
+
+.sx-interactive {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sx-stage-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.sx-stage-button:focus-visible {
+  outline: 2px solid #ffd166;
+  outline-offset: 4px;
+}
+.sx-stage-button:disabled {
+  cursor: progress;
+}
+
+.sx-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #05060a;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.sx-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.sx-progress {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 0.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+}
+.sx-progress__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(245, 247, 255, 0.18);
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+  flex-shrink: 0;
+}
+.sx-progress__dot.is-on {
+  background: #ffd166;
+  box-shadow: 0 0 6px #ffd166;
+}
+
+.sx-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.85rem;
+  color: var(--color-text-muted, #8a93b8);
+}
+.sx-meta__count {
+  letter-spacing: 0.04em;
+}
+.sx-meta__title {
+  color: var(--color-text, #f5f7ff);
+  font-style: italic;
+}
+
+.sx-buttons {
+  display: flex;
+  gap: 0.6rem;
+}
+.sx-buttons button {
+  font: inherit;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border, rgba(245, 247, 255, 0.2));
+  background: transparent;
+  color: var(--color-text, #f5f7ff);
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+.sx-buttons button:hover:not(:disabled) {
+  background: rgba(255, 209, 102, 0.08);
+  border-color: #ffd166;
+}
+.sx-buttons button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.sx-buttons__primary {
+  background: #ffd166 !important;
+  color: #05060a !important;
+  border-color: #ffd166 !important;
+  font-weight: 600;
+}
+.sx-buttons__primary:hover:not(:disabled) {
+  filter: brightness(1.05);
+}
+
+.sx-hint {
+  font-size: 0.8rem;
+  color: var(--color-text-muted, #8a93b8);
+  margin: 0.2rem 0 0;
+}
+.sx-hint kbd {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  background: rgba(245, 247, 255, 0.08);
+  border: 1px solid rgba(245, 247, 255, 0.15);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 0.85em;
+}

@@ -1,0 +1,58 @@
+---
+import Base from '../../layouts/Base.astro';
+import InteractiveViewer from '../../components/spec-extractor/InteractiveViewer';
+import { LOCALES, getT, isLocale, type Locale } from '../../i18n';
+
+export async function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+if (!isLocale(lang)) throw new Error(`unsupported locale: ${lang}`);
+const locale: Locale = lang;
+const t = getT(locale);
+---
+<Base locale={locale} title={t.specExtractor.title}>
+  <section class="page container">
+    <header class="page__header">
+      <p class="page__eyebrow mono">{t.specExtractor.eyebrow}</p>
+      <h1 class="page__title">{t.specExtractor.heading}</h1>
+      <p class="page__lede prose">{t.specExtractor.lede}</p>
+    </header>
+
+    <div class="panel">
+      <InteractiveViewer client:visible locale={locale} />
+      <p class="panel__caption muted">{t.specExtractor.interactiveCaption}</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page {
+    padding-block: var(--space-8) var(--space-12);
+  }
+  .page__header {
+    margin-bottom: var(--space-6);
+  }
+  .page__eyebrow {
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-3);
+  }
+  .page__title {
+    margin-bottom: var(--space-3);
+  }
+  .page__lede {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+    line-height: var(--leading-snug);
+    max-width: 60ch;
+  }
+
+  .panel__caption {
+    margin-top: var(--space-3);
+    font-size: var(--text-sm);
+    text-align: center;
+  }
+</style>
