@@ -1,0 +1,77 @@
+---
+import Base from '../../layouts/Base.astro';
+import { LOCALES, getT, isLocale, type Locale } from '../../i18n';
+
+export async function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+if (!isLocale(lang)) throw new Error(`unsupported locale: ${lang}`);
+const locale: Locale = lang;
+const t = getT(locale);
+
+const base = import.meta.env.BASE_URL;
+// Per-locale MP4: animations/pdf-comparer/<lang>/pdf-comparer.mp4
+// The file is not uploaded yet — the page is wired so the route + nav work
+// while the render is in flight. Once the mp4 lands at the path above, the
+// <video> tag will pick it up with no further changes.
+const videoSrc = `${base}animations/pdf-comparer/${locale}/pdf-comparer.mp4`;
+---
+<Base locale={locale} title={t.pdfComparer.title}>
+  <section class="page container">
+    <header class="page__header">
+      <p class="page__eyebrow mono">{t.pdfComparer.eyebrow}</p>
+      <h1 class="page__title">{t.pdfComparer.heading}</h1>
+      <p class="page__lede prose">{t.pdfComparer.lede}</p>
+    </header>
+
+    <div class="video-frame">
+      <video controls preload="metadata" playsinline>
+        <source src={videoSrc} type="video/mp4" />
+        {t.pdfComparer.videoFallback}
+      </video>
+    </div>
+    <p class="video-caption muted">{t.pdfComparer.videoComingSoon}</p>
+  </section>
+</Base>
+
+<style>
+  .page {
+    padding-block: var(--space-8) var(--space-12);
+  }
+  .page__header {
+    margin-bottom: var(--space-6);
+  }
+  .page__eyebrow {
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-3);
+  }
+  .page__title {
+    margin-bottom: var(--space-3);
+  }
+  .page__lede {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+    line-height: var(--leading-snug);
+    max-width: 60ch;
+  }
+
+  .video-frame {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #0F1620;
+  }
+  .video-frame video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .video-caption {
+    margin-top: var(--space-3);
+    font-size: var(--text-sm);
+    text-align: center;
+  }
+</style>

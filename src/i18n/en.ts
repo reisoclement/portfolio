@@ -196,6 +196,18 @@ export const en = {
         "Press <kbd>Space</kbd> or click the canvas to advance · <kbd>R</kbd> to restart",
     },
   },
+  pdfComparer: {
+    title: "PDF Comparer · Notebook",
+    eyebrow: "Animation · 06",
+    heading: "PDF Comparer: how it actually works",
+    summaryShort:
+      "Two PDFs in, one diff out. The six moves the pipeline makes to spot what changed.",
+    lede:
+      "An animated walkthrough of the PDF Comparer pipeline: extracting words with positions, stripping headers, pairing pages by text and visual similarity, diffing word by word, then spatial fuzzy matching to kill false alarms.",
+    videoCaption: "Press play. Around 2 minutes, no audio.",
+    videoFallback: "Your browser does not support the video tag.",
+    videoComingSoon: "Render coming soon — page wired, video not yet uploaded.",
+  },
   animation: {
     backToNotebook: "← Notebook",
     publishedLabel: "Published",

@@ -196,6 +196,18 @@ export const fr: Dict = {
         "Appuyez sur <kbd>Espace</kbd> ou cliquez sur le canevas pour avancer · <kbd>R</kbd> pour recommencer",
     },
   },
+  pdfComparer: {
+    title: "PDF Comparer · Carnet",
+    eyebrow: "Animation · 06",
+    heading: "PDF Comparer : comment ça marche vraiment",
+    summaryShort:
+      "Deux PDF en entrée, un diff en sortie. Les six étapes du pipeline pour repérer ce qui a changé.",
+    lede:
+      "Une visite animée du pipeline PDF Comparer : extraire les mots avec leur position, retirer les en-têtes, apparier les pages par texte et similarité visuelle, comparer mot par mot, puis un appariement spatial flou pour écarter les fausses alertes.",
+    videoCaption: "Appuyez sur play. Environ 2 minutes, sans audio.",
+    videoFallback: "Votre navigateur ne prend pas en charge la balise vidéo.",
+    videoComingSoon: "Rendu à venir — page en place, vidéo pas encore téléversée.",
+  },
   animation: {
     backToNotebook: "← Carnet",
     publishedLabel: "Publié",

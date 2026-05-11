@@ -196,6 +196,18 @@ export const es: Dict = {
         "Pulsa <kbd>Espacio</kbd> o haz clic en el lienzo para avanzar · <kbd>R</kbd> para reiniciar",
     },
   },
+  pdfComparer: {
+    title: "PDF Comparer · Cuaderno",
+    eyebrow: "Animación · 06",
+    heading: "PDF Comparer: cómo funciona en realidad",
+    summaryShort:
+      "Dos PDFs entran, sale un diff. Los seis pasos de la canalización para detectar lo que cambió.",
+    lede:
+      "Un recorrido animado por la canalización del PDF Comparer: extraer palabras con sus posiciones, eliminar cabeceras, emparejar páginas por texto y similitud visual, comparar palabra por palabra y, después, un emparejamiento espacial difuso para descartar falsas alarmas.",
+    videoCaption: "Pulsa play. Alrededor de 2 minutos, sin audio.",
+    videoFallback: "Tu navegador no soporta la etiqueta de vídeo.",
+    videoComingSoon: "Render en camino — página lista, vídeo aún por subir.",
+  },
   animation: {
     backToNotebook: "← Cuaderno",
     publishedLabel: "Publicado",

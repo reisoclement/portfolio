@@ -196,6 +196,18 @@ export const pl: Dict = {
         "Naciśnij <kbd>Spacja</kbd> lub kliknij obszar, aby przejść dalej · <kbd>R</kbd>, aby zacząć od nowa",
     },
   },
+  pdfComparer: {
+    title: "PDF Comparer · Notatnik",
+    eyebrow: "Animacja · 06",
+    heading: "PDF Comparer: jak to naprawdę działa",
+    summaryShort:
+      "Dwa PDF-y na wejściu, jeden diff na wyjściu. Sześć kroków pipeline'u, by wykryć co się zmieniło.",
+    lede:
+      "Animowany przegląd pipeline'u PDF Comparer: wyciąganie słów z pozycjami, usuwanie nagłówków, parowanie stron na podstawie tekstu i podobieństwa wizualnego, porównanie słowo po słowie, a potem rozmyte dopasowanie przestrzenne, żeby odrzucić fałszywe alarmy.",
+    videoCaption: "Naciśnij play. Około 2 minuty, bez dźwięku.",
+    videoFallback: "Twoja przeglądarka nie obsługuje znacznika wideo.",
+    videoComingSoon: "Render w drodze — strona gotowa, wideo jeszcze nie wgrane.",
+  },
   animation: {
     backToNotebook: "← Notatnik",
     publishedLabel: "Opublikowano",
