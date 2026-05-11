@@ -204,9 +204,29 @@ export const fr: Dict = {
       "Deux PDF en entrée, un diff en sortie. Les six étapes du pipeline pour repérer ce qui a changé.",
     lede:
       "Une visite animée du pipeline PDF Comparer : extraire les mots avec leur position, retirer les en-têtes, apparier les pages par texte et similarité visuelle, comparer mot par mot, puis un appariement spatial flou pour écarter les fausses alertes.",
-    videoCaption: "Appuyez sur play. Environ 2 minutes, sans audio.",
+    tabs: {
+      ariaLabel: "Mode de lecture",
+      video: "Vidéo",
+      interactive: "Pas à pas",
+    },
+    videoCaption: "Appuyez sur play. Environ 1 minute 40, sans audio.",
     videoFallback: "Votre navigateur ne prend pas en charge la balise vidéo.",
     videoComingSoon: "Rendu à venir — page en place, vidéo pas encore téléversée.",
+    interactiveCaption:
+      "Une scène par appui. Idéal pour avancer doucement ou commenter chaque temps.",
+    interactive: {
+      stageButtonAriaSkip: "Passer à la fin de la scène actuelle",
+      stageButtonAriaRestart: "Recommencer",
+      stageButtonAriaAdvance: "Avancer à la scène suivante",
+      fullscreen: "Plein écran",
+      exitFullscreen: "Quitter le plein écran",
+      back: "← Retour",
+      restart: "Recommencer",
+      next: "Suivant →",
+      skip: "Passer →",
+      hintHtml:
+        "Appuyez sur <kbd>Espace</kbd> ou cliquez sur le canevas pour avancer · <kbd>R</kbd> pour recommencer",
+    },
   },
   animation: {
     backToNotebook: "← Carnet",

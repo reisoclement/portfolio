@@ -10,6 +10,7 @@ const animatedResumeSrc = path.resolve(__dirname, 'src/animated-resume-anim');
 const buildAgentsSrc = path.resolve(__dirname, 'src/build-agents-anim');
 const whenToUseAiSrc = path.resolve(__dirname, 'src/when-to-use-ai-anim');
 const specExtractorSrc = path.resolve(__dirname, 'src/spec-extractor-anim');
+const pdfComparerSrc = path.resolve(__dirname, 'src/pdf-comparer-anim');
 
 // Deployed at https://reisoclement.github.io/portfolio/
 // For a custom domain, set `site` to that domain and remove `base`.
@@ -40,6 +41,7 @@ export default defineConfig({
         '@build-agents': buildAgentsSrc,
         '@when-to-use-ai': whenToUseAiSrc,
         '@spec-extractor': specExtractorSrc,
+        '@pdf-comparer': pdfComparerSrc,
       },
       dedupe: ['react', 'react-dom', 'remotion', '@remotion/player'],
     },

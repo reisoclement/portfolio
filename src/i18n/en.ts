@@ -204,9 +204,29 @@ export const en = {
       "Two PDFs in, one diff out. The six moves the pipeline makes to spot what changed.",
     lede:
       "An animated walkthrough of the PDF Comparer pipeline: extracting words with positions, stripping headers, pairing pages by text and visual similarity, diffing word by word, then spatial fuzzy matching to kill false alarms.",
-    videoCaption: "Press play. Around 2 minutes, no audio.",
+    tabs: {
+      ariaLabel: "Playback mode",
+      video: "Video",
+      interactive: "Step by step",
+    },
+    videoCaption: "Press play. Around 1 minute 40, no audio.",
     videoFallback: "Your browser does not support the video tag.",
     videoComingSoon: "Render coming soon — page wired, video not yet uploaded.",
+    interactiveCaption:
+      "One scene per press. Use this version when you want to take it slowly, or talk over each beat.",
+    interactive: {
+      stageButtonAriaSkip: "Skip to end of current scene",
+      stageButtonAriaRestart: "Restart",
+      stageButtonAriaAdvance: "Advance to next scene",
+      fullscreen: "Fullscreen",
+      exitFullscreen: "Exit fullscreen",
+      back: "← Back",
+      restart: "Restart",
+      next: "Next →",
+      skip: "Skip →",
+      hintHtml:
+        "Press <kbd>Space</kbd> or click the canvas to advance · <kbd>R</kbd> to restart",
+    },
   },
   animation: {
     backToNotebook: "← Notebook",

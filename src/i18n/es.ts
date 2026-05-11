@@ -204,9 +204,29 @@ export const es: Dict = {
       "Dos PDFs entran, sale un diff. Los seis pasos de la canalización para detectar lo que cambió.",
     lede:
       "Un recorrido animado por la canalización del PDF Comparer: extraer palabras con sus posiciones, eliminar cabeceras, emparejar páginas por texto y similitud visual, comparar palabra por palabra y, después, un emparejamiento espacial difuso para descartar falsas alarmas.",
-    videoCaption: "Pulsa play. Alrededor de 2 minutos, sin audio.",
+    tabs: {
+      ariaLabel: "Modo de reproducción",
+      video: "Vídeo",
+      interactive: "Paso a paso",
+    },
+    videoCaption: "Pulsa play. Alrededor de 1 minuto 40, sin audio.",
     videoFallback: "Tu navegador no soporta la etiqueta de vídeo.",
     videoComingSoon: "Render en camino — página lista, vídeo aún por subir.",
+    interactiveCaption:
+      "Una escena por pulsación. Ideal para avanzar despacio o comentar cada momento.",
+    interactive: {
+      stageButtonAriaSkip: "Saltar al final de la escena actual",
+      stageButtonAriaRestart: "Reiniciar",
+      stageButtonAriaAdvance: "Avanzar a la siguiente escena",
+      fullscreen: "Pantalla completa",
+      exitFullscreen: "Salir de pantalla completa",
+      back: "← Atrás",
+      restart: "Reiniciar",
+      next: "Siguiente →",
+      skip: "Saltar →",
+      hintHtml:
+        "Pulsa <kbd>Espacio</kbd> o haz clic en el lienzo para avanzar · <kbd>R</kbd> para reiniciar",
+    },
   },
   animation: {
     backToNotebook: "← Cuaderno",

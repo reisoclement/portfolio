@@ -204,9 +204,29 @@ export const pl: Dict = {
       "Dwa PDF-y na wejściu, jeden diff na wyjściu. Sześć kroków pipeline'u, by wykryć co się zmieniło.",
     lede:
       "Animowany przegląd pipeline'u PDF Comparer: wyciąganie słów z pozycjami, usuwanie nagłówków, parowanie stron na podstawie tekstu i podobieństwa wizualnego, porównanie słowo po słowie, a potem rozmyte dopasowanie przestrzenne, żeby odrzucić fałszywe alarmy.",
-    videoCaption: "Naciśnij play. Około 2 minuty, bez dźwięku.",
+    tabs: {
+      ariaLabel: "Tryb odtwarzania",
+      video: "Wideo",
+      interactive: "Krok po kroku",
+    },
+    videoCaption: "Naciśnij play. Około 1 minuta 40, bez dźwięku.",
     videoFallback: "Twoja przeglądarka nie obsługuje znacznika wideo.",
     videoComingSoon: "Render w drodze — strona gotowa, wideo jeszcze nie wgrane.",
+    interactiveCaption:
+      "Jedna scena na kliknięcie. Idealne, gdy chcesz iść powoli lub komentować każdy moment.",
+    interactive: {
+      stageButtonAriaSkip: "Pomiń do końca bieżącej sceny",
+      stageButtonAriaRestart: "Od nowa",
+      stageButtonAriaAdvance: "Przejdź do następnej sceny",
+      fullscreen: "Pełny ekran",
+      exitFullscreen: "Wyjdź z pełnego ekranu",
+      back: "← Wstecz",
+      restart: "Od nowa",
+      next: "Dalej →",
+      skip: "Pomiń →",
+      hintHtml:
+        "Naciśnij <kbd>Spacja</kbd> lub kliknij obszar, aby przejść dalej · <kbd>R</kbd>, aby zacząć od nowa",
+    },
   },
   animation: {
     backToNotebook: "← Notatnik",
